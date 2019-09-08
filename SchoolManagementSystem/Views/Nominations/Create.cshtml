@@ -1,0 +1,361 @@
+﻿@model SchoolManagementSystem.Models.NominationsViewModel
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2 class="box-title">NOMINATION FOR NATIONAL HONOURS FORM</h2>
+    </div>
+    <div class="box-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Personal Information</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Other Details</a></li>
+                            <li><a data-toggle="tab" href="#menu3">Citations</a></li>
+                            <li><a data-toggle="tab" href="#menu5">Attachments</a></li>
+                            <li><a data-toggle="tab" href="#menu6">Complete</a></li>
+                        </ul>
+
+                        <div id="home" class="tab-pane fade in active">
+                            <h3>PERSONAL INFORMATION</h3>
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.NominatingBodyId, "Nomination Body:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("NominationBodyId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nomination.NominatingBodyId, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.NominationPeriodId, "Nomination Period:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nomination.NominationPeriodId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.Nationality, "Nationality:", htmlAttributes: new { @class = "control-label" })
+                                    <select name="Nationality" class="form-control">
+                                        <option>Kenyan</option>
+                                        <option>Non-Kenyan</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.IdNumber, "ID Number / Passport No:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.IdNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.IdNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.CountyOfBirth, "County of Birth:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("CountyOfBirth", (IEnumerable<SelectListItem>)ViewBag.CountyId, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.CountryOfBirth, "Country of Birth:", htmlAttributes: new { @class = "control-label" })
+                                    <select name="CountryOfBirth" class="form-control">
+                                        <option>Tanzania</option>
+                                        <option>Uganda</option>
+                                        <option>China</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Home County:</label>
+                                    @Html.DropDownList("CountyId", (IEnumerable<SelectListItem>)ViewBag.CountyId, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">Sub-County Name:</label>
+                                    @Html.DropDownList("SubCountyId", (IEnumerable<SelectListItem>)ViewBag.SubCountyId, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.WardId, "Ward Name:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("WardId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nomination.WardId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.Location, "Location:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.Location, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.Location, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.SubLocation, "Sub Location:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.SubLocation, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.SubLocation, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.Village, "Village:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.Village, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.Village, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.SalutationId, "Salutation:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("SalutationId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nomination.SalutationId, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.Surname, "SurName:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.Surname, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.OtherNames, "Other Names:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.OtherNames, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.OtherNames, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.DateOfBirth, "Date of Birth:", htmlAttributes: new { @class = "control-label" })
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.EditorFor(model => model.Nomination.DateOfBirth, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.Nomination.DateOfBirth, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.MobileNumber, "Mobile Number:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.MobileNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.EmailAddress, "Email Address:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.EmailAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.PostalAddress, "Postal/Organization/Business Address:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.PostalAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.PostalAddress, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.PostalCode, "Postal Code:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.PostalCode, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.Nomination.Town, "Town:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Nomination.Town, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nomination.Town, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="control-label"></label><br />
+                                    <a data-toggle="tab" href="#menu2" class="btn btn-warning pull-right">Other Details >>></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>OTHER DETAILS</h3>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">Highest Academic Qualification:</label>
+                                    @Html.DropDownList("AcademicQualificationId", (IEnumerable<SelectListItem>)ViewBag.AcademicQualificationId, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Nomination.Occupation, "Occupation:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownList("OccupationId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nomination.OccupationId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">Previous Awards of Honor:</label>
+                                    <input class="form-control" type="text" name="SearchPreviousAwards" id="SearchPreviousAwards" placeholder="Search by Name/ID Number from Role of Honor..." />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <table id="nominationsPrevAwards" class="table table-bordered table-hover dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Awardee Name</th>
+                                                <th>ID Number</th>
+                                                <th>Award</th>
+                                                <th>Date of Award</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Arnold Shangala Mwadwaa</td>
+                                                <td>26686380</td>
+                                                <td>OGH</td>
+                                                <td>09/06/2019</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nicky Kalu Munga</td>
+                                                <td>24509872</td>
+                                                <td>MBS</td>
+                                                <td>09/06/2018</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pascal Mbamungu Kai</td>
+                                                <td>30298760</td>
+                                                <td>HSC</td>
+                                                <td>09/06/2015</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Awardee Name</th>
+                                                <th>ID Number</th>
+                                                <th>Award</th>
+                                                <th>Date of Award</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label"></label><br />
+                                    <input type="submit" value="<<< Previous" class="btn btn-warning pull-left" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label"></label><br />
+                                    <input type="submit" value="Next >>>" class="btn btn-warning pull-right" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>NOMINEE RECORDS</h3>
+                            <div class="home-border">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.NomineeRecords.RecordTypeId, "Record Type:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownList("RecordTypeId", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NomineeRecords.RecordTypeId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.NomineeRecords.Organisation,"Organisation:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.NomineeRecords.Organisation, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NomineeRecords.Organisation, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.NomineeRecords.StartDate,"Start Date:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.NomineeRecords.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NomineeRecords.StartDate, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.NomineeRecords.EndDate, "End Date:",htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.NomineeRecords.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NomineeRecords.EndDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(model => model.NomineeRecords.Narration,"Narration:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.NomineeRecords.Narration, new { htmlAttributes = new { @class = "form-control", @rows = 7 } })
+                                        @Html.ValidationMessageFor(model => model.NomineeRecords.Narration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label"></label><br />
+                                        <input type="submit" value="Add Record" class="btn btn-warning pull-success" />
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <div id="table">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Record Type</th>
+                                                <th>Organisation</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Narration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Engagements</td>
+                                                <td>Organisation 1</td>
+                                                <td>01.01.2015</td>
+                                                <td>31.12.2015</td>
+                                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Achievements</td>
+                                                <td>Organisation 2</td>
+                                                <td>01.01.2015</td>
+                                                <td>31.12.2015</td>
+                                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contributions</td>
+                                                <td>Organisation 3</td>
+                                                <td>01.01.2015</td>
+                                                <td>31.12.2015</td>
+                                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label"></label><br />
+                                    <input type="submit" value="<<< Previous" class="btn btn-warning pull-left" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label"></label><br />
+                                    <input type="submit" value="Next >>>" class="btn btn-warning pull-right" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="menu4" class="tab-pane fade">
+                            <h3>Attachments</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+
+                        <div id="menu5" class="tab-pane fade">
+                            <h3>Complete</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $(document).ready(function () {
+        $('#nominationsPrevAwards').DataTable();
+    });
+</script>

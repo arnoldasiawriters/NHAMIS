@@ -1,0 +1,68 @@
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csprojResolveAssemblyReference.cache
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll.config
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.Migrations.InitialMigration.resources
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\Training\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csproj.GenerateResource.Cache
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll.config
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csprojResolveAssemblyReference.cache
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll.config
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csprojResolveAssemblyReference.cache
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2015\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll.config
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.dll
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.pdb
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csprojAssemblyReference.cache
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csproj.CoreCompileInputs.cache
+C:\Users\amwadwaa\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csproj.CopyComplete
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll.config
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\SchoolManagementSystemModel.pdb
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.pdb
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csprojAssemblyReference.cache
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csproj.CoreCompileInputs.cache
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\SMS WEB\SchoolManagementSystemModel\obj\Debug\SchoolManagementSystemModel.csproj.CopyComplete

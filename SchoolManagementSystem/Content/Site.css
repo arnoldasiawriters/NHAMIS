@@ -1,0 +1,29 @@
+﻿.businessName {
+  display: block;
+  float: left;
+  height: 50px;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: left;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 15px;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+.alignMiddle {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+
+ul.select2-results__options {
+    max-height: 100px !important;
+}
+.select2-container--default .select2-selection--single {
+    border: 1px solid #d2d6de !important;
+    border-radius: 0px !important;
+}
+ .select2-container .select2-selection--single {
+    height: 34px !important;
+}

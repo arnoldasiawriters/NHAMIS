@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NHAMIS</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/datatables")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/admin-lte/js")
+    @Scripts.Render("~/bundles/datatables")
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="~/" class="logo">
+                <span class="logo-mini"><b>N</b>M</span>
+                <span class="logo-lg"><b>NHA</b>MIS</span>
+            </a>
+
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/admin-lte/img/user-image.png" width="20" class="img-circle" alt="User Image">
+                                <span class="hidden-xs">Arnold Mwadwaa</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header">
+                                    <img src="~/admin-lte/img/user-image.png" class="img-circle" alt="User Image">
+                                    <p>Arnold Mwadwaa<small>Administrator</small></p>
+                                </li>
+                                <li class="user-footer">
+                                    @Html.Partial("_LoginPartial")
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/admin-lte/img/user-image.png" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p>Arnold Mwadwaa</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Logged In</a>
+                    </div>
+                </div>
+
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MAIN MENU</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i><span>NOMINATIONS</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "Nominations")"><i class="fa fa-circle-o"></i> VIEW</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> UPDATE</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> COMPLETE</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-list"></i><span>REPORTS</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> WARRANT FORMS</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> STATE INVESTITURE</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> GAZETTE NOTICE</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user"></i><span>ADMINISTRATION</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "UserDetails")"><i class="fa fa-circle-o"></i> USER REGISTRATION</a></li>
+                            <li><a href="@Url.Action("ResetPassword","Account")"><i class="fa fa-circle-o"></i> RESET PASSWORD</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> MEDALS</a></li>
+                            <li><a href="@Url.Action("Index","NominatingBodies")"><i class="fa fa-circle-o"></i> NOMINATING AGIENCIES</a></li>
+                            <li><a href="@Url.Action("Index","NominationPeriods")"><i class="fa fa-circle-o"></i> NOMINATING PERIODS</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            @*<section class="content-header"></section>*@
+            <!-- Main content -->
+            <section class="content container-fluid">
+                @RenderBody()
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer text-center">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                @*Anything you want*@
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; @DateTime.Now.Year.ToString() NHAMIS, </strong>&nbsp;All rights reserved.
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
