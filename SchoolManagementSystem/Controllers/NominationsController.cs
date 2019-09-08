@@ -26,6 +26,26 @@ namespace SchoolManagementSystem.Controllers
             return View(nominations.ToList());
         }
 
+        // GET: Approve
+        public ActionResult Approve()
+        {
+            var nominations = db.Nominations.Include(n => n.NominatingBody).Include(n => n.NominationPeriod).Include(n => n.Salutation).Include(n => n.Ward);
+            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+            ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
+            return View(nominations.ToList());
+        }
+
+
+        // GET: Update ROH
+        public ActionResult UpdateROH()
+        {
+            var nominations = db.Nominations.Include(n => n.NominatingBody).Include(n => n.NominationPeriod).Include(n => n.Salutation).Include(n => n.Ward);
+            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+            ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
+            return View(nominations.ToList());
+        }
+
+
         // GET: Nominations/Details/5
         public ActionResult Details(int? id)
         {
@@ -54,6 +74,7 @@ namespace SchoolManagementSystem.Controllers
             ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
             ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
             ViewBag.RecordTypeId = new SelectList(db.RecordTypes, "Id", "Name");
+            ViewBag.AttachmentTypeId = new SelectList(db.AttachmentTypes, "Id", "Name");
             return View();
         }
 

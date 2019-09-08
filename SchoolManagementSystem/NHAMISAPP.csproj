@@ -211,10 +211,12 @@
     <Compile Include="Assets\FormattedDbEntityValidationException.cs" />
     <Compile Include="Assets\Utils.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttachmentTypesController.cs" />
     <Compile Include="Controllers\CountiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NominatingBodiesController.cs" />
+    <Compile Include="Controllers\NominationAttachmentsController.cs" />
     <Compile Include="Controllers\NominationPeriodsController.cs" />
     <Compile Include="Controllers\NominationsController.cs" />
     <Compile Include="Controllers\NomineeRecordsController.cs" />
@@ -237,6 +239,10 @@
     <Compile Include="Migrations\201909081509299_Updated.cs" />
     <Compile Include="Migrations\201909081509299_Updated.Designer.cs">
       <DependentUpon>201909081509299_Updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909081543126_edited some.cs" />
+    <Compile Include="Migrations\201909081543126_edited some.Designer.cs">
+      <DependentUpon>201909081543126_edited some.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -854,6 +860,18 @@
     <Content Include="Views\NomineeRecords\Details.cshtml" />
     <Content Include="Views\NomineeRecords\Edit.cshtml" />
     <Content Include="Views\NomineeRecords\Index.cshtml" />
+    <Content Include="Views\AttachmentTypes\Create.cshtml" />
+    <Content Include="Views\AttachmentTypes\Delete.cshtml" />
+    <Content Include="Views\AttachmentTypes\Details.cshtml" />
+    <Content Include="Views\AttachmentTypes\Edit.cshtml" />
+    <Content Include="Views\AttachmentTypes\Index.cshtml" />
+    <Content Include="Views\NominationAttachments\Create.cshtml" />
+    <Content Include="Views\NominationAttachments\Delete.cshtml" />
+    <Content Include="Views\NominationAttachments\Details.cshtml" />
+    <Content Include="Views\NominationAttachments\Edit.cshtml" />
+    <Content Include="Views\NominationAttachments\Index.cshtml" />
+    <Content Include="Views\Nominations\Approve.cshtml" />
+    <Content Include="Views\Nominations\UpdateROH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -887,6 +905,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909081509299_Updated.resx">
       <DependentUpon>201909081509299_Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909081543126_edited some.resx">
+      <DependentUpon>201909081543126_edited some.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

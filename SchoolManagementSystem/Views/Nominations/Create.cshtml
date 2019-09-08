@@ -14,10 +14,9 @@
                             <li class="active"><a data-toggle="tab" href="#home">Personal Information</a></li>
                             <li><a data-toggle="tab" href="#menu2">Other Details</a></li>
                             <li><a data-toggle="tab" href="#menu3">Citations</a></li>
-                            <li><a data-toggle="tab" href="#menu5">Attachments</a></li>
-                            <li><a data-toggle="tab" href="#menu6">Complete</a></li>
+                            <li><a data-toggle="tab" href="#menu4">Attachments</a></li>
+                            <li><a data-toggle="tab" href="#menu5">Complete</a></li>
                         </ul>
-
                         <div id="home" class="tab-pane fade in active">
                             <h3>PERSONAL INFORMATION</h3>
 
@@ -161,7 +160,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label class="control-label"></label><br />
-                                    <a data-toggle="tab" href="#menu2" class="btn btn-warning pull-right">Other Details >>></a>
+                                    <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-right">Next >>></a>
                                 </div>
                             </div>
                         </div>
@@ -228,18 +227,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label class="control-label"></label><br />
-                                    <input type="submit" value="<<< Previous" class="btn btn-warning pull-left" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="control-label"></label><br />
-                                    <input type="submit" value="Next >>>" class="btn btn-warning pull-right" />
+                                <div class="col-md-12">
+                                    <a data-toggle="tab" href="#home" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                    <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-right">Next >>></a>
                                 </div>
                             </div>
                         </div>
                         <div id="menu3" class="tab-pane fade">
-                            <h3>NOMINEE RECORDS</h3>
+                            <h3>NOMINEE RECORDS (CITATIONS)</h3>
                             <div class="home-border">
                                 <div class="form-group">
                                     <div class="col-md-6">
@@ -248,7 +243,7 @@
                                         @Html.ValidationMessageFor(model => model.NomineeRecords.RecordTypeId, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.NomineeRecords.Organisation,"Organisation:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.NomineeRecords.Organisation, "Organisation:", htmlAttributes: new { @class = "control-label" })
                                         @Html.EditorFor(model => model.NomineeRecords.Organisation, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.NomineeRecords.Organisation, "", new { @class = "text-danger" })
                                     </div>
@@ -257,12 +252,12 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.NomineeRecords.StartDate,"Start Date:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.NomineeRecords.StartDate, "Start Date:", htmlAttributes: new { @class = "control-label" })
                                         @Html.EditorFor(model => model.NomineeRecords.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.NomineeRecords.StartDate, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.NomineeRecords.EndDate, "End Date:",htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.NomineeRecords.EndDate, "End Date:", htmlAttributes: new { @class = "control-label" })
                                         @Html.EditorFor(model => model.NomineeRecords.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.NomineeRecords.EndDate, "", new { @class = "text-danger" })
                                     </div>
@@ -271,7 +266,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.LabelFor(model => model.NomineeRecords.Narration,"Narration:", htmlAttributes: new { @class = "control-label" })
+                                        @Html.LabelFor(model => model.NomineeRecords.Narration, "Narration:", htmlAttributes: new { @class = "control-label" })
                                         @Html.EditorFor(model => model.NomineeRecords.Narration, new { htmlAttributes = new { @class = "form-control", @rows = 7 } })
                                         @Html.ValidationMessageFor(model => model.NomineeRecords.Narration, "", new { @class = "text-danger" })
                                     </div>
@@ -280,11 +275,11 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label class="control-label"></label><br />
-                                        <input type="submit" value="Add Record" class="btn btn-warning pull-success" />
+                                        <input type="button" value="Add Record" class="btn btn-warning pull-success" />
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="form-group">
                                 <div id="table">
                                     <table class="table table-bordered table-hover">
@@ -325,25 +320,73 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label class="control-label"></label><br />
-                                    <input type="submit" value="<<< Previous" class="btn btn-warning pull-left" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="control-label"></label><br />
-                                    <input type="submit" value="Next >>>" class="btn btn-warning pull-right" />
+                                <div class="col-md-12">
+                                    <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                    <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-right">Next >>></a>
                                 </div>
                             </div>
                         </div>
-
                         <div id="menu4" class="tab-pane fade">
                             <h3>Attachments</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Attachment Type:</label>
+                                    @Html.DropDownList("AttachmentTypeId", (IEnumerable<SelectListItem>)ViewBag.AttachmentTypeId, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    <br />
+                                    <input type="file" name="attachment" />
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="control-label"></label><br />
+                                    <input type="submit" value="Add Attachment" class="btn btn-warning pull-success pull-left" />
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div id="table">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Attachment Type</th>
+                                                    <th>Attachment Document</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Identity Card</td>
+                                                    <td><a href="#">Mwadwaa - Identity Card</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Highest Academic Certificate</td>
+                                                    <td><a href="#">Mwadwaa - Highest Academic Certificate</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Appointment Letter</td>
+                                                    <td><a href="#">Mwadwaa - Appointment Letter</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                    <a data-toggle="tab" href="#menu5" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                </div>
+                            </div>
+                        </div>
                         <div id="menu5" class="tab-pane fade">
                             <h3>Complete</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <p>By clicking submit I confirm that the information given above is true to the best of my knowledge and understanding.</p>
+                                    <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                    <input type="submit" value="Submit Form" class="btn btn-primary pull-right" />
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

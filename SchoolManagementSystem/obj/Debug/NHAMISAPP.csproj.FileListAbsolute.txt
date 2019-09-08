@@ -131,3 +131,4 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.Removed.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedColumn.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.Updated.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.editedsome.resources
