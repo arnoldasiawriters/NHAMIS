@@ -48,6 +48,7 @@ namespace NHAMIS
         public DbSet<NomineeRecords> NomineeRecords { get; set; }
         public DbSet<RecordType> RecordTypes { get; set; }
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
+        public DbSet<Country> Countries { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) 
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

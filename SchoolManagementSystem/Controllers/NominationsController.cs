@@ -67,6 +67,7 @@ namespace SchoolManagementSystem.Controllers
             ViewBag.NominationBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
             ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
             ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             ViewBag.CountyId = new SelectList(db.Counties, "Id", "CountyName");
             ViewBag.SubCountyId = new SelectList(db.SubCounties, "Id", "SubCountyName");
             ViewBag.WardId = new SelectList(db.Wards, "Id", "WardName");

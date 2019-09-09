@@ -54,7 +54,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 ModelService.InsertWard();
             }
-            return View();
+            return RedirectToAction("Index", "Nominations");
         }
 
         public ActionResult About()

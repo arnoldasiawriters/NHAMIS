@@ -1,0 +1,42 @@
+﻿@model NHAMIS.APP.Models.SubCounty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SubCounty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.County.CountyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County.CountyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCountyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCountyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCountyCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCountyCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

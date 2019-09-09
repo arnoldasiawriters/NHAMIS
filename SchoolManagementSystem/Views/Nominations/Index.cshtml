@@ -6,24 +6,28 @@
     </div>
     <div class="box-body">
         <div class="form-group">
-            <div class="col-md-6">
-                <label class="control-label">Nominating Body</label>
-                @Html.DropDownList("NominatingBodyId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-            <div class="col-md-6">
-                <label class="control-label">Nomination Period</label>
-                @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-md-12">
                 <br />
                 @Html.ActionLink("Add Nomination", "Create", null, htmlAttributes: new { @class = "btn btn-success pull-right" })
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <label class="control-label">Nominating Body</label>
+                @Html.DropDownList("NominatingBodyId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Nomination Period</label>
+                @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <br />
+                <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-info" />
+                <br /><br />
+            </div>
+        </div>
+
         <div class="col-md-12">
-
-
             <table id="nominationAddIndex" class="table table-bordered table-hover dataTable">
                 <thead>
                     <tr>

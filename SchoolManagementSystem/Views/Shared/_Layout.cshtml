@@ -16,9 +16,10 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/admin-lte/js")
     @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/Scripts/AngularJs")
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="App">
     <div class="wrapper">
         <header class="main-header">
             <a href="~/" class="logo">
@@ -115,11 +116,19 @@
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "UserDetails")"><i class="fa fa-circle-o"></i> USER REGISTRATION</a></li>
                             <li><a href="@Url.Action("ResetPassword","Account")"><i class="fa fa-circle-o"></i> RESET PASSWORD</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> MEDALS</a></li>
+                            <li><a href="@Url.Action("Index","Salutations")"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
+                            <li><a href="@Url.Action("Index","Occupations")"><i class="fa fa-circle-o"></i> OCCUPATIONS</a></li>
+                            <li><a href="@Url.Action("Index","AcademicQualifications")"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
                             <li><a href="@Url.Action("Index","NominatingBodies")"><i class="fa fa-circle-o"></i> NOMINATING AGIENCIES</a></li>
                             <li><a href="@Url.Action("Index","NominationPeriods")"><i class="fa fa-circle-o"></i> NOMINATING PERIODS</a></li>
+                            <li><a href="@Url.Action("Index","AttachmentTypes")"><i class="fa fa-circle-o"></i> ATTACHMENT TYPES</a></li>
+                            <li><a href="@Url.Action("Index","RecordTypes")"><i class="fa fa-circle-o"></i> CITATION TYPES</a></li>
+                            <li><a href="@Url.Action("Index","Countries")"><i class="fa fa-circle-o"></i> COUNTRIES</a></li>
+                            <li><a href="@Url.Action("Index","Counties")"><i class="fa fa-circle-o"></i> COUNTIES</a></li>
+                            <li><a href="@Url.Action("Index","SubCounties")"><i class="fa fa-circle-o"></i> SUB-COUNTIES</a></li>
+                            <li><a href="@Url.Action("Index","Wards")"><i class="fa fa-circle-o"></i> WARDS</a></li>
+                            <li><a href="@Url.Action("Index","Medals")"><i class="fa fa-circle-o"></i> MEDALS</a></li>
+                            <li><a href="@Url.Action("Index", "HonorRoles")"><i class="fa fa-circle-o"></i> ROLE OF HONOUR</a></li>
                         </ul>
                     </li>
                 </ul>

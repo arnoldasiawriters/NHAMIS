@@ -44,6 +44,7 @@ namespace NHAMIS.APP.Models
         public virtual ICollection<NominationApprovals> NominationApprovals { get; set; }
         public int OccupationId { get; set; }
         public virtual Occupation Occupation { get; set; }
-        
+        public int CountryId { get; set; }
+        public virtual Country Country { get; set; }
     }
 }

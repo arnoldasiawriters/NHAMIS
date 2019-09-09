@@ -1,5 +1,5 @@
 ﻿@model SchoolManagementSystem.Models.NominationsViewModel
-<div class="box box-primary">
+<div class="box box-primary" ng-controller="NominationsCtrl as ctrl">
     <div class="box-header with-border">
         <h2 class="box-title">NOMINATION FOR NATIONAL HONOURS FORM</h2>
     </div>
@@ -55,11 +55,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     @Html.LabelFor(model => model.Nomination.CountryOfBirth, "Country of Birth:", htmlAttributes: new { @class = "control-label" })
-                                    <select name="CountryOfBirth" class="form-control">
-                                        <option>Tanzania</option>
-                                        <option>Uganda</option>
-                                        <option>China</option>
-                                    </select>
+                                    @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.CountryId, htmlAttributes: new { @class = "form-control" })
                                 </div>
                             </div>
 
@@ -161,6 +157,7 @@
                                 <div class="col-md-12">
                                     <label class="control-label"></label><br />
                                     <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                    <a href="@Url.Action("Index","Nominations")" class="btn btn-sm btn-warning pull-left"><<< Back to List</a>
                                 </div>
                             </div>
                         </div>
