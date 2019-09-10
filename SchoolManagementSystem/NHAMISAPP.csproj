@@ -213,8 +213,10 @@
     <Compile Include="Controllers\AcademicQualificationsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttachmentTypesController.cs" />
+    <Compile Include="Controllers\CitationAchievementsController.cs" />
     <Compile Include="Controllers\CountiesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HonorRolesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -223,9 +225,8 @@
     <Compile Include="Controllers\NominationAttachmentsController.cs" />
     <Compile Include="Controllers\NominationPeriodsController.cs" />
     <Compile Include="Controllers\NominationsController.cs" />
-    <Compile Include="Controllers\NomineeRecordsController.cs" />
     <Compile Include="Controllers\OccupationsController.cs" />
-    <Compile Include="Controllers\RecordTypesController.cs" />
+    <Compile Include="Controllers\PreviousRecognitionsController.cs" />
     <Compile Include="Controllers\SalutationsController.cs" />
     <Compile Include="Controllers\SubCountiesController.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
@@ -260,6 +261,22 @@
     <Compile Include="Migrations\201909090249082_Removed RoleOfHonor Table.cs" />
     <Compile Include="Migrations\201909090249082_Removed RoleOfHonor Table.Designer.cs">
       <DependentUpon>201909090249082_Removed RoleOfHonor Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091211248_Remove Country.cs" />
+    <Compile Include="Migrations\201909091211248_Remove Country.Designer.cs">
+      <DependentUpon>201909091211248_Remove Country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909100654335_Added Gender.cs" />
+    <Compile Include="Migrations\201909100654335_Added Gender.Designer.cs">
+      <DependentUpon>201909100654335_Added Gender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909100701342_Modified Gender.cs" />
+    <Compile Include="Migrations\201909100701342_Modified Gender.Designer.cs">
+      <DependentUpon>201909100701342_Modified Gender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909100829157_Modified citations Records.cs" />
+    <Compile Include="Migrations\201909100829157_Modified citations Records.Designer.cs">
+      <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -589,6 +606,7 @@
     <Content Include="Scripts\AngularJs\angular.min.js" />
     <Content Include="Scripts\AngularJs\App.Js" />
     <Content Include="Scripts\AngularJs\lodash.min.js" />
+    <Content Include="Scripts\AngularJs\Services.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -688,11 +706,6 @@
     <Content Include="Views\NominationPeriods\Details.cshtml" />
     <Content Include="Views\NominationPeriods\Edit.cshtml" />
     <Content Include="Views\NominationPeriods\Index.cshtml" />
-    <Content Include="Views\NomineeRecords\Create.cshtml" />
-    <Content Include="Views\NomineeRecords\Delete.cshtml" />
-    <Content Include="Views\NomineeRecords\Details.cshtml" />
-    <Content Include="Views\NomineeRecords\Edit.cshtml" />
-    <Content Include="Views\NomineeRecords\Index.cshtml" />
     <Content Include="Views\AttachmentTypes\Create.cshtml" />
     <Content Include="Views\AttachmentTypes\Delete.cshtml" />
     <Content Include="Views\AttachmentTypes\Details.cshtml" />
@@ -745,11 +758,21 @@
     <Content Include="Views\Occupations\Details.cshtml" />
     <Content Include="Views\Occupations\Edit.cshtml" />
     <Content Include="Views\Occupations\Index.cshtml" />
-    <Content Include="Views\RecordTypes\Create.cshtml" />
-    <Content Include="Views\RecordTypes\Delete.cshtml" />
-    <Content Include="Views\RecordTypes\Details.cshtml" />
-    <Content Include="Views\RecordTypes\Edit.cshtml" />
-    <Content Include="Views\RecordTypes\Index.cshtml" />
+    <Content Include="Views\Genders\Create.cshtml" />
+    <Content Include="Views\Genders\Delete.cshtml" />
+    <Content Include="Views\Genders\Details.cshtml" />
+    <Content Include="Views\Genders\Edit.cshtml" />
+    <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\CitationAchievements\Create.cshtml" />
+    <Content Include="Views\CitationAchievements\Delete.cshtml" />
+    <Content Include="Views\CitationAchievements\Details.cshtml" />
+    <Content Include="Views\CitationAchievements\Edit.cshtml" />
+    <Content Include="Views\CitationAchievements\Index.cshtml" />
+    <Content Include="Views\PreviousRecognitions\Create.cshtml" />
+    <Content Include="Views\PreviousRecognitions\Delete.cshtml" />
+    <Content Include="Views\PreviousRecognitions\Details.cshtml" />
+    <Content Include="Views\PreviousRecognitions\Edit.cshtml" />
+    <Content Include="Views\PreviousRecognitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -792,6 +815,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909090249082_Removed RoleOfHonor Table.resx">
       <DependentUpon>201909090249082_Removed RoleOfHonor Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091211248_Remove Country.resx">
+      <DependentUpon>201909091211248_Remove Country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909100654335_Added Gender.resx">
+      <DependentUpon>201909100654335_Added Gender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909100701342_Modified Gender.resx">
+      <DependentUpon>201909100701342_Modified Gender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909100829157_Modified citations Records.resx">
+      <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

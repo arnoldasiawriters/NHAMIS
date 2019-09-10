@@ -25,8 +25,9 @@ namespace NHAMIS.APP.Models
         public string Location { get; set; }
         public string SubLocation { get; set; }
         public string Village { get; set; }
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
         public string Status { get; set; }
-        public string CountryOfBirth { get; set; }
         public int WardId { get; set; }
         public virtual Ward Ward { get; set; }
         public int SalutationId { get; set; }
@@ -46,5 +47,7 @@ namespace NHAMIS.APP.Models
         public virtual Occupation Occupation { get; set; }
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
+        public List<CitationAchievement> CitationAchievements { get; set; }
+        public List<PreviousRecognition> PreviousRecognitions { get; set; }
     }
 }

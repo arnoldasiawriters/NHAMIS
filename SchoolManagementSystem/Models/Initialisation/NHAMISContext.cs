@@ -45,11 +45,11 @@ namespace NHAMIS
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<Ward> Wards { get; set; }
         public DbSet<Occupation> Occupations { get; set; }
-        public DbSet<NomineeRecords> NomineeRecords { get; set; }
-        public DbSet<RecordType> RecordTypes { get; set; }
         public DbSet<AttachmentType> AttachmentTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) 
+        public DbSet<CitationAchievement> CitationAchievements { get; set; }
+        public DbSet<PreviousRecognition> PreviousRecognitions { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -123,7 +123,7 @@ namespace NHAMIS
                         .Select(x => x.ErrorMessage);
 
                 // Join the list to a single string.
-                var fullErrorMessage = string.Join(" ",errorMessages);
+                var fullErrorMessage = string.Join(" ", errorMessages);
 
                 // Combine the original exception message with the new one.
                 var exceptionMessage = string.Concat(ex.Message, "The validation errors are: ", fullErrorMessage);
@@ -149,8 +149,8 @@ namespace NHAMIS
                     ((NHAMISBaseClass)entity.Entity).CreateBy = currentUserId;
                 }
 
-               entity.Property("CreateBy").IsModified = false;
-               entity.Property("CreateDate").IsModified = false;
+                entity.Property("CreateBy").IsModified = false;
+                entity.Property("CreateDate").IsModified = false;
 
                 ((NHAMISBaseClass)entity.Entity).ModifyDate = DateTime.Now;
                 ((NHAMISBaseClass)entity.Entity).ModifyBy = currentUserId;
@@ -178,5 +178,7 @@ namespace NHAMIS
                 }
             **/
         }
+
+        public System.Data.Entity.DbSet<NHAMIS.APP.Models.Gender> Genders { get; set; }
     }
 }

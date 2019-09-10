@@ -11,112 +11,112 @@ using NHAMIS.APP.Models;
 
 namespace SchoolManagementSystem.Controllers
 {
-    public class NomineeRecordsController : Controller
+    public class PreviousRecognitionsController : Controller
     {
         private NHAMISContext db = new NHAMISContext();
 
-        // GET: NomineeRecords
+        // GET: PreviousRecognitions
         public ActionResult Index()
         {
-            var nomineeRecords = db.NomineeRecords.Include(n => n.RecordType);
-            return View(nomineeRecords.ToList());
+            var previousRecognitions = db.PreviousRecognitions.Include(p => p.Nomination);
+            return View(previousRecognitions.ToList());
         }
 
-        // GET: NomineeRecords/Details/5
+        // GET: PreviousRecognitions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NomineeRecords nomineeRecords = db.NomineeRecords.Find(id);
-            if (nomineeRecords == null)
+            PreviousRecognition previousRecognition = db.PreviousRecognitions.Find(id);
+            if (previousRecognition == null)
             {
                 return HttpNotFound();
             }
-            return View(nomineeRecords);
+            return View(previousRecognition);
         }
 
-        // GET: NomineeRecords/Create
+        // GET: PreviousRecognitions/Create
         public ActionResult Create()
         {
-            ViewBag.RecordTypeId = new SelectList(db.RecordTypes, "Id", "Name");
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber");
             return View();
         }
 
-        // POST: NomineeRecords/Create
+        // POST: PreviousRecognitions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StartDate,EndDate,Name,Organisation,Narration,RecordTypeId,NomineeId,CreateBy,CreateDate,ModifyBy,ModifyDate")] NomineeRecords nomineeRecords)
+        public ActionResult Create([Bind(Include = "Id,RecognizingInstitution,AchievementTitle,Award,AwardDate,NominationId,CreateBy,CreateDate,ModifyBy,ModifyDate")] PreviousRecognition previousRecognition)
         {
             if (ModelState.IsValid)
             {
-                db.NomineeRecords.Add(nomineeRecords);
+                db.PreviousRecognitions.Add(previousRecognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RecordTypeId = new SelectList(db.RecordTypes, "Id", "Name", nomineeRecords.RecordTypeId);
-            return View(nomineeRecords);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", previousRecognition.NominationId);
+            return View(previousRecognition);
         }
 
-        // GET: NomineeRecords/Edit/5
+        // GET: PreviousRecognitions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NomineeRecords nomineeRecords = db.NomineeRecords.Find(id);
-            if (nomineeRecords == null)
+            PreviousRecognition previousRecognition = db.PreviousRecognitions.Find(id);
+            if (previousRecognition == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RecordTypeId = new SelectList(db.RecordTypes, "Id", "Name", nomineeRecords.RecordTypeId);
-            return View(nomineeRecords);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", previousRecognition.NominationId);
+            return View(previousRecognition);
         }
 
-        // POST: NomineeRecords/Edit/5
+        // POST: PreviousRecognitions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StartDate,EndDate,Name,Organisation,Narration,RecordTypeId,NomineeId,CreateBy,CreateDate,ModifyBy,ModifyDate")] NomineeRecords nomineeRecords)
+        public ActionResult Edit([Bind(Include = "Id,RecognizingInstitution,AchievementTitle,Award,AwardDate,NominationId,CreateBy,CreateDate,ModifyBy,ModifyDate")] PreviousRecognition previousRecognition)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nomineeRecords).State = EntityState.Modified;
+                db.Entry(previousRecognition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RecordTypeId = new SelectList(db.RecordTypes, "Id", "Name", nomineeRecords.RecordTypeId);
-            return View(nomineeRecords);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", previousRecognition.NominationId);
+            return View(previousRecognition);
         }
 
-        // GET: NomineeRecords/Delete/5
+        // GET: PreviousRecognitions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NomineeRecords nomineeRecords = db.NomineeRecords.Find(id);
-            if (nomineeRecords == null)
+            PreviousRecognition previousRecognition = db.PreviousRecognitions.Find(id);
+            if (previousRecognition == null)
             {
                 return HttpNotFound();
             }
-            return View(nomineeRecords);
+            return View(previousRecognition);
         }
 
-        // POST: NomineeRecords/Delete/5
+        // POST: PreviousRecognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NomineeRecords nomineeRecords = db.NomineeRecords.Find(id);
-            db.NomineeRecords.Remove(nomineeRecords);
+            PreviousRecognition previousRecognition = db.PreviousRecognitions.Find(id);
+            db.PreviousRecognitions.Remove(previousRecognition);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace NHAMIS.APP.Models
 {
-    public class RecordType: NHAMISBaseClass
+    public class Gender: NHAMISBaseClass
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual List<NomineeRecords> NomineeRecords { get; set; }
+        public List<Nomination> Nominations { get; set; }
     }
 }

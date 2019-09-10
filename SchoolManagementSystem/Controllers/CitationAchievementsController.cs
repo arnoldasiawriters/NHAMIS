@@ -11,107 +11,112 @@ using NHAMIS.APP.Models;
 
 namespace SchoolManagementSystem.Controllers
 {
-    public class RecordTypesController : Controller
+    public class CitationAchievementsController : Controller
     {
         private NHAMISContext db = new NHAMISContext();
 
-        // GET: RecordTypes
+        // GET: CitationAchievements
         public ActionResult Index()
         {
-            return View(db.RecordTypes.ToList());
+            var citationAchievements = db.CitationAchievements.Include(c => c.Nomination);
+            return View(citationAchievements.ToList());
         }
 
-        // GET: RecordTypes/Details/5
+        // GET: CitationAchievements/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecordType recordType = db.RecordTypes.Find(id);
-            if (recordType == null)
+            CitationAchievement citationAchievement = db.CitationAchievements.Find(id);
+            if (citationAchievement == null)
             {
                 return HttpNotFound();
             }
-            return View(recordType);
+            return View(citationAchievement);
         }
 
-        // GET: RecordTypes/Create
+        // GET: CitationAchievements/Create
         public ActionResult Create()
         {
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber");
             return View();
         }
 
-        // POST: RecordTypes/Create
+        // POST: CitationAchievements/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,CreateBy,CreateDate,ModifyBy,ModifyDate")] RecordType recordType)
+        public ActionResult Create([Bind(Include = "Id,PositionHeld,Project,Role,Achivement,StartDate,EndDate,NominationId,CreateBy,CreateDate,ModifyBy,ModifyDate")] CitationAchievement citationAchievement)
         {
             if (ModelState.IsValid)
             {
-                db.RecordTypes.Add(recordType);
+                db.CitationAchievements.Add(citationAchievement);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(recordType);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", citationAchievement.NominationId);
+            return View(citationAchievement);
         }
 
-        // GET: RecordTypes/Edit/5
+        // GET: CitationAchievements/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecordType recordType = db.RecordTypes.Find(id);
-            if (recordType == null)
+            CitationAchievement citationAchievement = db.CitationAchievements.Find(id);
+            if (citationAchievement == null)
             {
                 return HttpNotFound();
             }
-            return View(recordType);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", citationAchievement.NominationId);
+            return View(citationAchievement);
         }
 
-        // POST: RecordTypes/Edit/5
+        // POST: CitationAchievements/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,CreateBy,CreateDate,ModifyBy,ModifyDate")] RecordType recordType)
+        public ActionResult Edit([Bind(Include = "Id,PositionHeld,Project,Role,Achivement,StartDate,EndDate,NominationId,CreateBy,CreateDate,ModifyBy,ModifyDate")] CitationAchievement citationAchievement)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(recordType).State = EntityState.Modified;
+                db.Entry(citationAchievement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(recordType);
+            ViewBag.NominationId = new SelectList(db.Nominations, "Id", "IdNumber", citationAchievement.NominationId);
+            return View(citationAchievement);
         }
 
-        // GET: RecordTypes/Delete/5
+        // GET: CitationAchievements/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecordType recordType = db.RecordTypes.Find(id);
-            if (recordType == null)
+            CitationAchievement citationAchievement = db.CitationAchievements.Find(id);
+            if (citationAchievement == null)
             {
                 return HttpNotFound();
             }
-            return View(recordType);
+            return View(citationAchievement);
         }
 
-        // POST: RecordTypes/Delete/5
+        // POST: CitationAchievements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RecordType recordType = db.RecordTypes.Find(id);
-            db.RecordTypes.Remove(recordType);
+            CitationAchievement citationAchievement = db.CitationAchievements.Find(id);
+            db.CitationAchievements.Remove(citationAchievement);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

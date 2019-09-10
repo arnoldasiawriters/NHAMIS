@@ -38,9 +38,10 @@ namespace SchoolManagementSystem
             bundles.Add(new ScriptBundle("~/Scripts/AngularJs").Include(
                "~/Scripts/AngularJs/angular.min.js",
                "~/Scripts/AngularJs/lodash.min.js",
+               "~/Scripts/AngularJs/Services.js",
                "~/Scripts/AngularJs/App.js"));
 
-            // jquery datataables js files
+            // jquery datatables js files
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
                         "~/Scripts/DataTables/jquery.dataTables.min.js",
                         "~/Scripts/DataTables/dataTables.bootstrap.min.js"));
