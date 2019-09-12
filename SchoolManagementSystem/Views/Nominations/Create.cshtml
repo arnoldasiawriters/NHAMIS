@@ -4,9 +4,7 @@
         <h2 class="box-title">NOMINATION FOR NATIONAL HONOURS FORM</h2>
     </div>
     <div class="box-body">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <form method="post" name="frm" novalidate>
             <div class="box-body">
                 <div class="form-horizontal">
                     <div class="col-md-12">
@@ -20,142 +18,135 @@
                             </ul>
                             <div id="home" class="tab-pane fade in active">
                                 <h3>PERSONAL INFORMATION</h3>
-
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.NominatingBodyId, "Nomination Body:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("NominationBodyId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Nomination.NominatingBodyId, "", new { @class = "text-danger" })
+                                        <label class="control-label">Nomination Body: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.NominationBodyId"
+                                                ng-options="item.Name for item in ctrl.model.NominatingBodies"></select>
                                     </div>
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.NominationPeriodId, "Nomination Period:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Nomination.NominationPeriodId, "", new { @class = "text-danger" })
+                                        <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.NominationPeriodId"
+                                                ng-options="item.Name for item in ctrl.model.NominationPeriods"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.Nationality, "Nationality:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("NationalityId", null, htmlAttributes: new { @class = "form-control" })
+                                    <div class="col-md-4">
+                                        <label class="control-label">Nationality: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.Nationality" ng-change="ctrl.nationalityChanged()">
+                                            <option value="Kenyan">Kenyan</option>
+                                            <option value="Non-Kenyan">Non-Kenyan</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.IdNumber, "ID Number / Passport No:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.IdNumber, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.IdNumber, "", new { @class = "text-danger" })
+                                    <div class="col-md-4" ng-show="ctrl.showKenyan">
+                                        <label class="control-label">County of Birth: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountyOfBirthId"
+                                                data-size="5" ng-options="item.CountyName for item in ctrl.model.Counties"></select>
+                                    </div>
+                                    <div class="col-md-4" ng-show="!ctrl.showKenyan">
+                                        <label class="control-label">Country of Birth: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountryId"
+                                                ng-options="item.Name for item in ctrl.model.Countries"></select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="control-label" ng-show="ctrl.showKenyan">ID Number:<span class="asteriskField"> *</span></label>
+                                        <label class="control-label" ng-show="!ctrl.showKenyan">Passport Number:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.IdNumber" />
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.CountyOfBirth, "County of Birth:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("CountyOfBirthId", null, htmlAttributes: new { @class = "form-control" })
+                                    <div class="col-md-4">
+                                        <label class="control-label">Salutation:<span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.SalutationId"
+                                                ng-options="item.Name for item in ctrl.model.Salutations"></select>
                                     </div>
-                                    <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.Country, "Country of Birth:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("CountryId", null, htmlAttributes: new { @class = "form-control" })
+                                    <div class="col-md-4">
+                                        <label class="control-label">SurName:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Surname" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Other Names:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.OtherNames" />
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Gender:<span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.GenderId"
+                                                ng-options="item.Name for item in ctrl.model.Genders"></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Date of Birth:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.model.Nomination.DateOfBirth" />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Home County:</label>
-                                        @Html.DropDownList("CountyId", null, htmlAttributes: new { @class = "form-control" })
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountyId"
+                                                ng-options="item.CountyName for item in ctrl.model.Counties" ng-change="ctrl.FindSubCounties()"></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Sub-County Name:</label>
-                                        @Html.DropDownList("SubCountyId", null, htmlAttributes: new { @class = "form-control" })
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.SubCountyId"
+                                                ng-options="item.SubCountyName for item in ctrl.model.SubCounties" ng-change=" ctrl.FindWards()"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.WardId, "Ward Name:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("WardId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Nomination.WardId, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.Location, "Location:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.Location, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.Location, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.SubLocation, "Sub Location:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.SubLocation, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.SubLocation, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.Village, "Village:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.Village, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.Village, "", new { @class = "text-danger" })
+                                        <label class="control-label">Ward Name:</label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.WardId"
+                                                ng-options="item.WardName for item in ctrl.model.Wards"></select>
                                     </div>
                                 </div>
-
-
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.SalutationId, "Salutation:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("SalutationId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Nomination.SalutationId, "", new { @class = "text-danger" })
+                                        <label class="control-label">Location:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Location" />
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.Surname, "SurName:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.Surname, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.Surname, "", new { @class = "text-danger" })
+                                        <label class="control-label">Sub Location:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.SubLocation" />
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.OtherNames, "Other Names:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.OtherNames, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.OtherNames, "", new { @class = "text-danger" })
+                                        <label class="control-label">Village:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Village" />
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.DateOfBirth, "Date of Birth:", htmlAttributes: new { @class = "control-label" })
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            @Html.EditorFor(model => model.Nomination.DateOfBirth, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                        <label class="control-label">Mobile Number:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.MobileNumber" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Email Address:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                            <input class="form-control" ng-model="ctrl.model.Nomination.EmailAddress" placeholder="Email Address" type="email">
                                         </div>
-                                        @Html.ValidationMessageFor(model => model.Nomination.DateOfBirth, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.MobileNumber, "Mobile Number:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.MobileNumber, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.EmailAddress, "Email Address:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.EmailAddress, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.PostalAddress, "Postal/Organization/Business Address:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.PostalAddress, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.PostalAddress, "", new { @class = "text-danger" })
+                                        <label class="control-label">Postal/Organization/Business Address:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.PostalAddress" />
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.PostalCode, "Postal Code:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.PostalCode, "", new { @class = "text-danger" })
+                                        <label class="control-label">Postal Code:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.PostalCode" />
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.LabelFor(model => model.Nomination.Town, "Town:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Nomination.Town, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nomination.Town, "", new { @class = "text-danger" })
+                                        <label class="control-label">Town:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Town" />
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label class="control-label"></label><br />
                                         <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-right">Next >>></a>
-                                        <a href="@Url.Action("Index","Nominations")" class="btn btn-sm btn-warning pull-left"><<< Back to List</a>
+                                        <a href="/Nominations" class="btn btn-sm btn-warning pull-left"><<< Back to List</a>
                                     </div>
                                 </div>
                             </div>
@@ -164,19 +155,19 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Highest Academic Qualification:</label>
-                                        @Html.DropDownList("AcademicQualificationId", null, htmlAttributes: new { @class = "form-control" })
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.AcademicQualificationId"
+                                                ng-options="item.Name for item in ctrl.model.AcademicQualifications"></select>
                                     </div>
                                     <div class="col-md-6">
-                                        @Html.LabelFor(model => model.Nomination.Occupation, "Occupation:", htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownList("OccupationId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Nomination.OccupationId, "", new { @class = "text-danger" })
+                                        <label class="control-label">Occupation:</label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.OccupationId"
+                                                ng-options="item.Name for item in ctrl.model.Occupations"></select>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        @* <label class="control-label">Previous Awards of Honor:</label>*@
-                                        <input class="form-control" type="text" ng-change="ctrl.SearchPreviousAwards()" ng-model="ctrl.SearchNameId" name="SearchPreviousAwards" id="SearchPreviousAwards" placeholder="Search by Name/ID Number from Role of Honor..." />
+                                        <input class="form-control" type="text" ng-change="ctrl.SearchPreviousAwards()" ng-model="ctrl.SearchNameId"
+                                               placeholder="Search by Roll of Honour by Name/ID Number..." />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -197,20 +188,19 @@
                                                     <td>{{item.IdNumber}}</td>
                                                     <td>{{item.Medal.Name}}</td>
                                                     <td>{{item.ConfirementDate.slice(6,-2) | date:'dd-MMM-yyyy' }}</td>
-                                                    <td><input type="checkbox" /></td>
+                                                    <td><input ng-model="item.selected" type="checkbox" /></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <label class="control-label">Recommended Medal Of Honor</label>
-                                        @Html.DropDownList("MedalId", null, htmlAttributes: new { @class = "form-control" })
+                                        <label class="control-label">Recommended Medal Of Honor:</label>
+                                        <select class="select form-control" ng-model="ctrl.model.Nomination.MedalId"
+                                                ng-options="item.Name for item in ctrl.model.Medals"></select>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <a data-toggle="tab" href="#home" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
@@ -218,98 +208,138 @@
                                     </div>
                                 </div>
                             </div>
-
-                            @*
-                                <div id="menu3" class="tab-pane fade">
-                                    <h3>NOMINEE CITATIONS (ACHIEVEMENTS)</h3>
-                                    <div class="home-border">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                @Html.LabelFor(model => model.NomineeRecords.RecordTypeId, "Record Type:", htmlAttributes: new { @class = "control-label" })
-                                                @Html.DropDownList("RecordTypeId", null, htmlAttributes: new { @class = "form-control", @ng_model = "ctrl.recordtype" })
-                                                @Html.ValidationMessageFor(model => model.NomineeRecords.RecordTypeId, "", new { @class = "text-danger" })
-                                            </div>
-                                            <div class="col-md-6">
-                                                @Html.LabelFor(model => model.NomineeRecords.Organisation, "Organisation:", htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.NomineeRecords.Organisation, new { htmlAttributes = new { @class = "form-control", @ng_model = "ctrl.organisation" } })
-                                                @Html.ValidationMessageFor(model => model.NomineeRecords.Organisation, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                @Html.LabelFor(model => model.NomineeRecords.StartDate, "Start Date:", htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.NomineeRecords.StartDate, new { htmlAttributes = new { @class = "form-control", @ng_model = "ctrl.startdate" } })
-                                                @Html.ValidationMessageFor(model => model.NomineeRecords.StartDate, "", new { @class = "text-danger" })
-                                            </div>
-                                            <div class="col-md-6">
-                                                @Html.LabelFor(model => model.NomineeRecords.EndDate, "End Date:", htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.NomineeRecords.EndDate, new { htmlAttributes = new { @class = "form-control", @ng_model = "ctrl.enddate" } })
-                                                @Html.ValidationMessageFor(model => model.NomineeRecords.EndDate, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                @Html.LabelFor(model => model.NomineeRecords.Narration, "Narration:", htmlAttributes: new { @class = "control-label" })
-                                                @Html.EditorFor(model => model.NomineeRecords.Narration, new { htmlAttributes = new { @class = "form-control", @rows = 7, @ng_model = "ctrl.narration" } })
-                                                @Html.ValidationMessageFor(model => model.NomineeRecords.Narration, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label class="control-label"></label><br />
-                                                <input type="button" value="Add Record" class="btn btn-warning pull-success"
-                                                       ng-enabled="if(rec.recordtype && rec.organisation && rec.startdate && rec.narration)" ng-click="ctrl.AddCitationRecord()" />
-                                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <h4>NOMINEE CITATIONS (ACHIEVEMENTS)</h4>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Position Held:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.PositionHeld" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Project:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.Project" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Role:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.Role" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Achievement:</label>
+                                        <textarea class="form-control" rows="3" ng-model="ctrl.model.CitationAchievement.Achivement"></textarea>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">From:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.model.CitationAchievement.StartDate" />
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div id="table">
-                                            <table class="table table-bordered table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Record Type</th>
-                                                        <th>Organisation</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
-                                                        <th>Narration</th>
-                                                        <th>Remove</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="rec in ctrl.addedCitationRecords">
-                                                        <td>{{rec.recordtype}}</td>
-                                                        <td>{{rec.organisation}}</td>
-                                                        <td>{{rec.startdate}}</td>
-                                                        <td>{{rec.enddate}}</td>
-                                                        <td>{{rec.narration}}</td>
-                                                        <td><a ng-click="ctrl.RemoveCitationRec(rec)">Remove</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                    <div class="col-md-3">
+                                        <label class="control-label">To:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.model.CitationAchievement.EndDate" />
                                         </div>
+                                        <br />
+                                        <input type="button" value="Add Achievement" class="btn btn-success pull-right" ng-click="ctrl.AddCitationRecord()" />
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <table id="CitationsAchievementTable" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Position Held</th>
+                                                <th>Project</th>
+                                                <th>Role</th>
+                                                <th>Achievement</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="rec in ctrl.addedCitationRecords">
+                                                <td>{{rec.positionheld}}</td>
+                                                <td>{{rec.project}}</td>
+                                                <td>{{rec.role}}</td>
+                                                <td>{{rec.achievement}}</td>
+                                                <td>{{rec.startdate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <td>{{rec.enddate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <td><a ng-click="ctrl.RemoveCitationRec(rec)">Remove</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
-                                            <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                <h4>NOMINEE CITATIONS (PREVIOUS RECOGNITIONS)</h4>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Recognizing Institution:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PreviousRecognition.RecognizingInstitution" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label">Achievement Title:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PreviousRecognition.AchievementTitle" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <label class="control-label">Award:</label>
+                                        <textarea class="form-control" rows="2" ng-model="ctrl.model.PreviousRecognition.Award"></textarea>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Award Date:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.model.PreviousRecognition.AwardDate" />
                                         </div>
                                     </div>
                                 </div>
-                            *@
-
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="button" value="Add Recognition" class="btn btn-success pull-right" ng-click="ctrl.AddRecognition()" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="PreviousRecognitionTable">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Recognizing Institution</th>
+                                                    <th>Achievement Title</th>
+                                                    <th>Award</th>
+                                                    <th>Award Date</th>
+                                                    <th>Remove</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="rec in ctrl.addedRecognitions">
+                                                    <td>{{rec.institution}}</td>
+                                                    <td>{{rec.achievement}}</td>
+                                                    <td>{{rec.award}}</td>
+                                                    <td>{{rec.awarddate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                    <td><a ng-click="ctrl.RemoveRecognitionRec(rec)">Remove</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                        <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                    </div>
+                                </div>
+                            </div>
                             <div id="menu4" class="tab-pane fade">
                                 <h3>Attachments</h3>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Attachment Type:</label>
-                                        @Html.DropDownList("AttachmentTypeId", (IEnumerable<SelectListItem>)ViewBag.AttachmentTypeId, htmlAttributes: new { @class = "form-control" })
+                                        <select class="select form-control" ng-model="ctrl.model.Attachment.AttachmentTypeId"
+                                                ng-options="item.Name for item in ctrl.model.AttachmentTypes"></select>
                                     </div>
                                     <div class="col-md-3">
                                         <br />
@@ -320,7 +350,6 @@
                                         <input type="submit" value="Add Attachment" class="btn btn-warning pull-success pull-left" />
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div id="table">
@@ -332,17 +361,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Identity Card</td>
-                                                        <td><a href="#">Mwadwaa - Identity Card</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Highest Academic Certificate</td>
-                                                        <td><a href="#">Mwadwaa - Highest Academic Certificate</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Appointment Letter</td>
-                                                        <td><a href="#">Mwadwaa - Appointment Letter</a></td>
+                                                    <tr ng-repeat="item in ctrl.attachments">
+                                                        <td>{{item.AttachmentType.Name}}</td>
+                                                        <td><a href="#">{{item.AttachmentUrl}}</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -370,21 +391,9 @@
                     </div>
                 </div>
             </div>
-            @*<div class="box-footer">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <input type="submit" value="Submit Nomination" class="btn btn-primary pull-right" />
-                        </div>
-                    </div>
-                </div>*@
-        }
+        </form>
     </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-@*<script>
-        //$(document).ready(function () {
-        //    $('#nominationsPrevAwards').DataTable();
-        //});
-    </script>*@

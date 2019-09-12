@@ -10,6 +10,8 @@ namespace SchoolManagementSystem.Models
     {
         public Nomination Nomination { get; set; }
         public County MyProperty { get; set; }
+        public CitationAchievement CitationAchievement { get; set; }
+        public PreviousRecognition PreviousRecognition { get; set; }
         public List<Nomination> Nominations { get; set; }
         public int NominationBodyId { get; set; }
         public int NominationPeriodId { get; set; }
@@ -24,6 +26,7 @@ namespace SchoolManagementSystem.Models
         public int MedalId { get; set; }
         public int RecordTypeId { get; set; }
         public int AttachmentTypeId { get; set; }
+        public int GenderId { get; set; }
         public string NationalityId { get; set; }
     }
 }

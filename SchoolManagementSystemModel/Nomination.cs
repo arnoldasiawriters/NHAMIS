@@ -12,7 +12,6 @@ namespace NHAMIS.APP.Models
         public string IdNumber { get; set; }
         public string Surname { get; set; }
         public string OtherNames { get; set; }
-
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
         public string Nationality { get; set; }

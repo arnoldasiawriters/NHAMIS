@@ -278,6 +278,10 @@
     <Compile Include="Migrations\201909100829157_Modified citations Records.Designer.cs">
       <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909110817113_Added Citation Multiline.cs" />
+    <Compile Include="Migrations\201909110817113_Added Citation Multiline.Designer.cs">
+      <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -827,6 +831,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909100829157_Modified citations Records.resx">
       <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909110817113_Added Citation Multiline.resx">
+      <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

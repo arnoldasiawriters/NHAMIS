@@ -27,3 +27,12 @@ ul.select2-results__options {
  .select2-container .select2-selection--single {
     height: 34px !important;
 }
+.asteriskField {
+    color: red;
+}
+
+/*select {
+    margin-top: -3px !important;
+    background-color: white !important;
+    height: 30px !important;
+}*/

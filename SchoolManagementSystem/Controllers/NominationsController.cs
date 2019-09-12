@@ -84,6 +84,7 @@ namespace SchoolManagementSystem.Controllers
                         new SelectListItem {Text = "Kenyan", Value = "Kenyan"},
                         new SelectListItem {Text = "Non-Kenyan", Value = "Non-Kenyan"},
                     }, "Value", "Text");
+            ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name");
             return View();
         }
 
@@ -190,6 +191,7 @@ namespace SchoolManagementSystem.Controllers
             ViewBag.MedalId = new SelectList(db.Medals.OrderBy(o => o.OrderBy), "Id", "Name");
             ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
             ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
+            ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name");
             return View(nomination);
         }
 
@@ -240,6 +242,35 @@ namespace SchoolManagementSystem.Controllers
                                 .Include(m => m.Medal)
                                 .ToList();
             return Json(roleOfHonor, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSelectLists()
+        {
+            var selectlists = new
+            {
+                NominatingBodies = db.NominatingBodies.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                NominationPeriods = db.NominationPeriods.Select(c => new { c.Id, c.Name, c.Year, c.Month }).OrderByDescending(c => c.Year).OrderByDescending(c => c.Year).ToList(),
+                Counties = db.Counties.Select(c => new { c.Id, c.CountyName }).OrderBy(c => c.CountyName).ToList(),
+                Countries = db.Countries.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                Salutations = db.Salutations.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                Genders = db.Genders.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                AcademicQualifications = db.AcademicQualifications.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                Medals = db.Medals.Select(c => new { c.Id, c.Name, c.OrderBy }).OrderBy(c => c.OrderBy).ToList(),
+                AttachmentTypes = db.AttachmentTypes.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
+                Occupations = db.Occupations.Select(c => new { c.Id, c.Name })
+            };
+            return Json(selectlists, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSubCounties(int countyid)
+        {
+            var subcounties = db.SubCounties.Where(s => s.CountyId == countyid).ToList();
+            return Json(subcounties, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetWards(int subcountyid)
+        {
+            var wards = db.Wards.Where(w => w.SubCountyId == subcountyid).ToList();
+            return Json(wards, JsonRequestBehavior.AllowGet);
         }
     }
 }
