@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using NHAMIS;
+using NHAMIS.APP.Models;
+using SchoolManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -42,5 +47,25 @@ namespace SchoolManagementSystem.Assets
             }
         }
 
+        public static UserDetails GetCurrentUserDetails()
+        {
+            NHAMISContext db = new NHAMISContext();
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            var userRole = db.UserRoles.Where(i => i.UserId == userId).FirstOrDefault();
+            UserDetails userDetails = db.UserDetails.Where(n => n.UserId == userId).FirstOrDefault();
+            UserDetailsViewModel userDetailsView = new UserDetailsViewModel();
+            userDetailsView.UserDetails = userDetails;
+            userDetailsView.RoleId = userRole.RoleId;
+            return userDetails;
+        }
+
+        public static IdentityRole GetCurrentUserRole()
+        {
+            NHAMISContext db = new NHAMISContext();
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            var userRole = db.UserRoles.Where(i => i.UserId == userId).FirstOrDefault();
+            var RoleId = userRole.RoleId;
+            return db.Roles.Where(r => r.Id == RoleId).FirstOrDefault();
+        }
     }
 }

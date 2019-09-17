@@ -36,3 +36,9 @@ ul.select2-results__options {
     background-color: white !important;
     height: 30px !important;
 }*/
+
+.login-box-body img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

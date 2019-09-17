@@ -139,3 +139,16 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.ModifiedGender.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.ModifiedcitationsRecords.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedCitationMultiline.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.Addedonetomanyrelationshipbetweenattchmentsandnominations.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll

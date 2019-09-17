@@ -40,13 +40,14 @@ namespace NHAMIS.APP.Models
         public int MedalId { get; set; }
         public virtual Medal Medal { get; set; }
         public int NominatingBodyId { get; set; }
-        public virtual NominatingBody NominatingBody { get; set; }
-        public virtual ICollection<NominationApprovals> NominationApprovals { get; set; }
+        public virtual NominatingBody NominatingBody { get; set; }       
         public int OccupationId { get; set; }
         public virtual Occupation Occupation { get; set; }
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
-        public List<CitationAchievement> CitationAchievements { get; set; }
-        public List<PreviousRecognition> PreviousRecognitions { get; set; }
+        public virtual List<NominationApprovals> NominationApprovals { get; set; }
+        public virtual List<CitationAchievement> CitationAchievements { get; set; }
+        public virtual List<PreviousRecognition> PreviousRecognitions { get; set; }
+        public virtual List<NominationAttachment> NominationAttachments { get; set; }
     }
 }

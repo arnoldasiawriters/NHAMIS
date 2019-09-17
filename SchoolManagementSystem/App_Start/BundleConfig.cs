@@ -26,6 +26,7 @@ namespace SchoolManagementSystem
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/admin-lte/css/AdminLTE.css",
+                      "~/admin-lte/plugins/iCheck/square/blue.css",
                       "~/admin-lte/css/skins/skin-blue.css"));
 
             bundles.Add(new ScriptBundle("~/admin-lte/js").Include(

@@ -77,6 +77,7 @@ namespace SchoolManagementSystem.Controllers
                 UserManager.AddToRole(user.Id, rolename.Name);
 
                 model.UserDetails.NominatingBodyId = model.NominatingBodyId;
+                model.UserDetails.UserId = user.Id;
                 db.UserDetails.Add(model.UserDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");

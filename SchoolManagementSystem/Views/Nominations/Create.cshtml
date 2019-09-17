@@ -1,5 +1,4 @@
-﻿@model SchoolManagementSystem.Models.NominationsViewModel
-<div class="box box-primary" ng-controller="NominationsCtrl as ctrl">
+﻿<div class="box box-primary" ng-controller="NominationsCtrl as ctrl">
     <div class="box-header with-border">
         <h2 class="box-title">NOMINATION FOR NATIONAL HONOURS FORM</h2>
     </div>
@@ -21,125 +20,125 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Nomination Body: <span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.NominationBodyId"
-                                                ng-options="item.Name for item in ctrl.model.NominatingBodies"></select>
+                                        <select class="select form-control" ng-model="ctrl.NominatingBody"
+                                                ng-options="item.Name for item in ctrl.NominatingBodies"></select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.NominationPeriodId"
-                                                ng-options="item.Name for item in ctrl.model.NominationPeriods"></select>
+                                        <select class="select form-control" ng-model="ctrl.NominationPeriod"
+                                                ng-options="item.Name for item in ctrl.NominationPeriods"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Nationality: <span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.Nationality" ng-change="ctrl.nationalityChanged()">
+                                        <select class="select form-control" ng-model="ctrl.Nationality" ng-change="ctrl.nationalityChanged()">
                                             <option value="Kenyan">Kenyan</option>
                                             <option value="Non-Kenyan">Non-Kenyan</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4" ng-show="ctrl.showKenyan">
                                         <label class="control-label">County of Birth: <span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountyOfBirthId"
-                                                data-size="5" ng-options="item.CountyName for item in ctrl.model.Counties"></select>
+                                        <select class="select form-control" ng-model="ctrl.CountyOfBirth"
+                                                data-size="5" ng-options="item.CountyName for item in ctrl.Counties"></select>
                                     </div>
                                     <div class="col-md-4" ng-show="!ctrl.showKenyan">
                                         <label class="control-label">Country of Birth: <span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountryId"
-                                                ng-options="item.Name for item in ctrl.model.Countries"></select>
+                                        <select class="select form-control" ng-model="ctrl.Country"
+                                                ng-options="item.Name for item in ctrl.Countries"></select>
                                     </div>
 
                                     <div class="col-md-4">
                                         <label class="control-label" ng-show="ctrl.showKenyan">ID Number:<span class="asteriskField"> *</span></label>
                                         <label class="control-label" ng-show="!ctrl.showKenyan">Passport Number:<span class="asteriskField"> *</span></label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.IdNumber" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.IdNumber" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Salutation:<span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.SalutationId"
-                                                ng-options="item.Name for item in ctrl.model.Salutations"></select>
+                                        <select class="select form-control" ng-model="ctrl.Salutation"
+                                                ng-options="item.Name for item in ctrl.Salutations"></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">SurName:<span class="asteriskField"> *</span></label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Surname" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Surname" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Other Names:<span class="asteriskField"> *</span></label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.OtherNames" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.OtherNames" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Gender:<span class="asteriskField"> *</span></label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.GenderId"
-                                                ng-options="item.Name for item in ctrl.model.Genders"></select>
+                                        <select class="select form-control" ng-model="ctrl.Gender"
+                                                ng-options="item.Name for item in ctrl.Genders"></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Date of Birth:</label>
                                         <div class="input-group date">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input type="date" class="form-control" ng-model="ctrl.model.Nomination.DateOfBirth" />
+                                            <input type="date" class="form-control" ng-model="ctrl.model.DateOfBirth" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Home County:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.CountyId"
-                                                ng-options="item.CountyName for item in ctrl.model.Counties" ng-change="ctrl.FindSubCounties()"></select>
+                                        <select class="select form-control" ng-model="ctrl.County"
+                                                ng-options="item.CountyName for item in ctrl.Counties" ng-change="ctrl.FindSubCounties()"></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Sub-County Name:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.SubCountyId"
-                                                ng-options="item.SubCountyName for item in ctrl.model.SubCounties" ng-change=" ctrl.FindWards()"></select>
+                                        <select class="select form-control" ng-model="ctrl.SubCounty"
+                                                ng-options="item.SubCountyName for item in ctrl.SubCounties" ng-change=" ctrl.FindWards()"></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Ward Name:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.WardId"
-                                                ng-options="item.WardName for item in ctrl.model.Wards"></select>
+                                        <select class="select form-control" ng-model="ctrl.Ward"
+                                                ng-options="item.WardName for item in ctrl.Wards"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Location:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Location" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Location" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Sub Location:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.SubLocation" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.SubLocation" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Village:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Village" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Village" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Mobile Number:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.MobileNumber" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.MobileNumber" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Email Address:</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                            <input class="form-control" ng-model="ctrl.model.Nomination.EmailAddress" placeholder="Email Address" type="email">
+                                            <input class="form-control" ng-model="ctrl.model.EmailAddress" placeholder="Email Address" type="email">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Postal/Organization/Business Address:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.PostalAddress" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PostalAddress" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Postal Code:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.PostalCode" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PostalCode" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Town:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Nomination.Town" />
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Town" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -155,13 +154,13 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Highest Academic Qualification:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.AcademicQualificationId"
-                                                ng-options="item.Name for item in ctrl.model.AcademicQualifications"></select>
+                                        <select class="select form-control" ng-model="ctrl.AcademicQualification"
+                                                ng-options="item.Name for item in ctrl.AcademicQualifications"></select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="control-label">Occupation:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.OccupationId"
-                                                ng-options="item.Name for item in ctrl.model.Occupations"></select>
+                                        <select class="select form-control" ng-model="ctrl.Occupation"
+                                                ng-options="item.Name for item in ctrl.Occupations"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -197,8 +196,8 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Recommended Medal Of Honor:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Nomination.MedalId"
-                                                ng-options="item.Name for item in ctrl.model.Medals"></select>
+                                        <select class="select form-control" ng-model="ctrl.Medal"
+                                                ng-options="item.Name for item in ctrl.Medals"></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -213,34 +212,34 @@
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Position Held:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.PositionHeld" />
+                                        <input type="text" class="form-control" ng-model="ctrl.PositionHeld" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Project:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.Project" />
+                                        <input type="text" class="form-control" ng-model="ctrl.Project" />
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Role:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.CitationAchievement.Role" />
+                                        <input type="text" class="form-control" ng-model="ctrl.Role" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Achievement:</label>
-                                        <textarea class="form-control" rows="3" ng-model="ctrl.model.CitationAchievement.Achivement"></textarea>
+                                        <textarea class="form-control" rows="3" ng-model="ctrl.Achivement"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="control-label">From:</label>
                                         <div class="input-group date">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input type="date" class="form-control" ng-model="ctrl.model.CitationAchievement.StartDate" />
+                                            <input type="date" class="form-control" ng-model="ctrl.StartDate" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="control-label">To:</label>
                                         <div class="input-group date">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input type="date" class="form-control" ng-model="ctrl.model.CitationAchievement.EndDate" />
+                                            <input type="date" class="form-control" ng-model="ctrl.EndDate" />
                                         </div>
                                         <br />
                                         <input type="button" value="Add Achievement" class="btn btn-success pull-right" ng-click="ctrl.AddCitationRecord()" />
@@ -260,13 +259,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="rec in ctrl.addedCitationRecords">
-                                                <td>{{rec.positionheld}}</td>
-                                                <td>{{rec.project}}</td>
-                                                <td>{{rec.role}}</td>
-                                                <td>{{rec.achievement}}</td>
-                                                <td>{{rec.startdate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
-                                                <td>{{rec.enddate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                            <tr ng-repeat="rec in ctrl.model.CitationAchievements">
+                                                <td>{{rec.PositionHeld}}</td>
+                                                <td>{{rec.Project}}</td>
+                                                <td>{{rec.Role}}</td>
+                                                <td>{{rec.Achivement}}</td>
+                                                <td>{{rec.StartDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <td>{{rec.EndDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
                                                 <td><a ng-click="ctrl.RemoveCitationRec(rec)">Remove</a></td>
                                             </tr>
                                         </tbody>
@@ -277,23 +276,23 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Recognizing Institution:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.PreviousRecognition.RecognizingInstitution" />
+                                        <input type="text" class="form-control" ng-model="ctrl.RecognizingInstitution" />
                                     </div>
                                     <div class="col-md-6">
                                         <label class="control-label">Achievement Title:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.PreviousRecognition.AchievementTitle" />
+                                        <input type="text" class="form-control" ng-model="ctrl.AchievementTitle" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8">
                                         <label class="control-label">Award:</label>
-                                        <textarea class="form-control" rows="2" ng-model="ctrl.model.PreviousRecognition.Award"></textarea>
+                                        <textarea class="form-control" rows="2" ng-model="ctrl.Award"></textarea>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Award Date:</label>
                                         <div class="input-group date">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input type="date" class="form-control" ng-model="ctrl.model.PreviousRecognition.AwardDate" />
+                                            <input type="date" class="form-control" ng-model="ctrl.AwardDate" />
                                         </div>
                                     </div>
                                 </div>
@@ -315,11 +314,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="rec in ctrl.addedRecognitions">
-                                                    <td>{{rec.institution}}</td>
-                                                    <td>{{rec.achievement}}</td>
-                                                    <td>{{rec.award}}</td>
-                                                    <td>{{rec.awarddate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <tr ng-repeat="rec in ctrl.model.PreviousRecognitions">
+                                                    <td>{{rec.RecognizingInstitution}}</td>
+                                                    <td>{{rec.AchievementTitle}}</td>
+                                                    <td>{{rec.Award}}</td>
+                                                    <td>{{rec.AwardDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
                                                     <td><a ng-click="ctrl.RemoveRecognitionRec(rec)">Remove</a></td>
                                                 </tr>
                                             </tbody>
@@ -338,8 +337,8 @@
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Attachment Type:</label>
-                                        <select class="select form-control" ng-model="ctrl.model.Attachment.AttachmentTypeId"
-                                                ng-options="item.Name for item in ctrl.model.AttachmentTypes"></select>
+                                        <select class="select form-control" ng-model="ctrl.AttachmentType"
+                                                ng-options="item.Name for item in ctrl.AttachmentTypes"></select>
                                     </div>
                                     <div class="col-md-3">
                                         <br />
@@ -358,12 +357,14 @@
                                                     <tr>
                                                         <th>Attachment Type</th>
                                                         <th>Attachment Document</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="item in ctrl.attachments">
+                                                    <tr ng-repeat="item in ctrl.NominationAttachments">
                                                         <td>{{item.AttachmentType.Name}}</td>
                                                         <td><a href="#">{{item.AttachmentUrl}}</a></td>
+                                                        <td><a ng-click="ctrl.RemoveCitationRec(item)">Remove</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -383,7 +384,7 @@
                                     <div class="col-md-8">
                                         <p>By clicking submit I confirm that the information given above is true to the best of my knowledge and understanding.</p>
                                         <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
-                                        <input type="submit" value="Submit Form" class="btn btn-primary pull-right" />
+                                        <input type="button" value="Submit Form" class="btn btn-primary pull-right" ng-click="ctrl.SubmitNominationsForm()" />
                                     </div>
                                 </div>
                             </div>

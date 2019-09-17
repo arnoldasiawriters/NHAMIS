@@ -12,14 +12,10 @@
         ctrl.showKenyan = true;
 
         ctrl.model = {};
-        ctrl.model.Nomination = {};
-        ctrl.model.CitationAchievement = {};
-        ctrl.model.PreviousRecognition = {};
-        ctrl.model.Attachment = {};
-        ctrl.model.Nomination.Nationality = "Kenyan";
+        ctrl.Nationality = "Kenyan";
 
         ctrl.nationalityChanged = function () {
-            if (ctrl.model.Nomination.Nationality == "Kenyan") {
+            if (ctrl.Nationality == "Kenyan") {
                 ctrl.showKenyan = true;
             } else {
                 ctrl.showKenyan = false;
@@ -31,36 +27,36 @@
 
         $q.all(promises)
             .then(function (results) {
-                ctrl.model.NominatingBodies = results[0].data.NominatingBodies;
-                ctrl.model.Nomination.NominationBodyId = ctrl.model.NominatingBodies[0];
+                ctrl.NominatingBodies = results[0].data.NominatingBodies;
+                ctrl.NominatingBody = ctrl.NominatingBodies[0];
 
-                ctrl.model.NominationPeriods = results[0].data.NominationPeriods;
-                ctrl.model.Nomination.NominationPeriodId = ctrl.model.NominationPeriods[0];
+                ctrl.NominationPeriods = results[0].data.NominationPeriods;
+                ctrl.NominationPeriod = ctrl.NominationPeriods[0];
 
-                ctrl.model.Counties = results[0].data.Counties;
-                ctrl.model.Nomination.CountyOfBirthId = ctrl.model.Counties[0];
+                ctrl.Counties = results[0].data.Counties;
+                ctrl.CountyOfBirth = ctrl.Counties[0];
                 //ctrl.model.Nomination.CountyId = ctrl.model.Counties[0];
 
-                ctrl.model.Countries = results[0].data.Countries;
-                ctrl.model.Nomination.CountryId = ctrl.model.Countries[0];
+                ctrl.Countries = results[0].data.Countries;
+                ctrl.Country = ctrl.Countries[0];
 
-                ctrl.model.Salutations = results[0].data.Salutations;
-                ctrl.model.Nomination.SalutationId = ctrl.model.Salutations[0];
+                ctrl.Salutations = results[0].data.Salutations;
+                ctrl.Salutation = ctrl.Salutations[0];
 
-                ctrl.model.Genders = results[0].data.Genders;
-                ctrl.model.Nomination.GenderId = ctrl.model.Genders[0];
+                ctrl.Genders = results[0].data.Genders;
+                ctrl.Gender = ctrl.Genders[0];
 
-                ctrl.model.AcademicQualifications = results[0].data.AcademicQualifications;
-                ctrl.model.Nomination.AcademicQualificationId = ctrl.model.AcademicQualifications[0];
+                ctrl.AcademicQualifications = results[0].data.AcademicQualifications;
+                ctrl.AcademicQualification = ctrl.AcademicQualifications[0];
 
-                ctrl.model.Medals = results[0].data.Medals;
-                ctrl.model.Nomination.MedalId = ctrl.model.Medals[0];
+                ctrl.Medals = results[0].data.Medals;
+                ctrl.Medal = ctrl.Medals[0];
 
-                ctrl.model.AttachmentTypes = results[0].data.AttachmentTypes;
-                ctrl.model.Attachment.AttachmentTypeId = ctrl.model.AttachmentTypes[0];
+                ctrl.AttachmentTypes = results[0].data.AttachmentTypes;
+                ctrl.AttachmentType = ctrl.AttachmentTypes[0];
 
-                ctrl.model.Occupations = results[0].data.Occupations;
-                ctrl.model.Nomination.OccupationId = ctrl.model.Occupations[0];
+                ctrl.Occupations = results[0].data.Occupations;
+                ctrl.Occupation = ctrl.Occupations[0];
             })
             .catch(function (error) {
                 console.log("An error occured.", error);
@@ -89,61 +85,61 @@
                 ctrl.searchresults = _.filter(ctrl.searchresults, ["selected", true]);
             }
         };
-        ctrl.addedCitationRecords = [];
+        ctrl.model.CitationAchievements = [];
         ctrl.AddCitationRecord = function () {
             var rec = {
-                positionheld: ctrl.model.CitationAchievement.PositionHeld,
-                project: ctrl.model.CitationAchievement.Project,
-                role: ctrl.model.CitationAchievement.Role,
-                achievement: ctrl.model.CitationAchievement.Achivement,
-                startdate: ctrl.model.CitationAchievement.StartDate,
-                enddate: ctrl.model.CitationAchievement.EndDate
+                PositionHeld: ctrl.PositionHeld,
+                Project: ctrl.Project,
+                Role: ctrl.Role,
+                Achivement: ctrl.Achivement,
+                StartDate: ctrl.StartDate,
+                EndDate: ctrl.EndDate
             };
-            ctrl.addedCitationRecords.push(rec);
-            ctrl.model.CitationAchievement.PositionHeld = "";
-            ctrl.model.CitationAchievement.Project = "";
-            ctrl.model.CitationAchievement.Role = "";
-            ctrl.model.CitationAchievement.Achivement = "";
-            ctrl.model.CitationAchievement.StartDate = "";
-            ctrl.model.CitationAchievement.EndDate = "";
+            ctrl.model.CitationAchievements.push(rec);
+            ctrl.PositionHeld = "";
+            ctrl.Project = "";
+            ctrl.Role = "";
+            ctrl.Achivement = "";
+            ctrl.StartDate = "";
+            ctrl.EndDate = "";
         };
 
-        ctrl.addedRecognitions = [];
+        ctrl.model.PreviousRecognitions = [];
         ctrl.AddRecognition = function () {
             var rec = {
-                institution: ctrl.model.PreviousRecognition.RecognizingInstitution,
-                achievement: ctrl.model.PreviousRecognition.AchievementTitle,
-                award: ctrl.model.PreviousRecognition.Award,
-                awarddate: ctrl.model.PreviousRecognition.AwardDate
+                RecognizingInstitution: ctrl.RecognizingInstitution,
+                AchievementTitle: ctrl.AchievementTitle,
+                Award: ctrl.Award,
+                AwardDate: ctrl.AwardDate
             };
-            ctrl.addedRecognitions.push(rec);
-            ctrl.model.PreviousRecognition.RecognizingInstitution = "";
-            ctrl.model.PreviousRecognition.AchievementTitle = "";
-            ctrl.model.PreviousRecognition.Award = "";
-            ctrl.model.PreviousRecognition.AwardDate = "";
+            ctrl.model.PreviousRecognitions.push(rec);
+            ctrl.RecognizingInstitution = "";
+            ctrl.AchievementTitle = "";
+            ctrl.Award = "";
+            ctrl.AwardDate = "";
         };
         
         ctrl.RemoveCitationRec = function (rec) {
-            _.remove(ctrl.addedCitationRecords, function (o) {
-                return o.narration == rec.narration && o.awarddate == rec.awarddate;
+            _.remove(ctrl.CitationAchievements, function (o) {
+                return o.Achivement == rec.Achivement && o.StartDate == rec.StartDate;
             });
         };
 
         ctrl.RemoveRecognitionRec = function (rec) {
-            _.remove(ctrl.addedRecognitions, function (o) {
-                return o.award == rec.award;
+            _.remove(ctrl.PreviousRecognitions, function (o) {
+                return o.Award == rec.Award;
             });
         };
 
         ctrl.FindSubCounties = function () {
-            if (ctrl.model.Nomination.CountyId) {
-                var params = { countyid: ctrl.model.Nomination.CountyId.Id };
+            if (ctrl.County) {
+                var params = { countyid: ctrl.County.Id };
                 appsvc.getItems(baseUrl + "/Nominations/GetSubCounties", params)
                     .then(function (res) {
                         //ctrl.model.Wards = [];
-                        ctrl.model.Nomination.WardId = "";
+                        ctrl.Ward = "";
 
-                        ctrl.model.SubCounties = res.data;
+                        ctrl.SubCounties = res.data;
                         //ctrl.model.Nomination.SubCountyId = ctrl.model.SubCounties[0];                   
                     })
                     .catch(function (error) {
@@ -153,17 +149,50 @@
         };
 
         ctrl.FindWards = function () {
-            if (ctrl.model.Nomination.SubCountyId) {
-                var params = { subcountyid: ctrl.model.Nomination.SubCountyId.Id };
+            if (ctrl.SubCounty) {
+                var params = { subcountyid: ctrl.SubCounty.Id };
                 appsvc.getItems(baseUrl + "/Nominations/GetWards", params)
                     .then(function (res) {
-                        ctrl.model.Wards = res.data;
+                        ctrl.Wards = res.data;
                         //ctrl.model.Nomination.WardId = ctrl.model.Wards[0];
                     })
                     .catch(function (error) {
                         console.log("An error occured while fetching wards.", error);
                     });
             }
+        };
+
+        ctrl.AddedAttachments = [];
+        //ctrl.RemoveCitationRec = function (rec) {
+        //    var rec = {
+        //        attachmenttype: ctrl.model.Attachment.AttachmentTypeId,
+        //        filepath: ctrl.model.CitationAchievement.Project
+        //    };
+        //    ctrl.addedCitationRecords.push(rec);
+        //    ctrl.model.CitationAchievement.PositionHeld = "";
+        //};
+
+        ctrl.SubmitNominationsForm = function () {
+            ctrl.model.NominatingBodyId = ctrl.NominatingBody.Id;
+            ctrl.model.NominationPeriodId = ctrl.NominationPeriod.Id;
+            ctrl.model.CountryId = ctrl.Country.Id;
+            ctrl.model.SalutationId = ctrl.Salutation.Id;
+            ctrl.model.GenderId = ctrl.Gender.Id;
+            ctrl.model.AcademicQualificationId = ctrl.AcademicQualification.Id;
+            ctrl.model.OccupationId = ctrl.Occupation.Id;
+            ctrl.model.MedalId = ctrl.Medal.Id;
+            ctrl.model.WardId = ctrl.Ward.Id;
+            ctrl.model.CountyOfBirth = ctrl.CountyOfBirth.CountyName;
+            ctrl.model.Nationality = ctrl.Nationality;
+            var body = JSON.stringify(ctrl.model);
+            appsvc
+                .postItems(baseUrl + '/Nominations/PostNominationForm', body)
+                .then(function (results) {
+                    $window.location = baseUrl + '/ExcelUploads';
+                })
+                .catch(function (error) {
+                    console.log("Error: ", error);
+                });
         };
     }
 })();

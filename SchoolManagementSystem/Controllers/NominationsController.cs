@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using NHAMIS;
+using NHAMIS.APP.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using Microsoft.AspNet.Identity;
-using NHAMIS;
-using NHAMIS.APP.Models;
-using SchoolManagementSystem.Models;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -23,7 +17,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: Nominations
         public ActionResult Index()
         {
-            var nominations = db.Nominations.Include(n => n.NominatingBody).Include(n => n.NominationPeriod).Include(n => n.Salutation).Include(n => n.Ward);
+            var nominations = db.Nominations.Include(n => n.NominatingBody).Include(n => n.NominationPeriod).Include(n => n.Salutation).Include(n => n.Ward).Include(o=>o.Occupation);
             ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
             ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
             return View(nominations.ToList());
@@ -67,79 +61,79 @@ namespace SchoolManagementSystem.Controllers
         // GET: Nominations/Create
         public ActionResult Create()
         {
-            ViewBag.NominationBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
-            ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
-            ViewBag.CountyId = new SelectList(db.Counties, "Id", "CountyName");
-            ViewBag.CountyOfBirthId = new SelectList(db.Counties, "CountyName", "CountyName");
-            ViewBag.SubCountyId = new SelectList(db.SubCounties, "Id", "SubCountyName");
-            ViewBag.WardId = new SelectList(db.Wards, "Id", "WardName");
-            ViewBag.MedalId = new SelectList(db.Medals.OrderBy(o => o.OrderBy), "Id", "Name");
-            ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
-            ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
-            ViewBag.AttachmentTypeId = new SelectList(db.AttachmentTypes, "Id", "Name");
-            ViewBag.NationalityId = new SelectList(new List<SelectListItem>
-                    {
-                        new SelectListItem {Text = "Kenyan", Value = "Kenyan"},
-                        new SelectListItem {Text = "Non-Kenyan", Value = "Non-Kenyan"},
-                    }, "Value", "Text");
-            ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name");
+            //ViewBag.NominationBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+            //ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
+            //ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
+            //ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
+            //ViewBag.CountyId = new SelectList(db.Counties, "Id", "CountyName");
+            //ViewBag.CountyOfBirthId = new SelectList(db.Counties, "CountyName", "CountyName");
+            //ViewBag.SubCountyId = new SelectList(db.SubCounties, "Id", "SubCountyName");
+            //ViewBag.WardId = new SelectList(db.Wards, "Id", "WardName");
+            //ViewBag.MedalId = new SelectList(db.Medals.OrderBy(o => o.OrderBy), "Id", "Name");
+            //ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
+            //ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
+            //ViewBag.AttachmentTypeId = new SelectList(db.AttachmentTypes, "Id", "Name");
+            //ViewBag.NationalityId = new SelectList(new List<SelectListItem>
+            //        {
+            //            new SelectListItem {Text = "Kenyan", Value = "Kenyan"},
+            //            new SelectListItem {Text = "Non-Kenyan", Value = "Non-Kenyan"},
+            //        }, "Value", "Text");
+            //ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name");
             return View();
         }
 
-        // POST: Nominations/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(NominationsViewModel model)
-        {
-            var currentUserId = !string.IsNullOrEmpty(System.Web.HttpContext.Current?.User?.Identity?.GetUserId())
-            ? System.Web.HttpContext.Current.User.Identity.GetUserId()
-            : "Anonymous";
-            model.Nomination.AcademicQualificationId = model.AcademicQualificationId;
-            model.Nomination.CountryId = model.CountryId;
-            model.Nomination.MedalId = model.MedalId;
-            model.Nomination.NominatingBodyId = model.NominationBodyId;
-            model.Nomination.NominationPeriodId = model.NominationPeriodId;
-            model.Nomination.OccupationId = model.OccupationId;
-            model.Nomination.SalutationId = model.SalutationId;
-            model.Nomination.CountyOfBirth = model.CountyOfBirthId;
+        //// POST: Nominations/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(NominationsViewModel model)
+        //{
+        //    var currentUserId = !string.IsNullOrEmpty(System.Web.HttpContext.Current?.User?.Identity?.GetUserId())
+        //    ? System.Web.HttpContext.Current.User.Identity.GetUserId()
+        //    : "Anonymous";
+        //    model.Nomination.AcademicQualificationId = model.AcademicQualificationId;
+        //    model.Nomination.CountryId = model.CountryId;
+        //    model.Nomination.MedalId = model.MedalId;
+        //    model.Nomination.NominatingBodyId = model.NominationBodyId;
+        //    model.Nomination.NominationPeriodId = model.NominationPeriodId;
+        //    model.Nomination.OccupationId = model.OccupationId;
+        //    model.Nomination.SalutationId = model.SalutationId;
+        //    model.Nomination.CountyOfBirth = model.CountyOfBirthId;
 
-            //model.Nomination = model.RecordTypeId;
-            model.Nomination.UserDetailsId = 2;
-            model.Nomination.WardId = model.WardId;
-            model.Nomination.Nationality = model.NationalityId;
+        //    //model.Nomination = model.RecordTypeId;
+        //    model.Nomination.UserDetailsId = 2;
+        //    model.Nomination.WardId = model.WardId;
+        //    model.Nomination.Nationality = model.NationalityId;
 
-            if (ModelState.IsValid)
-            {
-                db.Nominations.Add(model.Nomination);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                var validationErrors = ModelState.Values.Where(E => E.Errors.Count > 0)
-                    .SelectMany(E => E.Errors)
-                    .Select(E => E.ErrorMessage)
-                    .ToList();
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Nominations.Add(model.Nomination);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        var validationErrors = ModelState.Values.Where(E => E.Errors.Count > 0)
+        //            .SelectMany(E => E.Errors)
+        //            .Select(E => E.ErrorMessage)
+        //            .ToList();
+        //    }
 
-            ViewBag.NominationBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
-            ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
-            ViewBag.CountyId = new SelectList(db.Counties, "Id", "CountyName");
-            ViewBag.CountyOfBirthId = new SelectList(db.Counties, "Id", "CountyName");
-            ViewBag.SubCountyId = new SelectList(db.SubCounties, "Id", "SubCountyName");
-            ViewBag.WardId = new SelectList(db.Wards, "Id", "WardName");
-            ViewBag.MedalId = new SelectList(db.Medals.OrderBy(o => o.OrderBy), "Id", "Name");
-            ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
-            ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
-            ViewBag.AttachmentTypeId = new SelectList(db.AttachmentTypes, "Id", "Name");
-            return View(model);
-        }
+        //    ViewBag.NominationBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+        //    ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
+        //    ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
+        //    ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
+        //    ViewBag.CountyId = new SelectList(db.Counties, "Id", "CountyName");
+        //    ViewBag.CountyOfBirthId = new SelectList(db.Counties, "Id", "CountyName");
+        //    ViewBag.SubCountyId = new SelectList(db.SubCounties, "Id", "SubCountyName");
+        //    ViewBag.WardId = new SelectList(db.Wards, "Id", "WardName");
+        //    ViewBag.MedalId = new SelectList(db.Medals.OrderBy(o => o.OrderBy), "Id", "Name");
+        //    ViewBag.AcademicQualificationId = new SelectList(db.AcademicQualifications, "Id", "Name");
+        //    ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
+        //    ViewBag.AttachmentTypeId = new SelectList(db.AttachmentTypes, "Id", "Name");
+        //    return View(model);
+        //}
 
         // GET: Nominations/Edit/5
         public ActionResult Edit(int? id)
@@ -271,6 +265,38 @@ namespace SchoolManagementSystem.Controllers
         {
             var wards = db.Wards.Where(w => w.SubCountyId == subcountyid).ToList();
             return Json(wards, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult PostNominationForm(Nomination model)
+        {
+            var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            var user = User.IsInRole("Admin");
+           
+            if (ModelState.IsValid)
+            {
+                var userDetails = db.UserDetails.Where(m => m.UserId == userId).FirstOrDefault();
+                model.UserDetailsId = userDetails.Id;
+                model.Status = "Pending";
+                db.Nominations.Add(model);
+                db.SaveChanges();
+                int nominationId = model.Id;
+
+                foreach ( var achv  in model.CitationAchievements)
+                {
+                    achv.NominationId = nominationId;
+                    db.CitationAchievements.Add(achv);
+                }
+
+                foreach (var prevRec in model.PreviousRecognitions)
+                {
+                    prevRec.NominationId = nominationId;
+                    db.PreviousRecognitions.Add(prevRec);
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index","Nominations");
+            }
+            return RedirectToAction("Create","Nominations");
         }
     }
 }

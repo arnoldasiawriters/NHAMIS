@@ -36,12 +36,12 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/admin-lte/img/user-image.png" width="20" class="img-circle" alt="User Image">
-                                <span class="hidden-xs">Arnold Mwadwaa</span>
+                                <span class="hidden-xs">@(SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().Surname + " " + SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().OtherNames)</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="~/admin-lte/img/user-image.png" class="img-circle" alt="User Image">
-                                    <p>Arnold Mwadwaa<small>Administrator</small></p>
+                                    <p> @(SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().Surname + " " + SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().OtherNames)<small>@SchoolManagementSystem.Assets.Utils.GetCurrentUserRole().Name</small></p>
                                 </li>
                                 <li class="user-footer">
                                     @Html.Partial("_LoginPartial")
@@ -59,7 +59,7 @@
                         <img src="~/admin-lte/img/user-image.png" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
-                        <p>Arnold Mwadwaa</p>
+                        <p>@(SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().Surname + " " + SchoolManagementSystem.Assets.Utils.GetCurrentUserDetails().OtherNames)</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Logged In</a>
                     </div>
                 </div>
@@ -84,54 +84,61 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
+
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "Nominations")"><i class="fa fa-circle-o"></i> ADD NOMINATIONS</a></li>
-                            <li><a href="@Url.Action("Approve", "Nominations")"><i class="fa fa-circle-o"></i> APPROVE NOMINATIONS</a></li>
-                            <li><a href="@Url.Action("UpdateROH", "Nominations")"><i class="fa fa-circle-o"></i> UPDATE ROLL OF HONOUR</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><a href="@Url.Action("Approve", "Nominations")"><i class="fa fa-circle-o"></i> APPROVE NOMINATIONS</a></li>
+                                <li><a href="@Url.Action("UpdateROH", "Nominations")"><i class="fa fa-circle-o"></i> UPDATE ROLL OF HONOUR</a></li>
+                            }
                         </ul>
                     </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-list"></i><span>REPORTS</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="~/Report/NominationsRpt.aspx"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> GAZETTE NOTICE</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> STATE INVESTITURE</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> WARRANT FORMS</a></li>
+                            </ul>
+                        </li>
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-list"></i><span>REPORTS</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> GAZETTE NOTICE</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> STATE INVESTITURE</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> WARRANT FORMS</a></li>
-                        </ul>
-                    </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i><span>ADMINISTRATION</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-user"></i><span>ADMINISTRATION</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "UserDetails")"><i class="fa fa-circle-o"></i> USER REGISTRATION</a></li>
-                            <li><a href="@Url.Action("ResetPassword","Account")"><i class="fa fa-circle-o"></i> RESET PASSWORD</a></li>
-                            <li><a href="@Url.Action("Index","Genders")"><i class="fa fa-circle-o"></i> GENDER</a></li>
-                            <li><a href="@Url.Action("Index","Salutations")"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
-                            <li><a href="@Url.Action("Index","Occupations")"><i class="fa fa-circle-o"></i> OCCUPATIONS</a></li>
-                            <li><a href="@Url.Action("Index","AcademicQualifications")"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
-                            <li><a href="@Url.Action("Index","NominatingBodies")"><i class="fa fa-circle-o"></i> NOMINATING AGIENCIES</a></li>
-                            <li><a href="@Url.Action("Index","NominationPeriods")"><i class="fa fa-circle-o"></i> NOMINATING PERIODS</a></li>
-                            <li><a href="@Url.Action("Index","AttachmentTypes")"><i class="fa fa-circle-o"></i> ATTACHMENT TYPES</a></li>
-                            <li><a href="@Url.Action("Index","RecordTypes")"><i class="fa fa-circle-o"></i> CITATION TYPES</a></li>
-                            <li><a href="@Url.Action("Index","Countries")"><i class="fa fa-circle-o"></i> COUNTRIES</a></li>
-                            <li><a href="@Url.Action("Index","Counties")"><i class="fa fa-circle-o"></i> COUNTIES</a></li>
-                            <li><a href="@Url.Action("Index","SubCounties")"><i class="fa fa-circle-o"></i> SUB-COUNTIES</a></li>
-                            <li><a href="@Url.Action("Index","Wards")"><i class="fa fa-circle-o"></i> WARDS</a></li>
-                            <li><a href="@Url.Action("Index","Medals")"><i class="fa fa-circle-o"></i> MEDALS</a></li>
-                            <li><a href="@Url.Action("Index", "HonorRoles")"><i class="fa fa-circle-o"></i> ROLL OF HONOUR</a></li>
-                        </ul>
-                    </li>
+                                <li><a href="@Url.Action("Index", "UserDetails")"><i class="fa fa-circle-o"></i> USER REGISTRATION</a></li>
+                                <li><a href="@Url.Action("ResetPassword","Account")"><i class="fa fa-circle-o"></i> RESET PASSWORD</a></li>
+                                <li><a href="@Url.Action("Index","Genders")"><i class="fa fa-circle-o"></i> GENDER</a></li>
+                                <li><a href="@Url.Action("Index","Salutations")"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
+                                <li><a href="@Url.Action("Index","Occupations")"><i class="fa fa-circle-o"></i> OCCUPATIONS</a></li>
+                                <li><a href="@Url.Action("Index","AcademicQualifications")"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
+                                <li><a href="@Url.Action("Index","NominatingBodies")"><i class="fa fa-circle-o"></i> NOMINATING AGIENCIES</a></li>
+                                <li><a href="@Url.Action("Index","NominationPeriods")"><i class="fa fa-circle-o"></i> NOMINATING PERIODS</a></li>
+                                <li><a href="@Url.Action("Index","AttachmentTypes")"><i class="fa fa-circle-o"></i> ATTACHMENT TYPES</a></li>
+                                <li><a href="@Url.Action("Index","Countries")"><i class="fa fa-circle-o"></i> COUNTRIES</a></li>
+                                <li><a href="@Url.Action("Index","Counties")"><i class="fa fa-circle-o"></i> COUNTIES</a></li>
+                                <li><a href="@Url.Action("Index","SubCounties")"><i class="fa fa-circle-o"></i> SUB-COUNTIES</a></li>
+                                <li><a href="@Url.Action("Index","Wards")"><i class="fa fa-circle-o"></i> WARDS</a></li>
+                                <li><a href="@Url.Action("Index","Medals")"><i class="fa fa-circle-o"></i> MEDALS</a></li>
+                                <li><a href="@Url.Action("Index", "HonorRoles")"><i class="fa fa-circle-o"></i> ROLL OF HONOUR</a></li>
+
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </section>
         </aside>

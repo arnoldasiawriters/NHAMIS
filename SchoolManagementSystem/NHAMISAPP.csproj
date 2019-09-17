@@ -90,6 +90,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.v12.12.0.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -282,6 +285,10 @@
     <Compile Include="Migrations\201909110817113_Added Citation Multiline.Designer.cs">
       <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.cs" />
+    <Compile Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.Designer.cs">
+      <DependentUpon>201909160827164_Added one to many relationship between attchments and nominations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -291,6 +298,14 @@
     <Compile Include="Models\UserDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\NominationsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CustomReportCredentials.cs" />
+    <Compile Include="Report\NominationsRpt.aspx.cs">
+      <DependentUpon>NominationsRpt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\NominationsRpt.aspx.designer.cs">
+      <DependentUpon>NominationsRpt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -596,6 +611,7 @@
     <Content Include="admin-lte\plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\BackgroundImage.png" />
+    <Content Include="Images\CoatOfArms.png" />
     <Content Include="Images\Icons\graduate-student-avatar.png" />
     <Content Include="Images\Icons\manager.png" />
     <Content Include="Images\Icons\teacher.png" />
@@ -607,6 +623,7 @@
     <Content Include="Models\Initialisation\Counties.txt" />
     <Content Include="Models\Initialisation\PostalCodesKenya.txt" />
     <Content Include="Models\Initialisation\Wards.txt" />
+    <Content Include="Report\NominationsRpt.aspx" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
     <Content Include="Scripts\AngularJs\App.Js" />
     <Content Include="Scripts\AngularJs\lodash.min.js" />
@@ -834,6 +851,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909110817113_Added Citation Multiline.resx">
       <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.resx">
+      <DependentUpon>201909160827164_Added one to many relationship between attchments and nominations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
