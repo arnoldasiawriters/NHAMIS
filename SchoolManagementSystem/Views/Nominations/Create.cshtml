@@ -342,11 +342,12 @@
                                     </div>
                                     <div class="col-md-3">
                                         <br />
-                                        <input type="file" name="attachment" />
+                                        <input type="file" class="form-control-file" select-ng-files ng-model="ctrl.attachment" />
                                     </div>
                                     <div class="col-md-5">
                                         <label class="control-label"></label><br />
-                                        <input type="submit" value="Add Attachment" class="btn btn-warning pull-success pull-left" />
+                                        <input type="button" value="Add Attachment" class="btn btn-warning pull-success pull-left" ng-click="ctrl.AddAttachment()"
+                                               ng-disabled="!ctrl.AttachmentType || !ctrl.attachment"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -356,12 +357,12 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Attachment Type</th>
-                                                        <th>Attachment Document</th>
+                                                        <th>Attachment Name</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="item in ctrl.NominationAttachments">
+                                                    <tr ng-repeat="item in ctrl.model.NominationAttachments">
                                                         <td>{{item.AttachmentType.Name}}</td>
                                                         <td><a href="#">{{item.AttachmentUrl}}</a></td>
                                                         <td><a ng-click="ctrl.RemoveCitationRec(item)">Remove</a></td>

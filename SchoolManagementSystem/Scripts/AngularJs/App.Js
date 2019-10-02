@@ -2,11 +2,11 @@
     'use script';
 
     angular
-        .module('App', ['appservices'])
+        .module('App', ['appservices', 'NominationApprovals', 'directives', 'ui.bootstrap.dialogs'])
         .controller('NominationsCtrl', NominationsCtrlFunction);
 
-    NominationsCtrlFunction.$inject = ['$q', '$window', 'appsvc'];
-    function NominationsCtrlFunction($q, $window, appsvc) {
+    NominationsCtrlFunction.$inject = ['$q', '$dialog', '$dialogConfirm', '$dialogAlert', '$window', 'appsvc'];
+    function NominationsCtrlFunction($q, $dialog, $dialogConfirm, $dialogAlert, $window, appsvc) {
         var ctrl = this;
         var baseUrl = $window.location.origin;
         ctrl.showKenyan = true;
@@ -118,7 +118,7 @@
             ctrl.Award = "";
             ctrl.AwardDate = "";
         };
-        
+
         ctrl.RemoveCitationRec = function (rec) {
             _.remove(ctrl.CitationAchievements, function (o) {
                 return o.Achivement == rec.Achivement && o.StartDate == rec.StartDate;
@@ -162,16 +162,6 @@
             }
         };
 
-        ctrl.AddedAttachments = [];
-        //ctrl.RemoveCitationRec = function (rec) {
-        //    var rec = {
-        //        attachmenttype: ctrl.model.Attachment.AttachmentTypeId,
-        //        filepath: ctrl.model.CitationAchievement.Project
-        //    };
-        //    ctrl.addedCitationRecords.push(rec);
-        //    ctrl.model.CitationAchievement.PositionHeld = "";
-        //};
-
         ctrl.SubmitNominationsForm = function () {
             ctrl.model.NominatingBodyId = ctrl.NominatingBody.Id;
             ctrl.model.NominationPeriodId = ctrl.NominationPeriod.Id;
@@ -188,11 +178,35 @@
             appsvc
                 .postItems(baseUrl + '/Nominations/PostNominationForm', body)
                 .then(function (results) {
-                    $window.location = baseUrl + '/ExcelUploads';
+                    $window.location = baseUrl + '/Nominations';
                 })
                 .catch(function (error) {
                     console.log("Error: ", error);
                 });
+        };
+
+        ctrl.model.NominationAttachments = [];
+        ctrl.AddAttachment = function () {
+            var attachadd = true;
+            _.forEach(ctrl.model.NominationAttachments, function (o) {
+                if (o.AttachmentType.Name == ctrl.AttachmentType.Name) {
+                    $dialogAlert('Attachment Type Already Added.', 'UnSuccessfull Transaction');
+                    attachadd = false;
+                    return;
+                }
+            });
+
+            if (attachadd) {
+                var rec = {
+                    AttachmentType: ctrl.AttachmentType,
+                    AttachmentUrl: ctrl.attachment[0].name,
+                    Attachment: ctrl.attachment[0]
+                };
+                ctrl.model.NominationAttachments.push(rec);
+                ctrl.AttachmentUrl = "";
+                ctrl.attachment = null;
+            }
+
         };
     }
 })();

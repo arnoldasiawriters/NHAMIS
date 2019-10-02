@@ -152,3 +152,11 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.ChangedDataTypeofApprovalStageNameField.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.ChangedDataTypeofApprovalStageNameField2.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedafieldOrdertoApprovalStages.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.SetApproverIdfieldtovarchar100.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.MadeApprovalDateonNominationApprovalsNullable.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedcolumnstatusonNominationApprovals.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedDisableMedalSelectioninNominationApprovals.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedDisableMedalSelectioninApprovalStages.resources

@@ -39,7 +39,11 @@ namespace SchoolManagementSystem
             bundles.Add(new ScriptBundle("~/Scripts/AngularJs").Include(
                "~/Scripts/AngularJs/angular.min.js",
                "~/Scripts/AngularJs/lodash.min.js",
+               "~/Scripts/AngularJs/ui-bootstrap-tpls.min.js",
+               "~/Scripts/AngularJs/ui-bootstrap-dialogs.js",
                "~/Scripts/AngularJs/Services.js",
+               "~/Scripts/AngularJs/Directives.js",
+               "~/Scripts/AngularJs/NominationApprovals.js",
                "~/Scripts/AngularJs/App.js"));
 
             // jquery datatables js files

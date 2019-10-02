@@ -1,115 +1,89 @@
-﻿@model IEnumerable<NHAMIS.APP.Models.Nomination>
-
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">APPROVE NOMINATIONS</h3>
-    </div>
-    <div class="box-body">
-        <div class="form-group">
-            <div class="col-md-5">
-                <label class="control-label">Nomination Period</label>
-                @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-            <div class="col-md-5">
-                <label class="control-label">Approval Level</label>
-                @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-            <div class="col-md-2">
-                <br />
-                <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-success"/>
-                <br /><br />
-            </div>
+﻿<div ng-controller="NominationApprovalsCtrl as ctrl">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">APPROVE NOMINATIONS</h3>
         </div>
-
-        <div class="col-md-12">
-            <table id="nominationAddIndex" class="table table-bordered table-hover dataTable">
-                <thead>
-                    <tr>
-                        <th>Salutation</th>
-                        <th>ID Number</th>
-                        <th>Surname</th>
-                        <th>Other Names</th>
-                        <th>Nationality</th>
-                        <th>County of Birth</th>
-                        <th>Ward</th>
-                        <th>Email Address</th>
-                        <th>Occupation</th>
-                        <th>Approved Honor</th>
-                        <th>Approved</th>
-                        <th>Rejected</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Salutation.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IdNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Surname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OtherNames)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nationality)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CountyOfBirth)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ward.WardName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EmailAddress)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Occupation)
-                        </td>
-                        <td>
-                            @Html.CheckBox("ApprovedHonor", true)
-                        </td>
-                        <td>
-                            @Html.CheckBox("Approved", true)
-                        </td>
-                        <td>
-                            @Html.CheckBox("Reject", true)
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Salutation</th>
-                        <th>ID Number</th>
-                        <th>Surname</th>
-                        <th>Other Names</th>
-                        <th>Nationality</th>
-                        <th>County of Birth</th>
-                        <th>Ward</th>
-                        <th>Email Address</th>
-                        <th>Occupation</th>
-                        <th>Approved Honor</th>
-                        <th>Approved</th>
-                        <th>Rejected</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="form-group">
+        <div class="box-body">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.NominationPeriod"
+                                ng-options="item.Name for item in ctrl.NominationPeriods"
+                                ng-change="ctrl.NominationPeriodsChanged()"></select>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Approval Stage: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.ApprovalStage"
+                                ng-options="item.Name for item in ctrl.ApprovalStages"
+                                ng-change="ctrl.ApprovalStagesChanged()"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <input type="button" value="Search Nominations" ng-disabled="!ctrl.NominationPeriod || !ctrl.ApprovalStage" class="btn btn-success" ng-click="ctrl.SearchApprovals()" />
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
-                <input type="submit" name="submitapprovals" value="Submit Approvals" class = "btn btn-primary pull-right" />
+                <table id="nominationAddIndex" class="table table-bordered table-condensed table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Organisation</th>
+                            <th>Salutation</th>
+                            <th>Surname</th>
+                            <th>Other Names</th>
+                            <th>Nationality</th>
+                            <th>County of Birth</th>
+                            <th>Medal</th>
+                            <th>Approved?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ctrl.NominationApprovals">
+                            <td>{{item.NominatingBody.Name}}</td>
+                            <td>{{item.SalutationName}}</td>
+                            <td>{{item.Surname}}</td>
+                            <td>{{item.OtherNames}}</td>
+                            <td>{{item.Nationality}}</td>
+                            <td>{{item.CountyOfBirth}}</td>
+                            <td>
+                                <select class="select form-control"
+                                        ng-model="item.Medal"
+                                        ng-options="i.Name for i in ctrl.Medals"
+                                        ng-disabled="item.ApprovalStage.DisableMedalSelection">
+                                </select>
+                            </td>
+                            <td>
+                                <input ng-model="item.Status" type="checkbox" />
+                            </td>
+                        </tr>
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Organisation</th>
+                                <th>Salutation</th>
+                                <th>Surname</th>
+                                <th>Other Names</th>
+                                <th>Nationality</th>
+                                <th>County of Birth</th>
+                                <th>Medal</th>
+                                <th>Approved?</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="button" name="submitapprovals" ng-disabled="ctrl.NominationApprovals.length <= 0" value="Submit Approvals" class="btn btn-primary pull-right" ng-click="ctrl.SubmitApprovals()" />
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('#nominationAddIndex').DataTable();
-    });
-</script>
+@*<script>
+        $(document).ready(function () {
+            $('#nominationAddIndex').DataTable();
+        });
+    </script>*@
