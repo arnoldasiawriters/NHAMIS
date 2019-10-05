@@ -226,6 +226,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedalsController.cs" />
     <Compile Include="Controllers\NominatingBodiesController.cs" />
+    <Compile Include="Controllers\NominatingBodyCategoriesController.cs" />
     <Compile Include="Controllers\NominationAttachmentsController.cs" />
     <Compile Include="Controllers\NominationPeriodsController.cs" />
     <Compile Include="Controllers\NominationsController.cs" />
@@ -238,89 +239,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909081322010_Initial.cs" />
-    <Compile Include="Migrations\201909081322010_Initial.Designer.cs">
-      <DependentUpon>201909081322010_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910051425060_Initial.cs" />
+    <Compile Include="Migrations\201910051425060_Initial.Designer.cs">
+      <DependentUpon>201910051425060_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909081326214_Removed.cs" />
-    <Compile Include="Migrations\201909081326214_Removed.Designer.cs">
-      <DependentUpon>201909081326214_Removed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909081331076_Added Column.cs" />
-    <Compile Include="Migrations\201909081331076_Added Column.Designer.cs">
-      <DependentUpon>201909081331076_Added Column.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909081509299_Updated.cs" />
-    <Compile Include="Migrations\201909081509299_Updated.Designer.cs">
-      <DependentUpon>201909081509299_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909081543126_edited some.cs" />
-    <Compile Include="Migrations\201909081543126_edited some.Designer.cs">
-      <DependentUpon>201909081543126_edited some.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909090222251_Added Countries Table.cs" />
-    <Compile Include="Migrations\201909090222251_Added Countries Table.Designer.cs">
-      <DependentUpon>201909090222251_Added Countries Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909090249082_Removed RoleOfHonor Table.cs" />
-    <Compile Include="Migrations\201909090249082_Removed RoleOfHonor Table.Designer.cs">
-      <DependentUpon>201909090249082_Removed RoleOfHonor Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909091211248_Remove Country.cs" />
-    <Compile Include="Migrations\201909091211248_Remove Country.Designer.cs">
-      <DependentUpon>201909091211248_Remove Country.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909100654335_Added Gender.cs" />
-    <Compile Include="Migrations\201909100654335_Added Gender.Designer.cs">
-      <DependentUpon>201909100654335_Added Gender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909100701342_Modified Gender.cs" />
-    <Compile Include="Migrations\201909100701342_Modified Gender.Designer.cs">
-      <DependentUpon>201909100701342_Modified Gender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909100829157_Modified citations Records.cs" />
-    <Compile Include="Migrations\201909100829157_Modified citations Records.Designer.cs">
-      <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909110817113_Added Citation Multiline.cs" />
-    <Compile Include="Migrations\201909110817113_Added Citation Multiline.Designer.cs">
-      <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.cs" />
-    <Compile Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.Designer.cs">
-      <DependentUpon>201909160827164_Added one to many relationship between attchments and nominations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910010901560_Changed DataType of ApprovalStage Name Field.cs" />
-    <Compile Include="Migrations\201910010901560_Changed DataType of ApprovalStage Name Field.Designer.cs">
-      <DependentUpon>201910010901560_Changed DataType of ApprovalStage Name Field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910010903474_Changed DataType of ApprovalStage Name Field 2.cs" />
-    <Compile Include="Migrations\201910010903474_Changed DataType of ApprovalStage Name Field 2.Designer.cs">
-      <DependentUpon>201910010903474_Changed DataType of ApprovalStage Name Field 2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011243379_Added a field Order to ApprovalStages.cs" />
-    <Compile Include="Migrations\201910011243379_Added a field Order to ApprovalStages.Designer.cs">
-      <DependentUpon>201910011243379_Added a field Order to ApprovalStages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011302035_Set ApproverId field to varchar%28100%29.cs" />
-    <Compile Include="Migrations\201910011302035_Set ApproverId field to varchar%28100%29.Designer.cs">
-      <DependentUpon>201910011302035_Set ApproverId field to varchar%28100%29.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011344419_Made ApprovalDate on NominationApprovals Nullable.cs" />
-    <Compile Include="Migrations\201910011344419_Made ApprovalDate on NominationApprovals Nullable.Designer.cs">
-      <DependentUpon>201910011344419_Made ApprovalDate on NominationApprovals Nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011743045_Added column status on NominationApprovals.cs" />
-    <Compile Include="Migrations\201910011743045_Added column status on NominationApprovals.Designer.cs">
-      <DependentUpon>201910011743045_Added column status on NominationApprovals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021119259_Added DisableMedalSelection in NominationApprovals.cs" />
-    <Compile Include="Migrations\201910021119259_Added DisableMedalSelection in NominationApprovals.Designer.cs">
-      <DependentUpon>201910021119259_Added DisableMedalSelection in NominationApprovals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021120507_Added DisableMedalSelection in ApprovalStages.cs" />
-    <Compile Include="Migrations\201910021120507_Added DisableMedalSelection in ApprovalStages.Designer.cs">
-      <DependentUpon>201910021120507_Added DisableMedalSelection in ApprovalStages.cs</DependentUpon>
+    <Compile Include="Migrations\201910051630055_Added role to stages.cs" />
+    <Compile Include="Migrations\201910051630055_Added role to stages.Designer.cs">
+      <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -331,6 +256,7 @@
     <Compile Include="Models\UserDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\ApprovalViewModel.cs" />
     <Compile Include="Models\ViewModels\AttachmentsViewModel.cs" />
+    <Compile Include="Models\ViewModels\MessageVM.cs" />
     <Compile Include="Models\ViewModels\NominationsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\CustomReportCredentials.cs" />
@@ -644,6 +570,7 @@
     <Content Include="admin-lte\css\adminlte.min.css.map" />
     <Content Include="admin-lte\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="admin-lte\plugins\input-mask\phone-codes\phone-codes.json" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\BackgroundImage.png" />
     <Content Include="Images\CoatOfArms.png" />
@@ -751,15 +678,7 @@
     <Content Include="Views\Nominations\Details.cshtml" />
     <Content Include="Views\Nominations\Edit.cshtml" />
     <Content Include="Views\Nominations\Index.cshtml" />
-    <Content Include="Views\NominatingBodies\Create.cshtml" />
-    <Content Include="Views\NominatingBodies\Delete.cshtml" />
-    <Content Include="Views\NominatingBodies\Details.cshtml" />
-    <Content Include="Views\NominatingBodies\Edit.cshtml" />
-    <Content Include="Views\NominatingBodies\Index.cshtml" />
     <Content Include="Views\UserDetails\Create.cshtml" />
-    <Content Include="Views\UserDetails\Delete.cshtml" />
-    <Content Include="Views\UserDetails\Details.cshtml" />
-    <Content Include="Views\UserDetails\Edit.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
     <Content Include="Views\NominationPeriods\Create.cshtml" />
     <Content Include="Views\NominationPeriods\Delete.cshtml" />
@@ -771,11 +690,6 @@
     <Content Include="Views\AttachmentTypes\Details.cshtml" />
     <Content Include="Views\AttachmentTypes\Edit.cshtml" />
     <Content Include="Views\AttachmentTypes\Index.cshtml" />
-    <Content Include="Views\NominationAttachments\Create.cshtml" />
-    <Content Include="Views\NominationAttachments\Delete.cshtml" />
-    <Content Include="Views\NominationAttachments\Details.cshtml" />
-    <Content Include="Views\NominationAttachments\Edit.cshtml" />
-    <Content Include="Views\NominationAttachments\Index.cshtml" />
     <Content Include="Views\Nominations\Approve.cshtml" />
     <Content Include="Views\Nominations\UpdateROH.cshtml" />
     <Content Include="Views\Countries\Create.cshtml" />
@@ -833,11 +747,24 @@
     <Content Include="Views\PreviousRecognitions\Details.cshtml" />
     <Content Include="Views\PreviousRecognitions\Edit.cshtml" />
     <Content Include="Views\PreviousRecognitions\Index.cshtml" />
-    <Content Include="Views\ApprovalStages\Create.cshtml" />
+    <Content Include="Views\NominatingBodyCategories\Create.cshtml" />
+    <Content Include="Views\NominatingBodyCategories\Delete.cshtml" />
+    <Content Include="Views\NominatingBodyCategories\Details.cshtml" />
+    <Content Include="Views\NominatingBodyCategories\Edit.cshtml" />
+    <Content Include="Views\NominatingBodyCategories\Index.cshtml" />
+    <Content Include="Views\NominatingBodies\Create.cshtml" />
+    <Content Include="Views\NominatingBodies\Delete.cshtml" />
+    <Content Include="Views\NominatingBodies\Details.cshtml" />
+    <Content Include="Views\NominatingBodies\Edit.cshtml" />
+    <Content Include="Views\NominatingBodies\Index.cshtml" />
+    <Content Include="Views\UserDetails\Edit.cshtml" />
+    <Content Include="Views\UserDetails\Details.cshtml" />
+    <Content Include="Views\UserDetails\Delete.cshtml" />
     <Content Include="Views\ApprovalStages\Delete.cshtml" />
     <Content Include="Views\ApprovalStages\Details.cshtml" />
     <Content Include="Views\ApprovalStages\Edit.cshtml" />
     <Content Include="Views\ApprovalStages\Index.cshtml" />
+    <Content Include="Views\ApprovalStages\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -860,68 +787,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909081322010_Initial.resx">
-      <DependentUpon>201909081322010_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910051425060_Initial.resx">
+      <DependentUpon>201910051425060_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909081326214_Removed.resx">
-      <DependentUpon>201909081326214_Removed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909081331076_Added Column.resx">
-      <DependentUpon>201909081331076_Added Column.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909081509299_Updated.resx">
-      <DependentUpon>201909081509299_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909081543126_edited some.resx">
-      <DependentUpon>201909081543126_edited some.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909090222251_Added Countries Table.resx">
-      <DependentUpon>201909090222251_Added Countries Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909090249082_Removed RoleOfHonor Table.resx">
-      <DependentUpon>201909090249082_Removed RoleOfHonor Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909091211248_Remove Country.resx">
-      <DependentUpon>201909091211248_Remove Country.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909100654335_Added Gender.resx">
-      <DependentUpon>201909100654335_Added Gender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909100701342_Modified Gender.resx">
-      <DependentUpon>201909100701342_Modified Gender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909100829157_Modified citations Records.resx">
-      <DependentUpon>201909100829157_Modified citations Records.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909110817113_Added Citation Multiline.resx">
-      <DependentUpon>201909110817113_Added Citation Multiline.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160827164_Added one to many relationship between attchments and nominations.resx">
-      <DependentUpon>201909160827164_Added one to many relationship between attchments and nominations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910010901560_Changed DataType of ApprovalStage Name Field.resx">
-      <DependentUpon>201910010901560_Changed DataType of ApprovalStage Name Field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910010903474_Changed DataType of ApprovalStage Name Field 2.resx">
-      <DependentUpon>201910010903474_Changed DataType of ApprovalStage Name Field 2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011243379_Added a field Order to ApprovalStages.resx">
-      <DependentUpon>201910011243379_Added a field Order to ApprovalStages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011302035_Set ApproverId field to varchar%28100%29.resx">
-      <DependentUpon>201910011302035_Set ApproverId field to varchar%28100%29.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011344419_Made ApprovalDate on NominationApprovals Nullable.resx">
-      <DependentUpon>201910011344419_Made ApprovalDate on NominationApprovals Nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011743045_Added column status on NominationApprovals.resx">
-      <DependentUpon>201910011743045_Added column status on NominationApprovals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021119259_Added DisableMedalSelection in NominationApprovals.resx">
-      <DependentUpon>201910021119259_Added DisableMedalSelection in NominationApprovals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021120507_Added DisableMedalSelection in ApprovalStages.resx">
-      <DependentUpon>201910021120507_Added DisableMedalSelection in ApprovalStages.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910051630055_Added role to stages.resx">
+      <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

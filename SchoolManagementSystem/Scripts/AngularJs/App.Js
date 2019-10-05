@@ -57,6 +57,10 @@
 
                 ctrl.Occupations = results[0].data.Occupations;
                 ctrl.Occupation = ctrl.Occupations[0];
+
+                ctrl.PostalCodes = results[0].data.PostalCodes;
+                ctrl.Town = ctrl.PostalCodes[0];
+                ctrl.PostalCode = ("00000" + ctrl.PostalCodes[0].Code).slice(-5);
             })
             .catch(function (error) {
                 console.log("An error occured.", error);
@@ -131,6 +135,12 @@
             });
         };
 
+        ctrl.GetPostalCode = function () {
+            if (ctrl.Town) {
+                ctrl.PostalCode = ("00000" + ctrl.Town.Code).slice(-5);
+            }
+        };
+
         ctrl.FindSubCounties = function () {
             if (ctrl.County) {
                 var params = { countyid: ctrl.County.Id };
@@ -163,25 +173,32 @@
         };
 
         ctrl.SubmitNominationsForm = function () {
-            ctrl.model.NominatingBodyId = ctrl.NominatingBody.Id;
-            ctrl.model.NominationPeriodId = ctrl.NominationPeriod.Id;
-            ctrl.model.CountryId = ctrl.Country.Id;
-            ctrl.model.SalutationId = ctrl.Salutation.Id;
-            ctrl.model.GenderId = ctrl.Gender.Id;
-            ctrl.model.AcademicQualificationId = ctrl.AcademicQualification.Id;
-            ctrl.model.OccupationId = ctrl.Occupation.Id;
-            ctrl.model.MedalId = ctrl.Medal.Id;
-            ctrl.model.WardId = ctrl.Ward.Id;
-            ctrl.model.CountyOfBirth = ctrl.CountyOfBirth.CountyName;
-            ctrl.model.Nationality = ctrl.Nationality;
-            var body = JSON.stringify(ctrl.model);
-            appsvc
-                .postItems(baseUrl + '/Nominations/PostNominationForm', body)
-                .then(function (results) {
-                    $window.location = baseUrl + '/Nominations';
-                })
-                .catch(function (error) {
-                    console.log("Error: ", error);
+
+            $dialogConfirm("Submit Approvals?", "Confirm Transaction")
+                .then(function () {
+                    ctrl.model.NominatingBodyId = ctrl.NominatingBody.Id;
+                    ctrl.model.NominationPeriodId = ctrl.NominationPeriod.Id;
+                    ctrl.model.CountryId = ctrl.Country.Id;
+                    ctrl.model.SalutationId = ctrl.Salutation.Id;
+                    ctrl.model.GenderId = ctrl.Gender.Id;
+                    ctrl.model.AcademicQualificationId = ctrl.AcademicQualification.Id;
+                    ctrl.model.OccupationId = ctrl.Occupation.Id;
+                    ctrl.model.MedalId = ctrl.Medal.Id;
+                    ctrl.model.WardId = ctrl.Ward.Id;
+                    ctrl.model.CountyOfBirth = ctrl.CountyOfBirth.CountyName;
+                    ctrl.model.Nationality = ctrl.Nationality;
+                    ctrl.model.PostalCodeId = ctrl.Town.Id;
+                    var body = JSON.stringify(ctrl.model);
+                    appsvc
+                        .postItems(baseUrl + '/Nominations/PostNominationForm', body)
+                        .then(function (results) {
+                            $dialogAlert('Nomination Form has been Submitted Successfully.', 'Successful Transaction');
+                            $window.location = baseUrl + '/Nominations';
+                        })
+                        .catch(function (error) {
+                            $dialogAlert('An Error occured while Submitting the Nomination Form. Contact the system Administrator.', 'UnSuccessful Transaction');
+                            console.log("Error: ", error);
+                        });
                 });
         };
 

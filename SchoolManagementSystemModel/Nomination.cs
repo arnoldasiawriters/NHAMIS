@@ -16,9 +16,9 @@ namespace NHAMIS.APP.Models
         public DateTime DateOfBirth { get; set; }
         public string Nationality { get; set; }
         public string CountyOfBirth { get; set; }
-        public string PostalAddress { get; set; }
-        public string PostalCode { get; set; }
-        public string Town { get; set; }
+        public int PostalAddress { get; set; }
+        public int PostalCodeId { get; set; }
+        public virtual PostalCode PostalCode { get; set; }
         public string EmailAddress { get; set; }
         public string MobileNumber { get; set; }
         public string Location { get; set; }

@@ -54,6 +54,8 @@ namespace SchoolManagementSystem
             // jquery datatables css file
             bundles.Add(new StyleBundle("~/Content/datatables").Include(
                       "~/Content/DataTables/css/dataTables.bootstrap.min.css"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

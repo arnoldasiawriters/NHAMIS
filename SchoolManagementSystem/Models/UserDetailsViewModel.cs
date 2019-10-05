@@ -12,5 +12,6 @@ namespace SchoolManagementSystem.Models
         public RegisterViewModel RegisterViewModel { get; set; }
         public string RoleId { get; set; }
         public int NominatingBodyId {get; set; }
+        public int PostalCodeId { get; set; }        
     }
 }

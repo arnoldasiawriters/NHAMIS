@@ -1,0 +1,19 @@
+﻿(function () {
+    'use strict';
+
+    angular
+        .module('directives', [])
+        .directive('selectNgFiles', selectNgFilesFunction);
+
+    function selectNgFilesFunction() {
+        return {
+            require: "ngModel",
+            link: function postLink(scope, elem, attrs, ngModel) {
+                elem.on("change", function (e) {
+                    var files = elem[0].files;
+                    ngModel.$setViewValue(files);
+                })
+            }
+        }
+    }
+})();

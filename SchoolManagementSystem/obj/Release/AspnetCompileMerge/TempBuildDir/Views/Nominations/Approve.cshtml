@@ -1,0 +1,89 @@
+﻿<div ng-controller="NominationApprovalsCtrl as ctrl">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">APPROVE NOMINATIONS</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.NominationPeriod"
+                                ng-options="item.Name for item in ctrl.NominationPeriods"
+                                ng-change="ctrl.NominationPeriodsChanged()"></select>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Approval Stage: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.ApprovalStage"
+                                ng-options="item.Name for item in ctrl.ApprovalStages"
+                                ng-change="ctrl.ApprovalStagesChanged()"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <input type="button" value="Search Nominations" ng-disabled="!ctrl.NominationPeriod || !ctrl.ApprovalStage" class="btn btn-success" ng-click="ctrl.SearchApprovals()" />
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table id="nominationAddIndex" class="table table-bordered table-condensed table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Organisation</th>
+                            <th>Salutation</th>
+                            <th>Surname</th>
+                            <th>Other Names</th>
+                            <th>Nationality</th>
+                            <th>County of Birth</th>
+                            <th>Medal</th>
+                            <th>Approved?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ctrl.NominationApprovals">
+                            <td>{{item.NominatingBody.Name}}</td>
+                            <td>{{item.SalutationName}}</td>
+                            <td>{{item.Surname}}</td>
+                            <td>{{item.OtherNames}}</td>
+                            <td>{{item.Nationality}}</td>
+                            <td>{{item.CountyOfBirth}}</td>
+                            <td>
+                                <select class="select form-control"
+                                        ng-model="item.Medal"
+                                        ng-options="i.Name for i in ctrl.Medals"
+                                        ng-disabled="item.ApprovalStage.DisableMedalSelection">
+                                </select>
+                            </td>
+                            <td>
+                                <input ng-model="item.Status" type="checkbox" />
+                            </td>
+                        </tr>
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Organisation</th>
+                                <th>Salutation</th>
+                                <th>Surname</th>
+                                <th>Other Names</th>
+                                <th>Nationality</th>
+                                <th>County of Birth</th>
+                                <th>Medal</th>
+                                <th>Approved?</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="button" name="submitapprovals" ng-disabled="ctrl.NominationApprovals.length <= 0" value="Submit Approvals" class="btn btn-primary pull-right" ng-click="ctrl.SubmitApprovals()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script>
+        $(document).ready(function () {
+            $('#nominationAddIndex').DataTable();
+        });
+    </script>*@

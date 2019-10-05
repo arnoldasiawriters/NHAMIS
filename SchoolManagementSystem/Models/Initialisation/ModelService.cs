@@ -44,9 +44,9 @@ namespace NHAMISAPP
 
                     string countyName = ConstituencyLine.Split('=')[1];
 
-                    var CountyId = dbcontext.Counties.Where(n => n.CountyName == countyName).Select(f => f.Id ).FirstOrDefault();
+                    var CountyId = dbcontext.Counties.Where(n => n.CountyName == countyName).Select(f => f.Id).FirstOrDefault();
 
-                    County County = dbcontext.Counties.Find(CountyId) ;
+                    County County = dbcontext.Counties.Find(CountyId);
 
                     SubCounty Constituency = new SubCounty() { SubCountyName = constituencyName, County = County };
 
@@ -73,10 +73,29 @@ namespace NHAMISAPP
                     var ConstituencyId = dbcontext.SubCounties.Where(n => n.SubCountyName == constituencyName).Select(c => c.Id).FirstOrDefault();
 
                     SubCounty Constituency = dbcontext.SubCounties.Find(ConstituencyId);
-                    
+
                     Ward Ward = new Ward() { WardName = wardName, Subcounty = Constituency };
 
                     dbcontext.Wards.Add(Ward);
+                }
+                dbcontext.SaveChanges();
+            }
+        }
+        public static void InsertPostalCodes()
+        {
+            using (NHAMISContext dbcontext = new NHAMISContext())
+            {
+                string path = HttpContext.Current.Server.MapPath(@"~/Models/Initialisation/PostalCodesKenya.txt");
+
+                string[] postalCodesFile = File.ReadAllLines(path);
+
+                foreach (string postalCodeLine in postalCodesFile)
+                {
+                    string postalNameText = (postalCodeLine.Split('-')[0]).ToUpper();
+                    int postalCodeText = Int32.Parse(postalCodeLine.Split('-')[1]);
+
+                    PostalCode postalCode = new PostalCode() { Code = postalCodeText, Town = postalNameText };
+                    dbcontext.PostalCodes.Add(postalCode);
                 }
                 dbcontext.SaveChanges();
             }

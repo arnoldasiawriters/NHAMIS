@@ -18,7 +18,8 @@ namespace SchoolManagementSystem.Controllers
         // GET: NominatingBodies
         public ActionResult Index()
         {
-            return View(db.NominatingBodies.ToList());
+            var nominatingBodies = db.NominatingBodies.Include(n => n.NominatingBodyCategory);
+            return View(nominatingBodies.ToList());
         }
 
         // GET: NominatingBodies/Details/5
@@ -39,6 +40,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: NominatingBodies/Create
         public ActionResult Create()
         {
+            ViewBag.NominatingBodyCategoryId = new SelectList(db.NominatingBodyCategories, "Id", "Name");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Ministry,Order,Category,CreateBy,CreateDate,ModifyBy,ModifyDate")] NominatingBody nominatingBody)
+        public ActionResult Create([Bind(Include = "Id,Name,Order,NominatingBodyCategoryId,CreateBy,CreateDate,ModifyBy,ModifyDate")] NominatingBody nominatingBody)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.NominatingBodyCategoryId = new SelectList(db.NominatingBodyCategories, "Id", "Name", nominatingBody.NominatingBodyCategoryId);
             return View(nominatingBody);
         }
 
@@ -71,6 +74,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.NominatingBodyCategoryId = new SelectList(db.NominatingBodyCategories, "Id", "Name", nominatingBody.NominatingBodyCategoryId);
             return View(nominatingBody);
         }
 
@@ -79,7 +83,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Ministry,Order,Category,CreateBy,CreateDate,ModifyBy,ModifyDate")] NominatingBody nominatingBody)
+        public ActionResult Edit([Bind(Include = "Id,Name,Order,NominatingBodyCategoryId,CreateBy,CreateDate,ModifyBy,ModifyDate")] NominatingBody nominatingBody)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace SchoolManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.NominatingBodyCategoryId = new SelectList(db.NominatingBodyCategories, "Id", "Name", nominatingBody.NominatingBodyCategoryId);
             return View(nominatingBody);
         }
 

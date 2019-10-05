@@ -104,7 +104,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="~/Report/NominationsRpt.aspx"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
+                                <li><a href="~/Report/NominationsRpt.aspx" target="_blank"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> GAZETTE NOTICE</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> STATE INVESTITURE</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> WARRANT FORMS</a></li>
@@ -126,6 +126,7 @@
                                 <li><a href="@Url.Action("Index","Salutations")"><i class="fa fa-circle-o"></i> SALUTATIONS</a></li>
                                 <li><a href="@Url.Action("Index","Occupations")"><i class="fa fa-circle-o"></i> OCCUPATIONS</a></li>
                                 <li><a href="@Url.Action("Index","AcademicQualifications")"><i class="fa fa-circle-o"></i> ACAD QUALIFICATIONS</a></li>
+                                <li><a href="@Url.Action("Index","NominatingBodyCategories")"><i class="fa fa-circle-o"></i> AGIENCIES CATEGORIES</a></li>
                                 <li><a href="@Url.Action("Index","NominatingBodies")"><i class="fa fa-circle-o"></i> NOMINATING AGIENCIES</a></li>
                                 <li><a href="@Url.Action("Index","NominationPeriods")"><i class="fa fa-circle-o"></i> NOMINATING PERIODS</a></li>
                                 <li><a href="@Url.Action("Index","AttachmentTypes")"><i class="fa fa-circle-o"></i> ATTACHMENT TYPES</a></li>
@@ -136,6 +137,7 @@
                                 <li><a href="@Url.Action("Index","Medals")"><i class="fa fa-circle-o"></i> MEDALS</a></li>
                                 <li><a href="@Url.Action("Index", "HonorRoles")"><i class="fa fa-circle-o"></i> ROLL OF HONOUR</a></li>
                                 <li><a href="@Url.Action("Index", "ApprovalStages")"><i class="fa fa-circle-o"></i> APPROVAL STAGES</a></li>
+                                <li><a href="~/elmah.axd" target="_blank"><i class="fa fa-circle-o"></i> ERROR LIST</a></li>
 
                             </ul>
                         </li>
@@ -145,6 +147,14 @@
         </aside>
 
         <div class="content-wrapper">
+            @if (TempData["UserMessage"] != null)
+            {
+                var message = (NHAMIS.APP.Models.MessageVM)TempData["UserMessage"];
+            <div class="alert @message.CssClassName fade in alert-dismissible">
+                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                <strong>@message.Title</strong>@message.Message
+            </div>
+            }
             @*<section class="content-header"></section>*@
             <!-- Main content -->
             <section class="content container-fluid">

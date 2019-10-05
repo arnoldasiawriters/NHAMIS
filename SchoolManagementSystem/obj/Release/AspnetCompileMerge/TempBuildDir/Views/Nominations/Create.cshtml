@@ -1,0 +1,401 @@
+﻿<div class="box box-primary" ng-controller="NominationsCtrl as ctrl">
+    <div class="box-header with-border">
+        <h2 class="box-title">NOMINATION FOR NATIONAL HONOURS FORM</h2>
+    </div>
+    <div class="box-body">
+        <form method="post" name="frm" novalidate>
+            <div class="box-body">
+                <div class="form-horizontal">
+                    <div class="col-md-12">
+                        <div class="tab-content">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#home">Personal Information</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Other Details</a></li>
+                                <li><a data-toggle="tab" href="#menu3">Citations</a></li>
+                                <li><a data-toggle="tab" href="#menu4">Attachments</a></li>
+                                <li><a data-toggle="tab" href="#menu5">Complete</a></li>
+                            </ul>
+                            <div id="home" class="tab-pane fade in active">
+                                <h3>PERSONAL INFORMATION</h3>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Nomination Body: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.NominatingBody"
+                                                ng-options="item.Name for item in ctrl.NominatingBodies"></select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.NominationPeriod"
+                                                ng-options="item.Name for item in ctrl.NominationPeriods"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Nationality: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.Nationality" ng-change="ctrl.nationalityChanged()">
+                                            <option value="Kenyan">Kenyan</option>
+                                            <option value="Non-Kenyan">Non-Kenyan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4" ng-show="ctrl.showKenyan">
+                                        <label class="control-label">County of Birth: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.CountyOfBirth"
+                                                data-size="5" ng-options="item.CountyName for item in ctrl.Counties"></select>
+                                    </div>
+                                    <div class="col-md-4" ng-show="!ctrl.showKenyan">
+                                        <label class="control-label">Country of Birth: <span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.Country"
+                                                ng-options="item.Name for item in ctrl.Countries"></select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="control-label" ng-show="ctrl.showKenyan">ID Number:<span class="asteriskField"> *</span></label>
+                                        <label class="control-label" ng-show="!ctrl.showKenyan">Passport Number:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.IdNumber" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Salutation:<span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.Salutation"
+                                                ng-options="item.Name for item in ctrl.Salutations"></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">SurName:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Surname" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Other Names:<span class="asteriskField"> *</span></label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.OtherNames" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Gender:<span class="asteriskField"> *</span></label>
+                                        <select class="select form-control" ng-model="ctrl.Gender"
+                                                ng-options="item.Name for item in ctrl.Genders"></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Date of Birth:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.model.DateOfBirth" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Home County:</label>
+                                        <select class="select form-control" ng-model="ctrl.County"
+                                                ng-options="item.CountyName for item in ctrl.Counties" ng-change="ctrl.FindSubCounties()"></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Sub-County Name:</label>
+                                        <select class="select form-control" ng-model="ctrl.SubCounty"
+                                                ng-options="item.SubCountyName for item in ctrl.SubCounties" ng-change=" ctrl.FindWards()"></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Ward Name:</label>
+                                        <select class="select form-control" ng-model="ctrl.Ward"
+                                                ng-options="item.WardName for item in ctrl.Wards"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Location:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Location" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Sub Location:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.SubLocation" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Village:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Village" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Mobile Number:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.MobileNumber" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Email Address:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                            <input class="form-control" ng-model="ctrl.model.EmailAddress" placeholder="Email Address" type="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Postal/Organization/Business Address:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PostalAddress" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Postal Code:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.PostalCode" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Town:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.model.Town" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label"></label><br />
+                                        <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                        <a href="/Nominations" class="btn btn-sm btn-warning pull-left"><<< Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <h3>OTHER DETAILS</h3>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Highest Academic Qualification:</label>
+                                        <select class="select form-control" ng-model="ctrl.AcademicQualification"
+                                                ng-options="item.Name for item in ctrl.AcademicQualifications"></select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label">Occupation:</label>
+                                        <select class="select form-control" ng-model="ctrl.Occupation"
+                                                ng-options="item.Name for item in ctrl.Occupations"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" ng-change="ctrl.SearchPreviousAwards()" ng-model="ctrl.SearchNameId"
+                                               placeholder="Search by Roll of Honour by Name/ID Number..." />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <table id="nominationsPrevAwards" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Awardee Name</th>
+                                                    <th>ID Number</th>
+                                                    <th>Award</th>
+                                                    <th>Date of Award</th>
+                                                    <th>Select</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in ctrl.searchresults">
+                                                    <td>{{item.Name}}</td>
+                                                    <td>{{item.IdNumber}}</td>
+                                                    <td>{{item.Medal.Name}}</td>
+                                                    <td>{{item.ConfirementDate.slice(6,-2) | date:'dd-MMM-yyyy' }}</td>
+                                                    <td><input ng-model="item.selected" type="checkbox" /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Recommended Medal Of Honor:</label>
+                                        <select class="select form-control" ng-model="ctrl.Medal"
+                                                ng-options="item.Name for item in ctrl.Medals"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <a data-toggle="tab" href="#home" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                        <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <h4>NOMINEE CITATIONS (ACHIEVEMENTS)</h4>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Position Held:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.PositionHeld" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Project:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.Project" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Role:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.Role" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Achievement:</label>
+                                        <textarea class="form-control" rows="3" ng-model="ctrl.Achivement"></textarea>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">From:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.StartDate" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">To:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.EndDate" />
+                                        </div>
+                                        <br />
+                                        <input type="button" value="Add Achievement" class="btn btn-success pull-right" ng-click="ctrl.AddCitationRecord()" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <table id="CitationsAchievementTable" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Position Held</th>
+                                                <th>Project</th>
+                                                <th>Role</th>
+                                                <th>Achievement</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="rec in ctrl.model.CitationAchievements">
+                                                <td>{{rec.PositionHeld}}</td>
+                                                <td>{{rec.Project}}</td>
+                                                <td>{{rec.Role}}</td>
+                                                <td>{{rec.Achivement}}</td>
+                                                <td>{{rec.StartDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <td>{{rec.EndDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                <td><a ng-click="ctrl.RemoveCitationRec(rec)">Remove</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h4>NOMINEE CITATIONS (PREVIOUS RECOGNITIONS)</h4>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label class="control-label">Recognizing Institution:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.RecognizingInstitution" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label">Achievement Title:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.AchievementTitle" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <label class="control-label">Award:</label>
+                                        <textarea class="form-control" rows="2" ng-model="ctrl.Award"></textarea>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Award Date:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" ng-model="ctrl.AwardDate" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="button" value="Add Recognition" class="btn btn-success pull-right" ng-click="ctrl.AddRecognition()" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="PreviousRecognitionTable">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Recognizing Institution</th>
+                                                    <th>Achievement Title</th>
+                                                    <th>Award</th>
+                                                    <th>Award Date</th>
+                                                    <th>Remove</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="rec in ctrl.model.PreviousRecognitions">
+                                                    <td>{{rec.RecognizingInstitution}}</td>
+                                                    <td>{{rec.AchievementTitle}}</td>
+                                                    <td>{{rec.Award}}</td>
+                                                    <td>{{rec.AwardDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                    <td><a ng-click="ctrl.RemoveRecognitionRec(rec)">Remove</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                        <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu4" class="tab-pane fade">
+                                <h3>Attachments</h3>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Attachment Type:</label>
+                                        <select class="select form-control" ng-model="ctrl.AttachmentType"
+                                                ng-options="item.Name for item in ctrl.AttachmentTypes"></select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <br />
+                                        <input type="file" class="form-control-file" select-ng-files ng-model="ctrl.attachment" />
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="control-label"></label><br />
+                                        <input type="button" value="Add Attachment" class="btn btn-warning pull-success pull-left" ng-click="ctrl.AddAttachment()"
+                                               ng-disabled="!ctrl.AttachmentType || !ctrl.attachment"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div id="table">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Attachment Type</th>
+                                                        <th>Attachment Name</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in ctrl.model.NominationAttachments">
+                                                        <td>{{item.AttachmentType.Name}}</td>
+                                                        <td><a href="#">{{item.AttachmentUrl}}</a></td>
+                                                        <td><a ng-click="ctrl.RemoveCitationRec(item)">Remove</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                        <a data-toggle="tab" href="#menu5" class="btn btn-sm btn-warning pull-right">Next >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu5" class="tab-pane fade">
+                                <h3>Complete</h3>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <p>By clicking submit I confirm that the information given above is true to the best of my knowledge and understanding.</p>
+                                        <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
+                                        <input type="button" value="Submit Form" class="btn btn-primary pull-right" ng-click="ctrl.SubmitNominationsForm()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

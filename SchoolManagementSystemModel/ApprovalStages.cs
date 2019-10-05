@@ -17,5 +17,6 @@ namespace NHAMIS.APP.Models
         public int Order { get; set; }
         public virtual ICollection<NominationApprovals> NominationApprovals { get; set; }
         public bool DisableMedalSelection { get; set; }
+        public string RoleId { get; set; }
     }
 }

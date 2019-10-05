@@ -33,12 +33,14 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View(approvalStages);
         }
 
         // GET: ApprovalStages/Create
         public ActionResult Create()
         {
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Order,CreateBy,CreateDate,ModifyBy,ModifyDate")] ApprovalStages approvalStages)
+        public ActionResult Create(ApprovalStages approvalStages)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +57,7 @@ namespace SchoolManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View(approvalStages);
         }
 
@@ -79,7 +81,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Order,CreateBy,CreateDate,ModifyBy,ModifyDate")] ApprovalStages approvalStages)
+        public ActionResult Edit([Bind(Include = "Id,Name,Order,DisableMedalSelection,CreateBy,CreateDate,ModifyBy,ModifyDate")] ApprovalStages approvalStages)
         {
             if (ModelState.IsValid)
             {

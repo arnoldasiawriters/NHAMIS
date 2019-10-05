@@ -49,6 +49,9 @@ namespace NHAMIS
         public DbSet<Country> Countries { get; set; }
         public DbSet<CitationAchievement> CitationAchievements { get; set; }
         public DbSet<PreviousRecognition> PreviousRecognitions { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<NominatingBodyCategory> NominatingBodyCategories { get; set; }
+        public DbSet<PostalCode> PostalCodes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -178,7 +181,5 @@ namespace NHAMIS
                 }
             **/
         }
-
-        public System.Data.Entity.DbSet<NHAMIS.APP.Models.Gender> Genders { get; set; }
     }
 }

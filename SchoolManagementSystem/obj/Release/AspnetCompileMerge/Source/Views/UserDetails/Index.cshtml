@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NHAMIS.APP.Models.UserDetails>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">SYSTEM USERS</h3>
+    </div>
+    <div class="box-body">
+        <div class="form-group">
+            @Html.ActionLink("Add System User", "Create", null,htmlAttributes: new { @class = "btn btn-success pull-right" })
+        </div>
+
+        <table id="nomBodiesIndex" class="table table-bordered table-hover dataTable">
+            <thead>
+                <tr>
+                    <th>NominatingBody</th>
+                    <th>Title</th>
+                    <th>Surname</th>
+                    <th>Other Names</th>
+                    <th>Designation</th>                   
+                    <th>Email Address</th>
+                    <th>Mobile Number</th>
+                    <th>User Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NominatingBody.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtherNames)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Designation)
+                        </td>                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobileNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserStatus)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>NominatingBody</th>
+                    <th>Title</th>
+                    <th>Surname</th>
+                    <th>Other Names</th>
+                    <th>Designation</th>
+                    <th>Email Address</th>
+                    <th>Mobile Number</th>
+                    <th>User Status</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#nomBodiesIndex').DataTable();
+    });
+</script>

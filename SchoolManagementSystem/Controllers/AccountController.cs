@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using NHAMIS;
 using SchoolManagementSystem.Models;
 
 namespace SchoolManagementSystem.Controllers
@@ -15,6 +16,8 @@ namespace SchoolManagementSystem.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private NHAMISContext db = new NHAMISContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -74,6 +77,19 @@ namespace SchoolManagementSystem.Controllers
                 return PartialView(model);
             }
 
+            var userLoginDetails = db.Users.Where(u => u.UserName == model.UserName).FirstOrDefault();
+            if(userLoginDetails == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt. Contact System Administrator.");
+                return PartialView(model);
+            }
+
+            var userDetails = db.UserDetails.Where(l=>l.UserId == userLoginDetails.Id).FirstOrDefault();
+            if (!userDetails.UserStatus)
+            {
+                ModelState.AddModelError("", "Invalid login attempt. Contact System Administrator.");
+                return PartialView(model);
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
            // ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
@@ -88,7 +104,7 @@ namespace SchoolManagementSystem.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Invalid login attempt. Contact System Administrator.");
                     return PartialView(model);
             }
         }
@@ -237,7 +253,7 @@ namespace SchoolManagementSystem.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            return  View();
         }
 
         //

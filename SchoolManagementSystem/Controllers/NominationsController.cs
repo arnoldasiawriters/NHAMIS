@@ -209,7 +209,8 @@ namespace SchoolManagementSystem.Controllers
                 AcademicQualifications = db.AcademicQualifications.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
                 Medals = db.Medals.Select(c => new { c.Id, c.Name, c.OrderBy }).OrderBy(c => c.OrderBy).ToList(),
                 AttachmentTypes = db.AttachmentTypes.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
-                Occupations = db.Occupations.Select(c => new { c.Id, c.Name })
+                Occupations = db.Occupations.Select(c => new { c.Id, c.Name }),
+                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town })
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }
@@ -257,7 +258,7 @@ namespace SchoolManagementSystem.Controllers
                 NominationApprovals nominationApproval = new NominationApprovals();
                 nominationApproval.ApprovalStagesId = approvalStage.Id;
                 nominationApproval.MedalId = model.MedalId;
-                nominationApproval.NominationId = nominationId;
+                nominationApproval.NominationId = nominationId;                
                 nominationApproval.Status = false;
                 db.NominationApprovals.Add(nominationApproval);
                 db.SaveChanges();
@@ -339,7 +340,8 @@ namespace SchoolManagementSystem.Controllers
                     approval.Status = false;
                     db.NominationApprovals.Add(approval);
                     db.SaveChanges();
-                } else
+                }
+                else
                 {
                     Nomination nomination = db.Nominations.Find(currNomStage.NominationId);
                     nomination.Status = "Approved";

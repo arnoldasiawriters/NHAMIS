@@ -38,6 +38,9 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town");
             return View(userDetails);
         }
 
@@ -46,12 +49,7 @@ namespace SchoolManagementSystem.Controllers
         {
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
-
-            UserDetailsViewModel model = new UserDetailsViewModel()
-            {
-               
-            };
-
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town");
             return View();
         }
 
@@ -62,24 +60,32 @@ namespace SchoolManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(UserDetailsViewModel model)
         {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             model.RegisterViewModel.Email = model.UserDetails.EmailAddress;
-            if (ModelState.IsValid)
+            var userInDb = UserManager.FindByName(model.RegisterViewModel.UserName);
+            if (ModelState.IsValid && userInDb == null)
             {
-                ApplicationDbContext context = new ApplicationDbContext();
+                userInDb = new ApplicationUser();
+                userInDb.UserName = model.RegisterViewModel.UserName;
+                userInDb.Email = model.UserDetails.EmailAddress;
+                UserManager.Create(userInDb, model.RegisterViewModel.Password);
 
-                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-                var user = new ApplicationUser();
-                user.UserName = model.RegisterViewModel.UserName;
-                user.Email = model.UserDetails.EmailAddress;
-                UserManager.Create(user, model.RegisterViewModel.Password);
                 var rolename = roleManager.FindById(model.RoleId);
-                UserManager.AddToRole(user.Id, rolename.Name);
+
+                var userInRole = UserManager.IsInRole(userInDb.Id, rolename.Name);
+                if (!userInRole)
+                {
+                    UserManager.AddToRole(userInDb.Id, rolename.Name);
+                }
 
                 model.UserDetails.NominatingBodyId = model.NominatingBodyId;
-                model.UserDetails.UserId = user.Id;
+                model.UserDetails.PostalCodeId = model.PostalCodeId;
+                model.UserDetails.UserId = userInDb.Id;
                 db.UserDetails.Add(model.UserDetails);
                 db.SaveChanges();
+                TempData["UserMessage"] = new MessageVM() { CssClassName = "alert-success", Title = "Success!", Message = "User added successfully." };
                 return RedirectToAction("Index");
             }
             else
@@ -92,6 +98,8 @@ namespace SchoolManagementSystem.Controllers
 
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name", model.UserDetails.NominatingBodyId);
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town");
+            TempData["UserMessage"] = new MessageVM() { CssClassName = "alert-error", Title = "Error!", Message = "UserName or Email already exists in the database." };
             return View(model);
         }
 
@@ -107,7 +115,9 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name", userDetails.NominatingBodyId);
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town");
             return View(userDetails);
         }
 
@@ -116,7 +126,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Surname,OtherNames,Designation,PostalAddress,PostalCode,Town,EmailAddress,MobileNo,OtherNo,UserId,UserStatus,NominatingBodyId,CreateBy,CreateDate,ModifyBy,ModifyDate")] UserDetails userDetails)
+        public ActionResult Edit(UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
@@ -124,6 +134,8 @@ namespace SchoolManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town", userDetails.PostalCodeId);
             ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name", userDetails.NominatingBodyId);
             return View(userDetails);
         }

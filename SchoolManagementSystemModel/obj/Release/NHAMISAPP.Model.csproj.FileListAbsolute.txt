@@ -1,0 +1,16 @@
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\SchoolManagementSystemModel.dll.config
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\SchoolManagementSystemModel.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\SchoolManagementSystemModel.pdb
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\EntityFramework.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\EntityFramework.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\obj\Release\NHAMISAPP.Model.csprojAssemblyReference.cache
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\obj\Release\NHAMISAPP.Model.csproj.CoreCompileInputs.cache
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\obj\Release\NHAMISAPP.Model.csproj.CopyComplete
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\obj\Release\SchoolManagementSystemModel.dll
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystemModel\obj\Release\SchoolManagementSystemModel.pdb
