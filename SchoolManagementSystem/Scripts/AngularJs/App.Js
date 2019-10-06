@@ -192,8 +192,8 @@
                     appsvc
                         .postItems(baseUrl + '/Nominations/PostNominationForm', body)
                         .then(function (results) {
-                            $dialogAlert('Nomination Form has been Submitted Successfully.', 'Successful Transaction');
                             $window.location = baseUrl + '/Nominations';
+                            $dialogAlert('Nomination Form has been Submitted Successfully.', 'Successful Transaction');                            
                         })
                         .catch(function (error) {
                             $dialogAlert('An Error occured while Submitting the Nomination Form. Contact the system Administrator.', 'UnSuccessful Transaction');

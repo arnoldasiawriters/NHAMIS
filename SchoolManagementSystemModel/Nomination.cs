@@ -13,7 +13,7 @@ namespace NHAMIS.APP.Models
         public string Surname { get; set; }
         public string OtherNames { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string Nationality { get; set; }
         public string CountyOfBirth { get; set; }
         public int PostalAddress { get; set; }

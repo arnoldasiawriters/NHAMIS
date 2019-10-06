@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label class="control-label">Salutation:<span class="asteriskField"> *</span></label>
+                                        <label class="control-label">Salutation/Title:<span class="asteriskField"> *</span></label>
                                         <select class="select form-control" ng-model="ctrl.Salutation"
                                                 ng-options="item.Name for item in ctrl.Salutations"></select>
                                     </div>
@@ -85,17 +85,17 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label class="control-label">Home County:</label>
+                                        <label class="control-label">Home County: <span class="asteriskField"> *</span></label>
                                         <select class="select form-control" ng-model="ctrl.County"
                                                 ng-options="item.CountyName for item in ctrl.Counties" ng-change="ctrl.FindSubCounties()"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Sub-County Name:</label>
+                                        <label class="control-label">Sub-County Name: <span class="asteriskField"> *</span></label>
                                         <select class="select form-control" ng-model="ctrl.SubCounty"
                                                 ng-options="item.SubCountyName for item in ctrl.SubCounties" ng-change=" ctrl.FindWards()"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Ward Name:</label>
+                                        <label class="control-label">Ward Name: <span class="asteriskField"> *</span></label>
                                         <select class="select form-control" ng-model="ctrl.Ward"
                                                 ng-options="item.WardName for item in ctrl.Wards"></select>
                                     </div>
@@ -133,12 +133,13 @@
                                         <input type="text" class="form-control" ng-model="ctrl.model.PostalAddress" />
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Postal Code:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.PostalCode" />
+                                        <label class="control-label">Town:</label>
+                                        <select class="select form-control" ng-model="ctrl.Town"
+                                                ng-options="item.Town for item in ctrl.PostalCodes" ng-change="ctrl.GetPostalCode()"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Town:</label>
-                                        <input type="text" class="form-control" ng-model="ctrl.model.Town" />
+                                        <label class="control-label">Postal Code:</label>
+                                        <input type="text" class="form-control" ng-model="ctrl.PostalCode" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -195,7 +196,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <label class="control-label">Recommended Medal Of Honor:</label>
+                                        <label class="control-label">Recommended Medal Of Honor:<span class="asteriskField"> *</span></label>
                                         <select class="select form-control" ng-model="ctrl.Medal"
                                                 ng-options="item.Name for item in ctrl.Medals"></select>
                                     </div>
@@ -208,7 +209,7 @@
                                 </div>
                             </div>
                             <div id="menu3" class="tab-pane fade">
-                                <h4>NOMINEE CITATIONS (ACHIEVEMENTS)</h4>
+                                <h4>NOMINEE ACHIEVEMENTS</h4>
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label class="control-label">Position Held:</label>
@@ -272,7 +273,7 @@
                                     </table>
                                 </div>
 
-                                <h4>NOMINEE CITATIONS (PREVIOUS RECOGNITIONS)</h4>
+                                <h4>NOMINEE AWARDS FROM OTHER INSTITUTIONS</h4>
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label class="control-label">Recognizing Institution:</label>
@@ -347,7 +348,7 @@
                                     <div class="col-md-5">
                                         <label class="control-label"></label><br />
                                         <input type="button" value="Add Attachment" class="btn btn-warning pull-success pull-left" ng-click="ctrl.AddAttachment()"
-                                               ng-disabled="!ctrl.AttachmentType || !ctrl.attachment"/>
+                                               ng-disabled="!ctrl.AttachmentType || !ctrl.attachment" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -385,7 +386,9 @@
                                     <div class="col-md-8">
                                         <p>By clicking submit I confirm that the information given above is true to the best of my knowledge and understanding.</p>
                                         <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left"><<< Previous</a>
-                                        <input type="button" value="Submit Form" class="btn btn-primary pull-right" ng-click="ctrl.SubmitNominationsForm()" />
+                                        <input type="button" value="Submit Form" class="btn btn-primary pull-right" ng-click="ctrl.SubmitNominationsForm()"
+                                               ng-disabled="!ctrl.NominatingBody || !ctrl.NominationPeriod || !ctrl.Nationality || !ctrl.model.IdNumber
+|| !ctrl.Salutation ||!ctrl.Gender || !ctrl.model.Surname || !ctrl.model.OtherNames || !ctrl.Medal || !ctrl.Ward" />
                                     </div>
                                 </div>
                             </div>

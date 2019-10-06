@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201910051630055_Added role to stages.Designer.cs">
       <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.cs" />
+    <Compile Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.Designer.cs">
+      <DependentUpon>201910061921132_Made DateOfBirth Column nullable for Nomination.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -792,6 +796,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910051630055_Added role to stages.resx">
       <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.resx">
+      <DependentUpon>201910061921132_Made DateOfBirth Column nullable for Nomination.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

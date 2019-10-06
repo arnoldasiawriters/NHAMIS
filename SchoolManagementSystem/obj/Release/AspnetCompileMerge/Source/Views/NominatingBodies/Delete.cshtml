@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.NominatingBodyCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NominatingBodyCategory.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -20,27 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ministry)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ministry)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Order)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Order)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
         </dd>
 
     </dl>

@@ -240,18 +240,24 @@ namespace SchoolManagementSystem.Controllers
                 db.Nominations.Add(model);
                 db.SaveChanges();
                 int nominationId = model.Id;
-
-                foreach (var achv in model.CitationAchievements)
+                if (model.CitationAchievements != null)
                 {
-                    achv.NominationId = nominationId;
-                    db.CitationAchievements.Add(achv);
+                    foreach (var achv in model.CitationAchievements)
+                    {
+                        achv.NominationId = nominationId;
+                        db.CitationAchievements.Add(achv);
+                    }
                 }
 
-                foreach (var prevRec in model.PreviousRecognitions)
+                if (model.PreviousRecognitions != null)
                 {
-                    prevRec.NominationId = nominationId;
-                    db.PreviousRecognitions.Add(prevRec);
+                    foreach (var prevRec in model.PreviousRecognitions)
+                    {
+                        prevRec.NominationId = nominationId;
+                        db.PreviousRecognitions.Add(prevRec);
+                    }
                 }
+                
                 db.SaveChanges();
 
                 ApprovalStages approvalStage = db.ApprovalStages.OrderBy(o => o.Order).FirstOrDefault();

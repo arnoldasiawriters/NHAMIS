@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="admin-lte/css/AdminLTE.css">
-      <publishTime>09/17/2019 15:11:40</publishTime>
+      <publishTime>10/05/2019 09:20:09</publishTime>
     </File>
     <File Include="admin-lte/css/adminlte.css.map">
       <publishTime>09/04/2019 10:53:18</publishTime>
@@ -679,10 +679,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/03/2019 11:46:48</publishTime>
+      <publishTime>10/06/2019 22:28:11</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>10/03/2019 11:46:48</publishTime>
+      <publishTime>10/06/2019 22:28:11</publishTime>
     </File>
     <File Include="bin/de/Microsoft.SqlServer.Types.resources.dll">
       <publishTime>02/21/2014 06:26:06</publishTime>
@@ -943,19 +943,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/21/2014 06:25:46</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystem.dll">
-      <publishTime>10/03/2019 11:46:43</publishTime>
+      <publishTime>10/06/2019 22:28:05</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystem.pdb">
-      <publishTime>10/03/2019 11:46:43</publishTime>
+      <publishTime>10/06/2019 22:28:05</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.dll">
-      <publishTime>10/02/2019 16:55:00</publishTime>
+      <publishTime>10/06/2019 22:28:02</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.dll.config">
       <publishTime>05/08/2017 09:24:04</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.pdb">
-      <publishTime>10/02/2019 16:55:00</publishTime>
+      <publishTime>10/06/2019 22:28:02</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>05/08/2017 09:24:08</publishTime>
@@ -1264,7 +1264,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/17/2019 09:17:22</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/03/2019 11:46:44</publishTime>
+      <publishTime>10/06/2019 22:28:07</publishTime>
     </File>
     <File Include="Report/NominationsRpt.aspx">
       <publishTime>10/03/2019 11:40:36</publishTime>
@@ -1273,7 +1273,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2019 06:20:04</publishTime>
     </File>
     <File Include="Scripts/AngularJs/App.Js">
-      <publishTime>10/01/2019 21:39:52</publishTime>
+      <publishTime>10/06/2019 22:18:28</publishTime>
     </File>
     <File Include="Scripts/AngularJs/Directives.js">
       <publishTime>10/01/2019 11:35:00</publishTime>
@@ -1462,19 +1462,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Views/ApprovalStages/Create.cshtml">
-      <publishTime>10/01/2019 15:46:22</publishTime>
+      <publishTime>10/05/2019 20:05:59</publishTime>
     </File>
     <File Include="Views/ApprovalStages/Delete.cshtml">
-      <publishTime>10/01/2019 15:46:24</publishTime>
+      <publishTime>10/05/2019 19:23:59</publishTime>
     </File>
     <File Include="Views/ApprovalStages/Details.cshtml">
-      <publishTime>10/01/2019 15:46:25</publishTime>
+      <publishTime>10/05/2019 19:24:00</publishTime>
     </File>
     <File Include="Views/ApprovalStages/Edit.cshtml">
-      <publishTime>10/01/2019 15:46:26</publishTime>
+      <publishTime>10/05/2019 19:24:01</publishTime>
     </File>
     <File Include="Views/ApprovalStages/Index.cshtml">
-      <publishTime>10/01/2019 15:46:27</publishTime>
+      <publishTime>10/05/2019 19:24:03</publishTime>
     </File>
     <File Include="Views/AttachmentTypes/Create.cshtml">
       <publishTime>09/08/2019 18:33:42</publishTime>
@@ -1609,19 +1609,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2019 05:37:32</publishTime>
     </File>
     <File Include="Views/NominatingBodies/Create.cshtml">
-      <publishTime>09/08/2019 07:42:32</publishTime>
+      <publishTime>10/03/2019 15:49:29</publishTime>
     </File>
     <File Include="Views/NominatingBodies/Delete.cshtml">
-      <publishTime>09/08/2019 07:42:32</publishTime>
+      <publishTime>10/03/2019 15:31:57</publishTime>
     </File>
     <File Include="Views/NominatingBodies/Details.cshtml">
-      <publishTime>09/08/2019 07:42:34</publishTime>
+      <publishTime>10/03/2019 15:33:54</publishTime>
     </File>
     <File Include="Views/NominatingBodies/Edit.cshtml">
-      <publishTime>09/08/2019 07:42:34</publishTime>
+      <publishTime>10/03/2019 15:31:59</publishTime>
     </File>
     <File Include="Views/NominatingBodies/Index.cshtml">
-      <publishTime>09/08/2019 07:42:36</publishTime>
+      <publishTime>10/03/2019 15:32:00</publishTime>
+    </File>
+    <File Include="Views/NominatingBodyCategories/Create.cshtml">
+      <publishTime>10/03/2019 15:30:56</publishTime>
+    </File>
+    <File Include="Views/NominatingBodyCategories/Delete.cshtml">
+      <publishTime>10/03/2019 15:30:57</publishTime>
+    </File>
+    <File Include="Views/NominatingBodyCategories/Details.cshtml">
+      <publishTime>10/03/2019 15:30:58</publishTime>
+    </File>
+    <File Include="Views/NominatingBodyCategories/Edit.cshtml">
+      <publishTime>10/03/2019 15:30:59</publishTime>
+    </File>
+    <File Include="Views/NominatingBodyCategories/Index.cshtml">
+      <publishTime>10/03/2019 15:31:00</publishTime>
     </File>
     <File Include="Views/NominationAttachments/Create.cshtml">
       <publishTime>09/08/2019 18:34:20</publishTime>
@@ -1657,7 +1672,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2019 15:44:39</publishTime>
     </File>
     <File Include="Views/Nominations/Create.cshtml">
-      <publishTime>10/01/2019 11:44:42</publishTime>
+      <publishTime>10/05/2019 21:16:27</publishTime>
     </File>
     <File Include="Views/Nominations/Delete.cshtml">
       <publishTime>09/05/2019 21:48:40</publishTime>
@@ -1669,7 +1684,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/05/2019 21:48:42</publishTime>
     </File>
     <File Include="Views/Nominations/Index.cshtml">
-      <publishTime>09/17/2019 15:47:32</publishTime>
+      <publishTime>10/06/2019 21:28:12</publishTime>
     </File>
     <File Include="Views/Nominations/UpdateROH.cshtml">
       <publishTime>09/08/2019 20:11:06</publishTime>
@@ -1726,7 +1741,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/01/2019 15:47:08</publishTime>
+      <publishTime>10/06/2019 21:27:41</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/28/2017 19:18:42</publishTime>
@@ -1747,16 +1762,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2019 05:35:56</publishTime>
     </File>
     <File Include="Views/UserDetails/Create.cshtml">
-      <publishTime>09/08/2019 11:57:42</publishTime>
+      <publishTime>10/05/2019 19:48:27</publishTime>
     </File>
     <File Include="Views/UserDetails/Delete.cshtml">
-      <publishTime>09/08/2019 07:49:42</publishTime>
+      <publishTime>10/05/2019 18:47:38</publishTime>
     </File>
     <File Include="Views/UserDetails/Details.cshtml">
-      <publishTime>09/08/2019 07:49:42</publishTime>
+      <publishTime>10/05/2019 18:46:04</publishTime>
     </File>
     <File Include="Views/UserDetails/Edit.cshtml">
-      <publishTime>09/08/2019 07:49:44</publishTime>
+      <publishTime>10/05/2019 17:37:31</publishTime>
     </File>
     <File Include="Views/UserDetails/Index.cshtml">
       <publishTime>09/08/2019 08:12:20</publishTime>
