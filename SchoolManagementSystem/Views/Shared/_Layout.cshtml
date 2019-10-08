@@ -151,10 +151,10 @@
             @if (TempData["UserMessage"] != null)
             {
                 var message = (NHAMIS.APP.Models.MessageVM)TempData["UserMessage"];
-            <div class="alert @message.CssClassName fade in alert-dismissible">
-                <a class="close" data-dismiss="alert" href="#">&times;</a>
-                <strong>@message.Title</strong>@message.Message
-            </div>
+                <div class="alert @message.CssClassName fade in alert-dismissible">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <strong>@message.Title</strong>@message.Message
+                </div>
             }
             @*<section class="content-header"></section>*@
             <!-- Main content -->
@@ -175,5 +175,16 @@
         </footer>
     </div>
     @RenderSection("scripts", required: false)
+    <script>
+    //session end
+    var sessionTimeoutWarning = @Session.Timeout- 1;
+
+    var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+    setTimeout('SessionEnd()', sTimeout);
+
+    function SessionEnd() {
+        window.location = "/Account/LogIn";
+    }
+    </script>
 </body>
 </html>

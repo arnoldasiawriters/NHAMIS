@@ -8,6 +8,7 @@ namespace SchoolManagementSystem
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            //GlobalFilters.Filters.Add(new SessionExpireFilterAttribute());
         }
     }
 }

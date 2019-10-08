@@ -24,6 +24,8 @@ namespace NHAMIS.APP.Models
         public string Location { get; set; }
         public string SubLocation { get; set; }
         public string Village { get; set; }
+        public string CitationSummary { get; set; }
+        public string Position { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }
         public string Status { get; set; }
@@ -40,7 +42,7 @@ namespace NHAMIS.APP.Models
         public int MedalId { get; set; }
         public virtual Medal Medal { get; set; }
         public int NominatingBodyId { get; set; }
-        public virtual NominatingBody NominatingBody { get; set; }       
+        public virtual NominatingBody NominatingBody { get; set; }
         public int OccupationId { get; set; }
         public virtual Occupation Occupation { get; set; }
         public int CountryId { get; set; }

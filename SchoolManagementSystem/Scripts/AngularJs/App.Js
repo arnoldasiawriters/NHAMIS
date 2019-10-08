@@ -12,6 +12,7 @@
         ctrl.showKenyan = true;
 
         ctrl.model = {};
+        ctrl.model.PostalAddress = "";
         ctrl.Nationality = "Kenyan";
 
         ctrl.nationalityChanged = function () {
@@ -224,6 +225,12 @@
                 ctrl.attachment = null;
             }
 
+        };
+
+        ctrl.CheckIfNumber = function () {
+            if (!Number.isInteger(ctrl.model.PostalAddress)) {
+                ctrl.model.PostalAddress = "";
+            }
         };
     }
 })();

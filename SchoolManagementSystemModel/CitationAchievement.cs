@@ -15,8 +15,8 @@ namespace NHAMIS.APP.Models
         public string Role { get; set; }
         [DataType(DataType.MultilineText)]
         public string Achivement { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public int NominationId {get; set; }
         public Nomination Nomination { get; set; }
     }

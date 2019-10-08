@@ -13,7 +13,7 @@ namespace NHAMIS.APP.Models
         public string RecognizingInstitution { get; set; }
         public string AchievementTitle { get; set; }
         public string Award { get; set; }
-        public DateTime AwardDate { get; set; }
+        public DateTime? AwardDate { get; set; }
         public int NominationId { get; set; }
         public Nomination Nomination { get; set; }
     }

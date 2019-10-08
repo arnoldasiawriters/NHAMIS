@@ -21,6 +21,7 @@ namespace NHAMIS.APP.Models
         public virtual ApprovalStages ApprovalStages { get; set; }
         public int MedalId { get; set; }
         public virtual Medal Medal { get; set; }
-        public bool Status { get; set; }      
+        public bool Status { get; set; }
+        public bool Forwarded { get; set; }
     }
 }

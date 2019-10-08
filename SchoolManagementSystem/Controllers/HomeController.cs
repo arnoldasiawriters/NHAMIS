@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace SchoolManagementSystem.Controllers
 {
     [Authorize]
+    [SessionExpire]
     public class HomeController : Controller
     {
         NHAMISContext dbcontext = new NHAMISContext();

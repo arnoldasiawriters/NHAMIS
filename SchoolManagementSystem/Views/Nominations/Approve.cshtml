@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in ctrl.NominationApprovals">
+                        <tr ng-repeat="item in ctrl.NominationApprovals track by $index">
                             <td>{{item.NominatingBody.Name}}</td>
                             <td>{{item.SalutationName}}</td>
                             <td>{{item.Surname}}</td>
@@ -49,13 +49,13 @@
                             <td>{{item.CountyOfBirth}}</td>
                             <td>
                                 <select class="select form-control"
-                                        ng-model="item.Medal"
+                                        ng-model="ctrl.Medals[$index]"
                                         ng-options="i.Name for i in ctrl.Medals"
                                         ng-disabled="item.ApprovalStage.DisableMedalSelection">
                                 </select>
                             </td>
                             <td>
-                                <input ng-model="item.Status" type="checkbox" />
+                                <input ng-model="item.Status" type="checkbox" ng-disabled="item.Status"/>
                             </td>
                         </tr>
                     </tbody>

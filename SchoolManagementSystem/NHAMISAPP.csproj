@@ -236,20 +236,17 @@
     <Compile Include="Controllers\SubCountiesController.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="Controllers\WardsController.cs" />
+    <Compile Include="Filters\SessionExpireAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910051425060_Initial.cs" />
-    <Compile Include="Migrations\201910051425060_Initial.Designer.cs">
-      <DependentUpon>201910051425060_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910071114113_Initial.cs" />
+    <Compile Include="Migrations\201910071114113_Initial.Designer.cs">
+      <DependentUpon>201910071114113_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910051630055_Added role to stages.cs" />
-    <Compile Include="Migrations\201910051630055_Added role to stages.Designer.cs">
-      <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.cs" />
-    <Compile Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.Designer.cs">
-      <DependentUpon>201910061921132_Made DateOfBirth Column nullable for Nomination.cs</DependentUpon>
+    <Compile Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.cs" />
+    <Compile Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.Designer.cs">
+      <DependentUpon>201910080648104_Added Forwarded to Table NominationApprovals.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -791,14 +788,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910051425060_Initial.resx">
-      <DependentUpon>201910051425060_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910071114113_Initial.resx">
+      <DependentUpon>201910071114113_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910051630055_Added role to stages.resx">
-      <DependentUpon>201910051630055_Added role to stages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910061921132_Made DateOfBirth Column nullable for Nomination.resx">
-      <DependentUpon>201910061921132_Made DateOfBirth Column nullable for Nomination.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.resx">
+      <DependentUpon>201910080648104_Added Forwarded to Table NominationApprovals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

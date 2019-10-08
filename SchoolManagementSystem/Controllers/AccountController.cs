@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -23,10 +24,10 @@ namespace SchoolManagementSystem.Controllers
 
         public AccountController()
         {
-            
+
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -38,9 +39,9 @@ namespace SchoolManagementSystem.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -78,13 +79,13 @@ namespace SchoolManagementSystem.Controllers
             }
 
             var userLoginDetails = db.Users.Where(u => u.UserName == model.UserName).FirstOrDefault();
-            if(userLoginDetails == null)
+            if (userLoginDetails == null)
             {
                 ModelState.AddModelError("", "Invalid login attempt. Contact System Administrator.");
                 return PartialView(model);
             }
 
-            var userDetails = db.UserDetails.Where(l=>l.UserId == userLoginDetails.Id).FirstOrDefault();
+            var userDetails = db.UserDetails.Where(l => l.UserId == userLoginDetails.Id).FirstOrDefault();
             if (!userDetails.UserStatus)
             {
                 ModelState.AddModelError("", "Invalid login attempt. Contact System Administrator.");
@@ -92,11 +93,12 @@ namespace SchoolManagementSystem.Controllers
             }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-           // ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
+            // ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["username"] = model.UserName;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -138,7 +140,7 @@ namespace SchoolManagementSystem.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -174,8 +176,8 @@ namespace SchoolManagementSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -253,7 +255,7 @@ namespace SchoolManagementSystem.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return  View();
+            return View();
         }
 
         //
@@ -403,6 +405,15 @@ namespace SchoolManagementSystem.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+        //[HttpGet]
+        //public ActionResult LogOff()
+        //{
+        //    Session["User"] = null; //it's my session variable
+        //    Session.Clear();
+        //    Session.Abandon();
+        //    FormsAuthentication.SignOut(); //you write this when you use FormsAuthentication
+        //    return RedirectToAction("Login", "Account");
+        //}
 
         //
         // POST: /Account/LogOff
@@ -411,6 +422,7 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["username"] = null;
             return RedirectToAction("Index", "Home");
         }
 
