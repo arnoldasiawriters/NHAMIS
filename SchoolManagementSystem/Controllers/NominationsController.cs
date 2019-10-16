@@ -14,6 +14,7 @@ using System.Web.Mvc;
 namespace SchoolManagementSystem.Controllers
 {
     [Authorize]
+    [SessionExpire]
     public class NominationsController : Controller
     {
         private NHAMISContext db = new NHAMISContext();
@@ -210,7 +211,7 @@ namespace SchoolManagementSystem.Controllers
                 Medals = db.Medals.Select(c => new { c.Id, c.Name, c.OrderBy }).OrderBy(c => c.OrderBy).ToList(),
                 AttachmentTypes = db.AttachmentTypes.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
                 Occupations = db.Occupations.Select(c => new { c.Id, c.Name }),
-                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town })
+                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c=>c.Code)
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }
@@ -236,29 +237,10 @@ namespace SchoolManagementSystem.Controllers
             {
                 var userDetails = db.UserDetails.Where(m => m.UserId == userId).FirstOrDefault();
                 model.UserDetailsId = userDetails.Id;
-                model.Status = "Pending";
+                model.Status = NominationStatus.Pending;
                 db.Nominations.Add(model);
                 db.SaveChanges();
                 int nominationId = model.Id;
-                if (model.CitationAchievements != null)
-                {
-                    foreach (var achv in model.CitationAchievements)
-                    {
-                        achv.NominationId = nominationId;
-                        db.CitationAchievements.Add(achv);
-                    }
-                }
-
-                if (model.PreviousRecognitions != null)
-                {
-                    foreach (var prevRec in model.PreviousRecognitions)
-                    {
-                        prevRec.NominationId = nominationId;
-                        db.PreviousRecognitions.Add(prevRec);
-                    }
-                }
-                
-                db.SaveChanges();
 
                 ApprovalStages approvalStage = db.ApprovalStages.OrderBy(o => o.Order).FirstOrDefault();
                 NominationApprovals nominationApproval = new NominationApprovals();
@@ -350,7 +332,7 @@ namespace SchoolManagementSystem.Controllers
                 else
                 {
                     Nomination nomination = db.Nominations.Find(currNomStage.NominationId);
-                    nomination.Status = "Approved";
+                    nomination.Status = NominationStatus.Awarded;
                     db.Entry(nomination).State = EntityState.Modified;
                     db.SaveChanges();
                 }

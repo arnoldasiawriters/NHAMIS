@@ -26,9 +26,10 @@ namespace NHAMIS.APP.Models
         public string Village { get; set; }
         public string CitationSummary { get; set; }
         public string Position { get; set; }
+        public string PhysicalAddress { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }
-        public string Status { get; set; }
+        public NominationStatus Status { get; set; }
         public int WardId { get; set; }
         public virtual Ward Ward { get; set; }
         public int SalutationId { get; set; }

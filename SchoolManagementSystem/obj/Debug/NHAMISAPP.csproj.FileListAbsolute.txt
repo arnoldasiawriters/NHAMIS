@@ -141,3 +141,5 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.Initial.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\NHAMISAPP.csproj.GenerateResource.cache
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedForwardedtoTableNominationApprovals.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.AddedPhysicalAddresstoNomination.resources
+C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Migrations.StandardizedNominationStatus.resources

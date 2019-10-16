@@ -15,6 +15,7 @@ using SchoolManagementSystem.Models;
 namespace SchoolManagementSystem.Controllers
 {
     [Authorize]
+    [SessionExpire]
     public class UserDetailsController : Controller
     {
         private NHAMISContext db = new NHAMISContext();

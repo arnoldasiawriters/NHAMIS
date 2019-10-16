@@ -107,6 +107,13 @@ namespace SchoolManagementSystem
                 role.Name = "ApproverStageThree";
                 roleManager.Create(role);
             }
+
+            if (!roleManager.RoleExists("Super Admin"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Super Admin";
+                roleManager.Create(role);
+            }
         }
     }
 }

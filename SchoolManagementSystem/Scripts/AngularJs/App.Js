@@ -12,7 +12,6 @@
         ctrl.showKenyan = true;
 
         ctrl.model = {};
-        ctrl.model.PostalAddress = "";
         ctrl.Nationality = "Kenyan";
 
         ctrl.nationalityChanged = function () {
@@ -36,7 +35,6 @@
 
                 ctrl.Counties = results[0].data.Counties;
                 ctrl.CountyOfBirth = ctrl.Counties[0];
-                //ctrl.model.Nomination.CountyId = ctrl.model.Counties[0];
 
                 ctrl.Countries = results[0].data.Countries;
                 ctrl.Country = ctrl.Countries[0];
@@ -60,8 +58,10 @@
                 ctrl.Occupation = ctrl.Occupations[0];
 
                 ctrl.PostalCodes = results[0].data.PostalCodes;
-                ctrl.Town = ctrl.PostalCodes[0];
-                ctrl.PostalCode = ("00000" + ctrl.PostalCodes[0].Code).slice(-5);
+                _.forEach(ctrl.PostalCodes, function (p) {
+                    p.Code = ("00000" + p.Code).slice(-5)
+                });
+                ctrl.PostalCode = ctrl.PostalCodes[0];
             })
             .catch(function (error) {
                 console.log("An error occured.", error);
@@ -125,21 +125,15 @@
         };
 
         ctrl.RemoveCitationRec = function (rec) {
-            _.remove(ctrl.CitationAchievements, function (o) {
+            _.remove(ctrl.model.CitationAchievements, function (o) {
                 return o.Achivement == rec.Achivement && o.StartDate == rec.StartDate;
             });
         };
 
         ctrl.RemoveRecognitionRec = function (rec) {
-            _.remove(ctrl.PreviousRecognitions, function (o) {
+            _.remove(ctrl.model.PreviousRecognitions, function (o) {
                 return o.Award == rec.Award;
             });
-        };
-
-        ctrl.GetPostalCode = function () {
-            if (ctrl.Town) {
-                ctrl.PostalCode = ("00000" + ctrl.Town.Code).slice(-5);
-            }
         };
 
         ctrl.FindSubCounties = function () {
@@ -147,11 +141,8 @@
                 var params = { countyid: ctrl.County.Id };
                 appsvc.getItems(baseUrl + "/Nominations/GetSubCounties", params)
                     .then(function (res) {
-                        //ctrl.model.Wards = [];
                         ctrl.Ward = "";
-
-                        ctrl.SubCounties = res.data;
-                        //ctrl.model.Nomination.SubCountyId = ctrl.model.SubCounties[0];                   
+                        ctrl.SubCounties = res.data;               
                     })
                     .catch(function (error) {
                         console.log("An error occured while fetching subcounties.", error);
@@ -165,7 +156,6 @@
                 appsvc.getItems(baseUrl + "/Nominations/GetWards", params)
                     .then(function (res) {
                         ctrl.Wards = res.data;
-                        //ctrl.model.Nomination.WardId = ctrl.model.Wards[0];
                     })
                     .catch(function (error) {
                         console.log("An error occured while fetching wards.", error);
@@ -188,13 +178,13 @@
                     ctrl.model.WardId = ctrl.Ward.Id;
                     ctrl.model.CountyOfBirth = ctrl.CountyOfBirth.CountyName;
                     ctrl.model.Nationality = ctrl.Nationality;
-                    ctrl.model.PostalCodeId = ctrl.Town.Id;
+                    ctrl.model.PostalCodeId = ctrl.PostalCode.Id;
                     var body = JSON.stringify(ctrl.model);
                     appsvc
                         .postItems(baseUrl + '/Nominations/PostNominationForm', body)
                         .then(function (results) {
                             $window.location = baseUrl + '/Nominations';
-                            $dialogAlert('Nomination Form has been Submitted Successfully.', 'Successful Transaction');                            
+                            $dialogAlert('Nomination Form has been Submitted Successfully.', 'Successful Transaction');
                         })
                         .catch(function (error) {
                             $dialogAlert('An Error occured while Submitting the Nomination Form. Contact the system Administrator.', 'UnSuccessful Transaction');
@@ -225,12 +215,6 @@
                 ctrl.attachment = null;
             }
 
-        };
-
-        ctrl.CheckIfNumber = function () {
-            if (!Number.isInteger(ctrl.model.PostalAddress)) {
-                ctrl.model.PostalAddress = "";
-            }
         };
     }
 })();

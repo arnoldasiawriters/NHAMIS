@@ -73,6 +73,7 @@
     <Compile Include="NominationApprovals.cs" />
     <Compile Include="NominationAttachment.cs" />
     <Compile Include="NominationPeriod.cs" />
+    <Compile Include="NominationStatus.cs" />
     <Compile Include="Occupation.cs" />
     <Compile Include="PostalCode.cs" />
     <Compile Include="PreviousRecognition.cs" />

@@ -11,6 +11,8 @@ using NHAMIS.APP.Models;
 
 namespace SchoolManagementSystem.Controllers
 {
+    [Authorize]
+    [SessionExpire]
     public class OccupationsController : Controller
     {
         private NHAMISContext db = new NHAMISContext();
