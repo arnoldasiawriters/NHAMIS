@@ -2,7 +2,7 @@
     'use script';
 
     angular
-        .module('App', ['appservices', 'NominationApprovals', 'directives', 'ui.bootstrap.dialogs'])
+        .module('App', ['appservices', 'NominationApprovals', 'directives', 'ui.bootstrap.dialogs','datatables'])
         .controller('NominationsCtrl', NominationsCtrlFunction);
 
     NominationsCtrlFunction.$inject = ['$q', '$dialog', '$dialogConfirm', '$dialogAlert', '$window', 'appsvc'];
@@ -21,6 +21,8 @@
                 ctrl.showKenyan = false;
             }
         };
+
+        ctrl.Nominations = [];
 
         var promises = [];
         promises.push(appsvc.getItems(baseUrl + '/Nominations/GetSelectLists'));
@@ -90,6 +92,7 @@
                 ctrl.searchresults = _.filter(ctrl.searchresults, ["selected", true]);
             }
         };
+
         ctrl.model.CitationAchievements = [];
         ctrl.AddCitationRecord = function () {
             var rec = {
@@ -215,6 +218,35 @@
                 ctrl.attachment = null;
             }
 
+        };
+
+        ctrl.GetNominations = function () {
+            if (!ctrl.NominationPeriod || !ctrl.NominatingBody) {
+                return;
+            }
+
+            var params = { periodId: ctrl.NominationPeriod.Id, bodyId: ctrl.NominatingBody.Id };
+            var promises = [];
+            promises.push(appsvc.getItems(baseUrl + '/Nominations/GetNominations', params));
+
+            $q.all(promises)
+                .then(function (results) {
+                    if (results[0].data.length > 0) {
+                        ctrl.Nominations = [];
+                        ctrl.Nominations = results[0].data;
+                    } else {
+                        ctrl.Nominations = [];
+                        $dialogAlert('There are no records for the period and body.', 'UnSuccessful Transaction');
+                    }
+                })
+                .catch(function (error) {
+                    $dialogAlert('An Error occured while querying the database. Contact the system Administrator.', 'UnSuccessful Transaction');
+                    console.log(error);
+                });
+        };
+
+        ctrl.ClearNominations = function () {
+            ctrl.Nominations = [];
         };
     }
 })();

@@ -503,6 +503,7 @@
     <Content Include="Content\chosen.css" />
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\colors.min.css" />
+    <Content Include="Content\css\dataTable.min.css" />
     <Content Include="Content\css\DataTables\dataTables.bootstrap.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
@@ -595,6 +596,7 @@
     <Content Include="Models\Initialisation\PostalCodesKenya.txt" />
     <Content Include="Models\Initialisation\Wards.txt" />
     <Content Include="Report\NominationsRpt.aspx" />
+    <Content Include="Scripts\AngularJs\angular-datatables.min.js" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
     <Content Include="Scripts\AngularJs\App.Js" />
     <Content Include="Scripts\AngularJs\Directives.js" />

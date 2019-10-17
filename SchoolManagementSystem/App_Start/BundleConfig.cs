@@ -24,6 +24,7 @@ namespace SchoolManagementSystem
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/css/dataTable.min.css",
                       "~/Content/site.css",
                       "~/admin-lte/css/AdminLTE.css",
                       "~/admin-lte/plugins/iCheck/square/blue.css",
@@ -38,6 +39,7 @@ namespace SchoolManagementSystem
             // AngularJs Files
             bundles.Add(new ScriptBundle("~/Scripts/AngularJs").Include(
                "~/Scripts/AngularJs/angular.min.js",
+               "~/Scripts/AngularJs/angular-datatables.min.js",
                "~/Scripts/AngularJs/lodash.min.js",
                "~/Scripts/AngularJs/ui-bootstrap-tpls.min.js",
                "~/Scripts/AngularJs/ui-bootstrap-dialogs.js",

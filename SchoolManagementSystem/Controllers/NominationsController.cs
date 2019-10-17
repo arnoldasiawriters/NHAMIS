@@ -22,10 +22,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: Nominations
         public ActionResult Index()
         {
-            var nominations = db.Nominations.Include(n => n.NominatingBody).Include(n => n.NominationPeriod).Include(n => n.Salutation).Include(n => n.Ward).Include(o => o.Occupation);
-            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
-            ViewBag.NominationPeriodId = new SelectList(db.NominationPeriods, "Id", "Name");
-            return View(nominations.ToList());
+            return View();
         }
 
         // GET: Approve
@@ -211,7 +208,7 @@ namespace SchoolManagementSystem.Controllers
                 Medals = db.Medals.Select(c => new { c.Id, c.Name, c.OrderBy }).OrderBy(c => c.OrderBy).ToList(),
                 AttachmentTypes = db.AttachmentTypes.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
                 Occupations = db.Occupations.Select(c => new { c.Id, c.Name }),
-                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c=>c.Code)
+                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c => c.Code)
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }
@@ -246,7 +243,7 @@ namespace SchoolManagementSystem.Controllers
                 NominationApprovals nominationApproval = new NominationApprovals();
                 nominationApproval.ApprovalStagesId = approvalStage.Id;
                 nominationApproval.MedalId = model.MedalId;
-                nominationApproval.NominationId = nominationId;                
+                nominationApproval.NominationId = nominationId;
                 nominationApproval.Status = false;
                 db.NominationApprovals.Add(nominationApproval);
                 db.SaveChanges();
@@ -292,6 +289,28 @@ namespace SchoolManagementSystem.Controllers
                     ApprovalStage = new { c.ApprovalStages.Id, c.ApprovalStages.Name, c.ApprovalStages.DisableMedalSelection }
                 })
                 .OrderBy(d => d.NominatingBody.Order)
+                .ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetNominations(string periodId, string bodyId)
+        {
+            int period = int.Parse(periodId);
+            int body = int.Parse(bodyId);
+            var result = db.Nominations
+                .Where(a => a.NominationPeriodId == period && a.NominatingBodyId == body)
+                .Select(c=> new {
+                    c.Id,
+                    Salutation = new { c.Salutation.Id, c.Salutation.Name },
+                    c.Surname,
+                    c.OtherNames,
+                    c.IdNumber,
+                    c.Nationality,
+                    c.CountyOfBirth,
+                    NominatingBody = new { c.NominatingBody.Id, c.NominatingBody.Name, c.NominatingBody.Order },
+                    c.Status
+                })
+                .OrderBy(n => n.NominatingBody.Order)
                 .ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
