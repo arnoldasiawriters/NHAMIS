@@ -11,8 +11,6 @@ using NHAMIS.APP.Models;
 
 namespace SchoolManagementSystem.Controllers
 {
-    [Authorize]
-    [SessionExpire]
     public class HonorRolesController : Controller
     {
         private NHAMISContext db = new NHAMISContext();
@@ -20,8 +18,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: HonorRoles
         public ActionResult Index()
         {
-            var honorRoles = db.HonorRoles.Include(h => h.Medal).Include(h => h.Salutation);
-            return View(honorRoles.ToList());
+            return View(db.HonorRoles.ToList());
         }
 
         // GET: HonorRoles/Details/5
@@ -42,8 +39,6 @@ namespace SchoolManagementSystem.Controllers
         // GET: HonorRoles/Create
         public ActionResult Create()
         {
-            ViewBag.MedalId = new SelectList(db.Medals, "Id", "Name");
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name");
             return View();
         }
 
@@ -52,7 +47,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,SerialNo,IdNumber,ConfirementDate,Nationality,SalutationId,MedalId,CreateBy,CreateDate,ModifyBy,ModifyDate")] HonorRole honorRole)
+        public ActionResult Create([Bind(Include = "Id,SerialNo,Title,Name,IdNumber,Medal,Rank,ConfirementDate,Nationality,CreateBy,CreateDate,ModifyBy,ModifyDate")] HonorRole honorRole)
         {
             if (ModelState.IsValid)
             {
@@ -61,8 +56,6 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MedalId = new SelectList(db.Medals, "Id", "Name", honorRole.MedalId);
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name", honorRole.SalutationId);
             return View(honorRole);
         }
 
@@ -78,8 +71,6 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MedalId = new SelectList(db.Medals, "Id", "Name", honorRole.MedalId);
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name", honorRole.SalutationId);
             return View(honorRole);
         }
 
@@ -88,7 +79,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,SerialNo,IdNumber,ConfirementDate,Nationality,SalutationId,MedalId,CreateBy,CreateDate,ModifyBy,ModifyDate")] HonorRole honorRole)
+        public ActionResult Edit([Bind(Include = "Id,SerialNo,Title,Name,IdNumber,Medal,Rank,ConfirementDate,Nationality,CreateBy,CreateDate,ModifyBy,ModifyDate")] HonorRole honorRole)
         {
             if (ModelState.IsValid)
             {
@@ -96,8 +87,6 @@ namespace SchoolManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MedalId = new SelectList(db.Medals, "Id", "Name", honorRole.MedalId);
-            ViewBag.SalutationId = new SelectList(db.Salutations, "Id", "Name", honorRole.SalutationId);
             return View(honorRole);
         }
 

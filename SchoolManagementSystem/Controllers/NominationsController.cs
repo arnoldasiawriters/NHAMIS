@@ -189,7 +189,6 @@ namespace SchoolManagementSystem.Controllers
         {
             var roleOfHonor = db.HonorRoles
                                 .Where(m => m.Name.Contains(searchKey) || m.IdNumber.Contains(searchKey))
-                                .Include(m => m.Medal)
                                 .ToList();
             return Json(roleOfHonor, JsonRequestBehavior.AllowGet);
         }
@@ -211,6 +210,27 @@ namespace SchoolManagementSystem.Controllers
                 PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c => c.Code)
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetCountySubCountyFromWard(string wardid)
+        {
+            int wid = int.Parse(wardid);
+            int sbid = db.Wards.Find(wid).SubCountyId;
+            int cid = db.SubCounties.Find(sbid).CountyId;
+
+            var selectlists = new
+            {
+                Ward = db.Wards.Select(c => new { c.Id, c.WardName }).Where(c => c.Id == wid).FirstOrDefault(),
+                SubCounty = db.SubCounties.Select(c => new { c.Id, c.SubCountyName }).Where(c => c.Id == sbid).FirstOrDefault(),
+                County = db.Counties.Select(c => new { c.Id, c.CountyName }).Where(c => c.Id == cid).FirstOrDefault()
+            };
+            return Json(selectlists, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetPreviousAwards(string idnumber)
+        {
+            var rolehonor = db.HonorRoles.Where(i => i.IdNumber == idnumber).ToList();
+            return Json(rolehonor, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubCounties(int countyid)
@@ -293,13 +313,32 @@ namespace SchoolManagementSystem.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetNomination(string nominationId)
+        {
+            var nomId = int.Parse(nominationId);
+            var result = db.Nominations
+                .Include(w => w.Ward)
+                .SingleOrDefault(n => n.Id == nomId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetNominations(string periodId, string bodyId)
         {
             int period = int.Parse(periodId);
             int body = int.Parse(bodyId);
-            var result = db.Nominations
-                .Where(a => a.NominationPeriodId == period && a.NominatingBodyId == body)
-                .Select(c=> new {
+            var result = new object();
+            if (body == 0)
+            {
+                result = db.Nominations
+                .Include(s => s.Salutation)
+                .Include(n => n.NominatingBody)
+                .Include(m => m.Medal)
+                .Where(a => a.NominationPeriodId == period)
+                .OrderBy(n => n.NominatingBody.Order)
+                .OrderBy(o => o.Medal.OrderBy)
+                .ToList()
+                .Select(c => new
+                {
                     c.Id,
                     Salutation = new { c.Salutation.Id, c.Salutation.Name },
                     c.Surname,
@@ -308,10 +347,36 @@ namespace SchoolManagementSystem.Controllers
                     c.Nationality,
                     c.CountyOfBirth,
                     NominatingBody = new { c.NominatingBody.Id, c.NominatingBody.Name, c.NominatingBody.Order },
-                    c.Status
-                })
+                    Medal = new { c.Medal.Id, c.Medal.Name, c.Medal.OrderBy },
+                    Status = Enum.GetName(typeof(NominationStatus), (int)(c.Status))
+                }).ToList();
+            }
+            else
+            {
+                result = db.Nominations
+                .Include(s => s.Salutation)
+                .Include(n => n.NominatingBody)
+                .Include(m => m.Medal)
+                .Where(a => a.NominationPeriodId == period && a.NominatingBodyId == body)
                 .OrderBy(n => n.NominatingBody.Order)
-                .ToList();
+                .OrderBy(n => n.Medal.OrderBy)
+                .ToList()
+                .Select(c => new
+                {
+                    c.Id,
+                    Salutation = new { c.Salutation.Id, c.Salutation.Name },
+                    c.Surname,
+                    c.OtherNames,
+                    c.IdNumber,
+                    c.Nationality,
+                    c.CountyOfBirth,
+                    NominatingBody = new { c.NominatingBody.Id, c.NominatingBody.Name, c.NominatingBody.Order },
+                    Medal = new { c.Medal.Id, c.Medal.Name, c.Medal.OrderBy },
+                    Status = Enum.GetName(typeof(NominationStatus), (int)(c.Status))
+                }).ToList();
+            }
+
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -322,6 +387,8 @@ namespace SchoolManagementSystem.Controllers
             var nextstage = db.ApprovalStages.Where(o => o.Order == nextstageorder).FirstOrDefault();
             return nextstage;
         }
+
+
 
         [HttpPost]
         public ActionResult PostNominationApprovals(List<ApprovalViewModel> model)

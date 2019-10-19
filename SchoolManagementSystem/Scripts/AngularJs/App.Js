@@ -2,7 +2,7 @@
     'use script';
 
     angular
-        .module('App', ['appservices', 'NominationApprovals', 'directives', 'ui.bootstrap.dialogs','datatables'])
+        .module('App', ['appservices', 'NominationApprovals', 'directives', 'ui.bootstrap.dialogs', 'datatables'])
         .controller('NominationsCtrl', NominationsCtrlFunction);
 
     NominationsCtrlFunction.$inject = ['$q', '$dialog', '$dialogConfirm', '$dialogAlert', '$window', 'appsvc'];
@@ -22,6 +22,9 @@
             }
         };
 
+        var curPath = window.location.pathname;
+        var idVal = curPath.split('/')[curPath.split('/').length - 1];
+
         ctrl.Nominations = [];
 
         var promises = [];
@@ -29,11 +32,17 @@
 
         $q.all(promises)
             .then(function (results) {
-                ctrl.NominatingBodies = results[0].data.NominatingBodies;
-                ctrl.NominatingBody = ctrl.NominatingBodies[0];
+
+                ctrl.NominatingBodies = [];
+                ctrl.NominatingBodies.push({ Id: 0, Name: "All" });
+                _.forEach(results[0].data.NominatingBodies, function (body) {
+                    ctrl.NominatingBodies.push(body);
+                });
+
+                //ctrl.NominatingBody = ctrl.NominatingBodies[0];
 
                 ctrl.NominationPeriods = results[0].data.NominationPeriods;
-                ctrl.NominationPeriod = ctrl.NominationPeriods[0];
+                //ctrl.NominationPeriod = ctrl.NominationPeriods[0];
 
                 ctrl.Counties = results[0].data.Counties;
                 ctrl.CountyOfBirth = ctrl.Counties[0];
@@ -64,6 +73,43 @@
                     p.Code = ("00000" + p.Code).slice(-5)
                 });
                 ctrl.PostalCode = ctrl.PostalCodes[0];
+
+                if (Number.isInteger(Number(idVal))) {
+                    var params = { nominationId: idVal };
+
+                    appsvc
+                        .getItems(baseUrl + '/Nominations/GetNomination', params)
+                        .then(function (results) {
+                            var params = { wardid: results.data.WardId };
+                            var param = { idnumber: results.data.IdNumber };
+                            var promises = [];
+                            promises.push(appsvc.getItems(baseUrl + '/Nominations/GetCountySubCountyFromWard', params));
+                            promises.push(appsvc.getItems(baseUrl + '/Nominations/GetPreviousAwards', param));
+
+                            $q
+                                .all(promises)
+                                .then(function (resinner) {
+                                    ctrl.Nomination = results.data;
+                                    ctrl.NominatingBody = _.find(ctrl.NominatingBodies, ['Id', ctrl.Nomination.NominatingBodyId]);
+                                    ctrl.NominationPeriod = _.find(ctrl.NominationPeriods, ['Id', ctrl.Nomination.NominationPeriodId]);
+                                    ctrl.Salutation = _.find(ctrl.Salutations, ['Id', ctrl.Nomination.SalutationId]);
+                                    ctrl.Gender = _.find(ctrl.Genders, ['Id', ctrl.Nomination.GenderId]);
+                                    ctrl.Postal = _.find(ctrl.PostalCodes, ['Id', ctrl.Nomination.PostalCodeId]);
+                                    ctrl.SubCounty = resinner[0].data.SubCounty.SubCountyName;
+                                    ctrl.County = resinner[0].data.County.CountyName;
+                                    ctrl.AcademicQualification = _.find(ctrl.AcademicQualifications, ['Id', ctrl.Nomination.AcademicQualificationId]);
+                                    ctrl.Occupation = _.find(ctrl.Occupations, ['Id', ctrl.Nomination.OccupationId]);
+                                    ctrl.Medal = _.find(ctrl.Medals, ['Id', ctrl.Nomination.MedalId]);
+                                    ctrl.PreviousNominations = resinner[1].data;
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
             })
             .catch(function (error) {
                 console.log("An error occured.", error);
@@ -145,7 +191,7 @@
                 appsvc.getItems(baseUrl + "/Nominations/GetSubCounties", params)
                     .then(function (res) {
                         ctrl.Ward = "";
-                        ctrl.SubCounties = res.data;               
+                        ctrl.SubCounties = res.data;
                     })
                     .catch(function (error) {
                         console.log("An error occured while fetching subcounties.", error);
@@ -167,7 +213,6 @@
         };
 
         ctrl.SubmitNominationsForm = function () {
-
             $dialogConfirm("Submit Approvals?", "Confirm Transaction")
                 .then(function () {
                     ctrl.model.NominatingBodyId = ctrl.NominatingBody.Id;
@@ -247,6 +292,13 @@
 
         ctrl.ClearNominations = function () {
             ctrl.Nominations = [];
+        };
+
+        ctrl.formatDate = function (date) {
+            if (date) {
+                var dateOut = new Date(parseInt(date.substr(6)));
+                return dateOut;
+            }
         };
     }
 })();

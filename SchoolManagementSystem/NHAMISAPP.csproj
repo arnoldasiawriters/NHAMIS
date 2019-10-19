@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201910161154564_Standardized Nomination Status.Designer.cs">
       <DependentUpon>201910161154564_Standardized Nomination Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910191804384_Updated HonourRole Table.cs" />
+    <Compile Include="Migrations\201910191804384_Updated HonourRole Table.Designer.cs">
+      <DependentUpon>201910191804384_Updated HonourRole Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -733,11 +737,6 @@
     <Content Include="Views\Medals\Details.cshtml" />
     <Content Include="Views\Medals\Edit.cshtml" />
     <Content Include="Views\Medals\Index.cshtml" />
-    <Content Include="Views\HonorRoles\Create.cshtml" />
-    <Content Include="Views\HonorRoles\Delete.cshtml" />
-    <Content Include="Views\HonorRoles\Details.cshtml" />
-    <Content Include="Views\HonorRoles\Edit.cshtml" />
-    <Content Include="Views\HonorRoles\Index.cshtml" />
     <Content Include="Views\Occupations\Create.cshtml" />
     <Content Include="Views\Occupations\Delete.cshtml" />
     <Content Include="Views\Occupations\Details.cshtml" />
@@ -776,6 +775,11 @@
     <Content Include="Views\ApprovalStages\Edit.cshtml" />
     <Content Include="Views\ApprovalStages\Index.cshtml" />
     <Content Include="Views\ApprovalStages\Create.cshtml" />
+    <Content Include="Views\HonorRoles\Create.cshtml" />
+    <Content Include="Views\HonorRoles\Delete.cshtml" />
+    <Content Include="Views\HonorRoles\Details.cshtml" />
+    <Content Include="Views\HonorRoles\Edit.cshtml" />
+    <Content Include="Views\HonorRoles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -809,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910161154564_Standardized Nomination Status.resx">
       <DependentUpon>201910161154564_Standardized Nomination Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910191804384_Updated HonourRole Table.resx">
+      <DependentUpon>201910191804384_Updated HonourRole Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

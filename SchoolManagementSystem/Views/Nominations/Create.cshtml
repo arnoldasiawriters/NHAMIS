@@ -62,7 +62,7 @@
                                                     ng-options="item.Name for item in ctrl.Salutations"></select>
                                         </div>
                                         <div class="col-md-4">
-                                            <label class="control-label">SurName:<span class="asteriskField"> *</span></label>
+                                            <label class="control-label">Surname:<span class="asteriskField"> *</span></label>
                                             <input type="text" class="form-control" ng-model="ctrl.model.Surname" />
                                         </div>
                                         <div class="col-md-4">
@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <table id="nominationsPrevAwards" class="table table-bordered table-hover">
+                                            <table id="nominationsPrevAwards" class="table table-bordered table-hover table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>Awardee Name</th>
@@ -196,7 +196,7 @@
                                                     <tr ng-repeat="item in ctrl.searchresults">
                                                         <td>{{item.Name}}</td>
                                                         <td>{{item.IdNumber}}</td>
-                                                        <td>{{item.Medal.Name}}</td>
+                                                        <td>{{item.Medal}}</td>
                                                         <td>{{item.ConfirementDate.slice(6,-2) | date:'dd-MMM-yyyy' }}</td>
                                                         <td><input ng-model="item.selected" type="checkbox" /></td>
                                                     </tr>
@@ -257,7 +257,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <table id="CitationsAchievementTable" class="table table-bordered table-hover">
+                                        <table id="CitationsAchievementTable" class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Position Held</th>
@@ -314,7 +314,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div id="PreviousRecognitionTable">
-                                            <table class="table table-bordered table-hover">
+                                            <table class="table table-bordered table-hover table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>Recognizing Institution</th>
@@ -338,7 +338,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label class="control-label">Citation Summary:</label>
+                                            <label class="control-label">Citation Narration:</label>
                                             <textarea class="form-control" rows="4" ng-model="ctrl.model.CitationSummary"></textarea>
                                         </div>
                                     </div>

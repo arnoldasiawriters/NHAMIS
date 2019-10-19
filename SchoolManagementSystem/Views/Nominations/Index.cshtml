@@ -14,12 +14,16 @@
                     <div class="col-md-5">
                         <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
                         <select class="select form-control" ng-model="ctrl.NominationPeriod"
-                                ng-options="item.Name for item in ctrl.NominationPeriods" ng-change="ctrl.ClearNominations()"></select>
+                                ng-options="item.Name for item in ctrl.NominationPeriods" ng-change="ctrl.ClearNominations()">
+                            <option value="">Select Period</option>
+                        </select>
                     </div>
                     <div class="col-md-5">
                         <label class="control-label">Nomination Body: <span class="asteriskField"> *</span></label>
                         <select class="select form-control" ng-model="ctrl.NominatingBody"
-                                ng-options="item.Name for item in ctrl.NominatingBodies" ng-change="ctrl.ClearNominations()"></select>
+                                ng-options="item.Name for item in ctrl.NominatingBodies" ng-change="ctrl.ClearNominations()">
+                            <option value="">Select Body</option>
+                        </select>
                     </div>
                     <div class="col-md-2">
                         <br />
@@ -29,35 +33,37 @@
                 </div>
 
                 <div class="col-md-12">
-                    <table datatable="" class="table table-bordered table-hover">
+                    <table datatable="" class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Salutation</th>
                                 <th>Surname</th>
                                 <th>Other Names</th>
-                                <th>ID Number</th>
+                                <th>Nominating Body</th>
+                                <th>Medal</th>
                                 <th>Nationality</th>
                                 <th>County of Birth</th>
-                                <th>Nominating Body</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in ctrl.Nominations">
+                                <td>{{item.Id}}</td>
                                 <td>{{item.Salutation.Name}}</td>
                                 <td>{{item.Surname}}</td>
                                 <td>{{item.OtherNames}}</td>
-                                <td>{{item.IdNumber}}</td>
+                                <td>{{item.NominatingBody.Name}}</td>
+                                <td>{{item.Medal.Name}}</td>
                                 <td>{{item.Nationality}}</td>
                                 <td>{{item.CountyOfBirth}}</td>
-                                <td>{{item.NominatingBody.Name}}</td>
                                 <td>{{item.Status}}</td>
                                 <td>
-                                    <a href="/Nominations/Details/" {{item.Id}} @*ng-click="ctrl.ViewNominationDetails(item.Id)"*@>View</a>
+                                    <a href="/Nominations/Details/{{item.Id}}"  @*ng-click="ctrl.ViewNominationDetails(item.Id)"*@>View</a>
                                     @if (User.IsInRole("Adjudicator") || User.IsInRole("Super Admin"))
                                     {
-                                        <text> | </text><a href="/Nominations/Edit/" {{item.Id}} @*ng-click="ctrl.EditNominationDetails(item.Id)"*@>View</a>
+                                        <text> | </text><a href="/Nominations/Edit/{{item.Id}}" @*ng-click="ctrl.EditNominationDetails(item.Id)"*@>View</a>
                                     }
                                     @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                                 </td>
@@ -65,13 +71,14 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>Id</th>
                                 <th>Salutation</th>
                                 <th>Surname</th>
                                 <th>Other Names</th>
-                                <th>ID Number</th>
+                                <th>Nominating Body</th>
+                                <th>Medal</th>
                                 <th>Nationality</th>
                                 <th>County of Birth</th>
-                                <th>Nominating Body</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
