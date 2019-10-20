@@ -82,9 +82,11 @@
                         .then(function (results) {
                             var params = { wardid: results.data.WardId };
                             var param = { idnumber: results.data.IdNumber };
+                            var para = { nominationid: idVal };
                             var promises = [];
                             promises.push(appsvc.getItems(baseUrl + '/Nominations/GetCountySubCountyFromWard', params));
                             promises.push(appsvc.getItems(baseUrl + '/Nominations/GetPreviousAwards', param));
+                            promises.push(appsvc.getItems(baseUrl + '/Nominations/GetCitations', para));
 
                             $q
                                 .all(promises)
@@ -101,6 +103,9 @@
                                     ctrl.Occupation = _.find(ctrl.Occupations, ['Id', ctrl.Nomination.OccupationId]);
                                     ctrl.Medal = _.find(ctrl.Medals, ['Id', ctrl.Nomination.MedalId]);
                                     ctrl.PreviousNominations = resinner[1].data;
+                                    ctrl.CitationAchievements = resinner[2].data.CitationAchievement;
+                                    ctrl.PreviousRecognitions = resinner[2].data.PreviousRecognition;
+                                    ctrl.NominationAttachments = resinner[2].data.NominationAttachments;
                                 })
                                 .catch(function (error) {
                                     console.log(error);

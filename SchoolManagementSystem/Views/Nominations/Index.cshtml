@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <a href="/Nominations/Create" class="btn btn-success pull-right">Add Nomination</a>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-5">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-2">
                         <br />
-                        <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-info pull-right" 
+                        <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-info pull-right"
                                ng-disabled="!ctrl.NominationPeriod || !ctrl.NominatingBody" ng-click="ctrl.GetNominations()" />
                     </div>
                 </div>
@@ -60,10 +60,20 @@
                                 <td>{{item.CountyOfBirth}}</td>
                                 <td>{{item.Status}}</td>
                                 <td>
-                                    <a href="/Nominations/Details/{{item.Id}}"  @*ng-click="ctrl.ViewNominationDetails(item.Id)"*@>View</a>
+                                    <a href="/Nominations/Details/{{item.Id}}">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    </a>
                                     @if (User.IsInRole("Adjudicator") || User.IsInRole("Super Admin"))
                                     {
-                                        <text> | </text><a href="/Nominations/Edit/{{item.Id}}" @*ng-click="ctrl.EditNominationDetails(item.Id)"*@>View</a>
+                                        <text> | </text><a href="/Nominations/Edit/{{item.Id}}">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    }
+                                    @if (User.IsInRole("Super Admin"))
+                                    {
+                                        <text> | </text><a href="/Nomination/Delete/{{item.Id}}">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
                                     }
                                     @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                                 </td>
@@ -91,7 +101,7 @@
 </div>
 
 @*<script>
-    $(document).ready(function () {
-        $('#nominationAddIndex').DataTable();
-    });
-</script>*@
+        $(document).ready(function () {
+            $('#nominationAddIndex').DataTable();
+        });
+    </script>*@

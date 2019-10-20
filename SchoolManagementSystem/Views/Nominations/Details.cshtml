@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label"> Date of Birth:</label>
-                                            <label ng-bind="ctrl.formatDate(ctrl.Nomination.DateOfBirth) | date: 'dd/MM/yyyy' : 'africa/nairobi'" disabled class="form-control"></label>
+                                            <input type="text" value="{{ctrl.Nomination.DateOfBirth.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}" disabled class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label"> Position:</label>
@@ -195,54 +195,55 @@
                                 <div class="tab-pane" id="tab_3">
                                     <h4>NOMINEE ACHIEVEMENTS</h4>
                                     <div class="form-group">
-                                        <table id="CitationsAchievementTable" class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Position Held</th>
-                                                    <th>Project</th>
-                                                    <th>Role</th>
-                                                    <th>Achievement</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Remove</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="rec in ctrl.model.CitationAchievements">
-                                                    <td>{{rec.PositionHeld}}</td>
-                                                    <td>{{rec.Project}}</td>
-                                                    <td>{{rec.Role}}</td>
-                                                    <td>{{rec.Achivement}}</td>
-                                                    <td>{{rec.StartDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
-                                                    <td>{{rec.EndDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
-                                                    <td><a ng-click="ctrl.RemoveCitationRec(rec)">Remove</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <h4>NOMINEE AWARDS FROM OTHER INSTITUTIONS</h4>
-                                    <div class="form-group">
-                                        <div id="PreviousRecognitionTable">
-                                            <table class="table table-bordered table-hover table-striped">
+                                        <div class="col-md-12">
+                                            <table id="CitationsAchievementTable" class="table table-bordered table-hover table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Recognizing Institution</th>
-                                                        <th>Achievement Title</th>
-                                                        <th>Award</th>
-                                                        <th>Award Date</th>
-                                                        <th>Remove</th>
+                                                        <th>Position Held</th>
+                                                        <th>Project</th>
+                                                        <th>Role</th>
+                                                        <th>Achievement</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
                                                     </tr>
                                                 </thead>
+
                                                 <tbody>
-                                                    <tr ng-repeat="rec in ctrl.model.PreviousRecognitions">
-                                                        <td>{{rec.RecognizingInstitution}}</td>
-                                                        <td>{{rec.AchievementTitle}}</td>
-                                                        <td>{{rec.Award}}</td>
-                                                        <td>{{rec.AwardDate | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
-                                                        <td><a ng-click="ctrl.RemoveRecognitionRec(rec)">Remove</a></td>
+                                                    <tr ng-repeat="rec in ctrl.CitationAchievements">
+                                                        <td>{{rec.PositionHeld}}</td>
+                                                        <td>{{rec.Project}}</td>
+                                                        <td>{{rec.Role}}</td>
+                                                        <td>{{rec.Achivement}}</td>
+                                                        <td>{{rec.StartDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                        <td>{{rec.EndDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
+                                    </div>
+                                    <h4>NOMINEE AWARDS FROM OTHER INSTITUTIONS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div id="PreviousRecognitionTable">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Recognizing Institution</th>
+                                                            <th>Achievement Title</th>
+                                                            <th>Award</th>
+                                                            <th>Award Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="rec in ctrl.PreviousRecognitions">
+                                                            <td>{{rec.RecognizingInstitution}}</td>
+                                                            <td>{{rec.AchievementTitle}}</td>
+                                                            <td>{{rec.Award}}</td>
+                                                            <td>{{rec.AwardDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -265,13 +266,31 @@
 
                                 <div class="tab-pane" id="tab_4">
                                     <h4>ATTACHMENTS DETAILS</h4>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                                    like Aldus PageMaker including versions of Lorem Ipsum.
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div id="table">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Attachment Type</th>
+                                                            <th>Attachment Name</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="item in ctrl.NominationAttachments">
+                                                            <td>{{item.AttachmentType.Name}}</td>
+                                                            <td><a href="#">{{item.AttachmentUrl}}</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left btnPrevious"><<< Previous</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

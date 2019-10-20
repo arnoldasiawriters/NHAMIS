@@ -288,6 +288,17 @@ namespace SchoolManagementSystem.Controllers
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetCitations(string nominationid)
+        {
+            int nomid = int.Parse(nominationid);
+            var selectlists = new
+            {
+                CitationAchievement = db.CitationAchievements.Where(n => n.NominationId == nomid).OrderBy(i => i.Id).ToList(),
+                PreviousRecognition = db.PreviousRecognitions.Where(n => n.NominationId == nomid).OrderBy(i => i.Id).ToList(),
+                NominationAttachments = db.NominationAttachments.Where(n => n.NominationId == nomid).OrderBy(i=>i.Id).ToList()
+            };
+            return Json(selectlists, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult SearchNominationApprovals(string periodId, string stageId)
         {
             NominationPeriod period = db.NominationPeriods.Find(int.Parse(periodId));

@@ -87,8 +87,9 @@
 
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "Nominations")"><i class="fa fa-circle-o"></i> ADD NOMINATIONS</a></li>
-                            @if (User.IsInRole("Admin"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
                             {
+                                <li><a href="@Url.Action("Adjudicate", "Nominations")"><i class="fa fa-circle-o"></i> ADJUDICATE NOMINATIONS</a></li>
                                 <li><a href="@Url.Action("Approve", "Nominations")"><i class="fa fa-circle-o"></i> APPROVE NOMINATIONS</a></li>
                                 <li><a href="@Url.Action("UpdateROH", "Nominations")"><i class="fa fa-circle-o"></i> UPDATE ROLL OF HONOUR</a></li>
                             }
