@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label"> Date of Birth:</label>
-                                            <input type="text" value="{{ctrl.Nomination.DateOfBirth.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}" disabled class="form-control" />
+                                            <input type="text" value="{{ctrl.Nomination.DateOfBirth | date: 'dd/MM/yyyy' : 'africa/nairobi'}}" disabled class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label"> Position:</label>
@@ -78,11 +78,11 @@
                                     <div class="form-group">
                                         <div class="col-md-4">
                                             <label class="control-label">Home County:</label>
-                                            <input type="text" value="{{ctrl.County}}" disabled class="form-control" />
+                                            <input type="text" value="{{ctrl.County.CountyName}}" disabled class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label">Sub-County Name:</label>
-                                            <input type="text" value="{{ctrl.SubCounty}}" disabled class="form-control" />
+                                            <input type="text" value="{{ctrl.SubCounty.SubCountyName}}" disabled class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label class="control-label">Ward Name:</label>
@@ -250,7 +250,7 @@
                                     <h4>CITATION NARRATION</h4>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <div contenteditable>
+                                            <div class="contenteditable">
                                                 {{ctrl.Nomination.CitationSummary}}
                                             </div>
                                         </div>

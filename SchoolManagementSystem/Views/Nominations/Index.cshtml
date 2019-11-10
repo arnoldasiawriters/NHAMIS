@@ -31,69 +31,89 @@
                                ng-disabled="!ctrl.NominationPeriod || !ctrl.NominatingBody" ng-click="ctrl.GetNominations()" />
                     </div>
                 </div>
-
-                <div class="col-md-12">
-                    <table datatable="" class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Salutation</th>
-                                <th>Surname</th>
-                                <th>Other Names</th>
-                                <th>Nominating Body</th>
-                                <th>Medal</th>
-                                <th>Nationality</th>
-                                <th>County of Birth</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in ctrl.Nominations">
-                                <td>{{item.Id}}</td>
-                                <td>{{item.Salutation.Name}}</td>
-                                <td>{{item.Surname}}</td>
-                                <td>{{item.OtherNames}}</td>
-                                <td>{{item.NominatingBody.Name}}</td>
-                                <td>{{item.Medal.Name}}</td>
-                                <td>{{item.Nationality}}</td>
-                                <td>{{item.CountyOfBirth}}</td>
-                                <td>{{item.Status}}</td>
-                                <td>
-                                    <a href="/Nominations/Details/{{item.Id}}">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                    </a>
-                                    @if (User.IsInRole("Adjudicator") || User.IsInRole("Super Admin"))
-                                    {
-                                        <text> | </text><a href="/Nominations/Edit/{{item.Id}}">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="search">Search:</label>
+                                <input ng-model="ctrl.q" id="search" class="form-control" placeholder="Filter text">
+                            </div>
+                            @*<div class="col-md-5 hidden-xs">
+                                <label>Items per page:</label>
+                                <input type="number" min="1" max="100" class="form-control" ng-model="ctrl.itemsPerPage">
+                            </div>*@
+                        </div>                        
+                    </div>                    
+                    <div class='col-sm-12'>
+                        <hr />
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SNO.</th>
+                                    <th>Salutation</th>
+                                    <th>Surname</th>
+                                    <th>Other Names</th>
+                                    <th>Nominating Body</th>
+                                    <th>Medal</th>
+                                    <th>Nationality</th>
+                                    <th>County</th>
+                                    <th>Status</th>
+                                    <th width="80">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="item in ctrl.Nominations | orderBy:sortBy:ctrl.isASC | filter: ctrl.q | itemsPerPage:ctrl.itemsPerPage" current-page="ctrl.currentPage" ">
+                                    <td>{{ctrl.itemsPerPage *(ctrl.currentPage-1)+$index+1}}</td>
+                                    <td>{{item.Salutation.Name}}</td>
+                                    <td>{{item.Surname}}</td>
+                                    <td>{{item.OtherNames}}</td>
+                                    <td>{{item.NominatingBody.Name}}</td>
+                                    <td>{{item.Medal.Name}}</td>
+                                    <td>{{item.Nationality}}</td>
+                                    <td>{{item.CountyOfBirth}}</td>
+                                    <td>{{item.Status}}</td>
+                                    <td>
+                                        <a href="/Nominations/Details/{{item.Id}}">
+                                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                         </a>
-                                    }
-                                    @if (User.IsInRole("Super Admin"))
-                                    {
-                                        <text> | </text><a href="/Nomination/Delete/{{item.Id}}">
-                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        </a>
-                                    }
-                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Salutation</th>
-                                <th>Surname</th>
-                                <th>Other Names</th>
-                                <th>Nominating Body</th>
-                                <th>Medal</th>
-                                <th>Nationality</th>
-                                <th>County of Birth</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                        @if (User.IsInRole("Adjudicator") || User.IsInRole("Super Admin"))
+                                        {
+                                            <text> | </text><a href="/Nominations/Edit/{{item.Id}}">
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                        @if (User.IsInRole("Super Admin"))
+                                        {
+                                            <text> | </text><a href="/Nomination/Delete/{{item.Id}}">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SNO.</th>
+                                    <th>Salutation</th>
+                                    <th>Surname</th>
+                                    <th>Other Names</th>
+                                    <th>Nominating Body</th>
+                                    <th>Medal</th>
+                                    <th>Nationality</th>
+                                    <th>County</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <dir-pagination-controls boundary-links="true"
+                                                 template-url="~/Scripts/AngularJs/pagination/dirPagination.tpl.html"
+                                                 max-size="15"></dir-pagination-controls>
+                    </div>
                 </div>
             </form>
         </div>

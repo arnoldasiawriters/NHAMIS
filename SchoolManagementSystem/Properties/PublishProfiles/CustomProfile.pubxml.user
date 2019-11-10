@@ -6,11 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\ARNOLD\Documents\nhamisdeploy</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\ICTA\NHAMIS\nhamisproject\app</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="admin-lte/css/AdminLTE.css">
-      <publishTime>10/05/2019 09:20:09</publishTime>
+      <publishTime>10/07/2019 10:44:54</publishTime>
     </File>
     <File Include="admin-lte/css/adminlte.css.map">
       <publishTime>09/04/2019 10:53:18</publishTime>
@@ -679,10 +679,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/06/2019 22:28:11</publishTime>
+      <publishTime>11/10/2019 22:08:36</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>10/06/2019 22:28:11</publishTime>
+      <publishTime>11/10/2019 22:08:36</publishTime>
     </File>
     <File Include="bin/de/Microsoft.SqlServer.Types.resources.dll">
       <publishTime>02/21/2014 06:26:06</publishTime>
@@ -943,19 +943,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/21/2014 06:25:46</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystem.dll">
-      <publishTime>10/06/2019 22:28:05</publishTime>
+      <publishTime>11/10/2019 22:08:25</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystem.pdb">
-      <publishTime>10/06/2019 22:28:05</publishTime>
+      <publishTime>11/10/2019 22:08:25</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.dll">
-      <publishTime>10/06/2019 22:28:02</publishTime>
+      <publishTime>11/10/2019 22:02:17</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.dll.config">
       <publishTime>05/08/2017 09:24:04</publishTime>
     </File>
     <File Include="bin/SchoolManagementSystemModel.pdb">
-      <publishTime>10/06/2019 22:28:02</publishTime>
+      <publishTime>11/10/2019 22:02:17</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>05/08/2017 09:24:08</publishTime>
@@ -1029,6 +1029,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/colors.min.css">
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
+    <File Include="Content/css/dataTable.min.css">
+      <publishTime>10/17/2019 14:38:13</publishTime>
+    </File>
     <File Include="Content/css/DataTables/dataTables.bootstrap.min.css">
       <publishTime>04/25/2017 14:37:46</publishTime>
     </File>
@@ -1054,7 +1057,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/16/2019 18:39:20</publishTime>
+      <publishTime>11/10/2019 08:31:04</publishTime>
     </File>
     <File Include="Content/styles.css">
       <publishTime>05/13/2017 19:40:02</publishTime>
@@ -1264,16 +1267,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/17/2019 09:17:22</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/06/2019 22:28:07</publishTime>
+      <publishTime>11/10/2019 22:08:27</publishTime>
     </File>
     <File Include="Report/NominationsRpt.aspx">
       <publishTime>10/03/2019 11:40:36</publishTime>
+    </File>
+    <File Include="Scripts/AngularJs/angular-datatables.min.js">
+      <publishTime>06/13/2019 00:33:48</publishTime>
     </File>
     <File Include="Scripts/AngularJs/angular.min.js">
       <publishTime>09/09/2019 06:20:04</publishTime>
     </File>
     <File Include="Scripts/AngularJs/App.Js">
-      <publishTime>10/06/2019 22:18:28</publishTime>
+      <publishTime>11/10/2019 18:48:39</publishTime>
     </File>
     <File Include="Scripts/AngularJs/Directives.js">
       <publishTime>10/01/2019 11:35:00</publishTime>
@@ -1283,6 +1289,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/AngularJs/NominationApprovals.js">
       <publishTime>10/02/2019 16:14:48</publishTime>
+    </File>
+    <File Include="Scripts/AngularJs/pagination/dirPagination.js">
+      <publishTime>11/10/2019 07:54:59</publishTime>
+    </File>
+    <File Include="Scripts/AngularJs/pagination/dirPagination.tpl.html">
+      <publishTime>11/10/2019 07:54:59</publishTime>
     </File>
     <File Include="Scripts/AngularJs/Services.js">
       <publishTime>09/09/2019 10:31:10</publishTime>
@@ -1441,7 +1453,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>09/17/2019 15:44:12</publishTime>
+      <publishTime>10/16/2019 10:50:09</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>09/05/2019 21:08:00</publishTime>
@@ -1561,19 +1573,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/05/2019 21:45:50</publishTime>
     </File>
     <File Include="Views/HonorRoles/Create.cshtml">
-      <publishTime>09/09/2019 05:50:06</publishTime>
+      <publishTime>10/19/2019 21:10:02</publishTime>
     </File>
     <File Include="Views/HonorRoles/Delete.cshtml">
-      <publishTime>09/09/2019 05:50:06</publishTime>
+      <publishTime>10/19/2019 21:10:03</publishTime>
     </File>
     <File Include="Views/HonorRoles/Details.cshtml">
-      <publishTime>09/09/2019 05:50:08</publishTime>
+      <publishTime>10/19/2019 21:10:04</publishTime>
     </File>
     <File Include="Views/HonorRoles/Edit.cshtml">
-      <publishTime>09/09/2019 05:50:08</publishTime>
+      <publishTime>10/19/2019 21:10:05</publishTime>
     </File>
     <File Include="Views/HonorRoles/Index.cshtml">
-      <publishTime>09/09/2019 05:50:10</publishTime>
+      <publishTime>10/19/2019 21:10:06</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>05/08/2017 09:24:02</publishTime>
@@ -1669,22 +1681,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2019 12:52:46</publishTime>
     </File>
     <File Include="Views/Nominations/Approve.cshtml">
-      <publishTime>10/02/2019 15:44:39</publishTime>
+      <publishTime>10/07/2019 23:48:52</publishTime>
     </File>
     <File Include="Views/Nominations/Create.cshtml">
-      <publishTime>10/05/2019 21:16:27</publishTime>
+      <publishTime>11/10/2019 18:02:45</publishTime>
     </File>
     <File Include="Views/Nominations/Delete.cshtml">
       <publishTime>09/05/2019 21:48:40</publishTime>
     </File>
     <File Include="Views/Nominations/Details.cshtml">
-      <publishTime>09/05/2019 21:48:40</publishTime>
+      <publishTime>11/10/2019 17:52:30</publishTime>
     </File>
     <File Include="Views/Nominations/Edit.cshtml">
-      <publishTime>09/05/2019 21:48:42</publishTime>
+      <publishTime>11/10/2019 18:08:51</publishTime>
     </File>
     <File Include="Views/Nominations/Index.cshtml">
-      <publishTime>10/06/2019 21:28:12</publishTime>
+      <publishTime>11/10/2019 16:37:23</publishTime>
     </File>
     <File Include="Views/Nominations/UpdateROH.cshtml">
       <publishTime>09/08/2019 20:11:06</publishTime>
@@ -1741,7 +1753,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/06/2019 21:27:41</publishTime>
+      <publishTime>11/10/2019 18:14:21</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/28/2017 19:18:42</publishTime>
@@ -1762,7 +1774,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2019 05:35:56</publishTime>
     </File>
     <File Include="Views/UserDetails/Create.cshtml">
-      <publishTime>10/05/2019 19:48:27</publishTime>
+      <publishTime>10/16/2019 15:41:53</publishTime>
     </File>
     <File Include="Views/UserDetails/Delete.cshtml">
       <publishTime>10/05/2019 18:47:38</publishTime>
@@ -1771,10 +1783,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2019 18:46:04</publishTime>
     </File>
     <File Include="Views/UserDetails/Edit.cshtml">
-      <publishTime>10/05/2019 17:37:31</publishTime>
+      <publishTime>11/10/2019 21:21:14</publishTime>
     </File>
     <File Include="Views/UserDetails/Index.cshtml">
-      <publishTime>09/08/2019 08:12:20</publishTime>
+      <publishTime>11/10/2019 19:58:48</publishTime>
     </File>
     <File Include="Views/Wards/Create.cshtml">
       <publishTime>09/09/2019 05:36:16</publishTime>
@@ -1798,7 +1810,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2017 09:24:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/03/2019 11:46:43</publishTime>
+      <publishTime>11/10/2019 22:08:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

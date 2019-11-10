@@ -207,7 +207,9 @@ namespace SchoolManagementSystem.Controllers
                 Medals = db.Medals.Select(c => new { c.Id, c.Name, c.OrderBy }).OrderBy(c => c.OrderBy).ToList(),
                 AttachmentTypes = db.AttachmentTypes.Select(c => new { c.Id, c.Name }).OrderBy(c => c.Name).ToList(),
                 Occupations = db.Occupations.Select(c => new { c.Id, c.Name }),
-                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c => c.Code)
+                PostalCodes = db.PostalCodes.Select(c => new { c.Id, c.Code, c.Town }).OrderBy(c => c.Code),
+                SubCounties = db.SubCounties.Select(c => new { c.Id, c.SubCountyName }).OrderBy(c => c.Id),
+                Wards = db.Wards.Select(w => new { w.Id, w.WardName }).OrderBy(w => w.Id)
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }
@@ -272,6 +274,15 @@ namespace SchoolManagementSystem.Controllers
             return RedirectToAction("Create", "Nominations");
         }
 
+        [HttpPost]
+        public ActionResult UpdateNominationForm(Nomination model)
+        {
+            model.Ward = null;
+            db.Entry(model).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Nominations");
+        }
+
         public ActionResult PostAttachmentForms(HttpPostedFileBase file)
         {
             return null;
@@ -295,7 +306,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 CitationAchievement = db.CitationAchievements.Where(n => n.NominationId == nomid).OrderBy(i => i.Id).ToList(),
                 PreviousRecognition = db.PreviousRecognitions.Where(n => n.NominationId == nomid).OrderBy(i => i.Id).ToList(),
-                NominationAttachments = db.NominationAttachments.Where(n => n.NominationId == nomid).OrderBy(i=>i.Id).ToList()
+                NominationAttachments = db.NominationAttachments.Where(n => n.NominationId == nomid).OrderBy(i => i.Id).ToList()
             };
             return Json(selectlists, JsonRequestBehavior.AllowGet);
         }

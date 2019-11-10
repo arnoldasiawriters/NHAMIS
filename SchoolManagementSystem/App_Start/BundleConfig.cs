@@ -43,6 +43,7 @@ namespace SchoolManagementSystem
                "~/Scripts/AngularJs/lodash.min.js",
                "~/Scripts/AngularJs/ui-bootstrap-tpls.min.js",
                "~/Scripts/AngularJs/ui-bootstrap-dialogs.js",
+               "~/Scripts/AngularJs/pagination/dirPagination.js",
                "~/Scripts/AngularJs/Services.js",
                "~/Scripts/AngularJs/Directives.js",
                "~/Scripts/AngularJs/NominationApprovals.js",

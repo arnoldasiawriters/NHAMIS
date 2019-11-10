@@ -1,170 +1,314 @@
-﻿@model NHAMIS.APP.Models.Nomination
+﻿<div ng-controller="NominationsCtrl as ctrl">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h2 class="box-title">FILLED NOMINATION DETAILS FORM</h2>
+        </div>
 
-@{
-    ViewBag.Title = "Details";
-}
+        <div class="box-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Personal Information</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Other Details</a></li>
+                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Citations</a></li>
+                                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Attachments</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <h4>PERSONAL INFORMATION</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <label class="control-label">Nomination Body:</label>
+                                            <input type="text" value="{{ctrl.NominatingBody.Name}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Nomination Period:</label>
+                                            <input type="text" value="{{ctrl.NominationPeriod.Name}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-<h2>Details</h2>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label"> Nationality:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Nationality}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">County/Country of Birth:</label>
+                                            <input type="text" value="{{ctrl.Nomination.CountyOfBirth}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">ID/Passport Number:</label>
+                                            <input type="text" value="{{ctrl.Nomination.IdNumber}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-<div>
-    <h4>Nomination</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NominationBody.Title)
-        </dt>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label"> Salutation/Title:</label>
+                                            <input type="text" value="{{ctrl.Salutation.Name}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Surname:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Surname}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Other Names:</label>
+                                            <input type="text" value="{{ctrl.Nomination.OtherNames}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NominationBody.Title)
-        </dd>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label"> Gender: </label>
+                                            <input type="text" value="{{ctrl.Gender.Name}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label"> Date of Birth:</label>
+                                            <input type="text" value="{{ctrl.Nomination.DateOfBirth | date: 'dd/MM/yyyy' : 'africa/nairobi'}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label"> Position:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Position}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NominationPeriod.CreateBy)
-        </dt>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Home County:</label>
+                                            <input type="text" value="{{ctrl.County.CountyName}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Sub-County Name:</label>
+                                            <input type="text" value="{{ctrl.SubCounty.SubCountyName}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Ward Name:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Ward.WardName}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NominationPeriod.CreateBy)
-        </dd>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Location:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Location}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Sub Location:</label>
+                                            <input type="text" value="{{ctrl.Nomination.SubLocation}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Village:</label>
+                                            <input type="text" value="{{ctrl.Nomination.Village}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Salutation.Name)
-        </dt>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Mobile Number:</label>
+                                            <input type="text" value="{{ctrl.Nomination.MobileNumber}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Email Address:</label>
+                                            <input type="text" value="{{ctrl.Nomination.EmailAddress}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Physical Address:</label>
+                                            <input type="text" value="{{ctrl.Nomination.PhysicalAddress}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Salutation.Name)
-        </dd>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Postal Address:</label>
+                                            <input type="text" value="{{ctrl.Nomination.PostalAddress}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Town:</label>
+                                            <input type="text" value="{{ctrl.Postal.Town}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Postal Code:</label>
+                                            <input type="text" value="{{ctrl.Postal.Code}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ward.WardName)
-        </dt>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="control-label"></label><br />
+                                            <a data-toggle="tab" href="#menu2" class="btn btn-sm btn-warning pull-right btnNext">Next >>></a>
+                                            <a href="/Nominations" class="btn btn-sm btn-warning pull-left"><<< Back to List</a>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ward.WardName)
-        </dd>
+                                <div class="tab-pane" id="tab_2">
+                                    <h4>OTHER DETAILS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="control-label">Highest Academic Qualification:</label>
+                                            <input type="text" value="{{ctrl.AcademicQualification.Name}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Occupational Sector:</label>
+                                            <input type="text" value="{{ctrl.Occupation.Name}}" disabled class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="control-label">Recommended Medal Of Honor:</label>
+                                            <input type="text" value="{{ctrl.Medal.Name}}" disabled class="form-control" />
+                                        </div>
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdNumber)
-        </dt>
+                                    <h4>PREVIOUS AWARDED HONOURS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <table id="nominationsPrevAwards" class="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Awardee Name</th>
+                                                        <th>ID Number</th>
+                                                        <th>Award</th>
+                                                        <th>Date of Award</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in ctrl.PreviousNominations">
+                                                        <td>{{item.Name}}</td>
+                                                        <td>{{item.IdNumber}}</td>
+                                                        <td>{{item.Medal}}</td>
+                                                        <td>{{item.ConfirementDate.slice(6,-2) | date:'dd-MMM-yyyy' }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <a data-toggle="tab" href="#home" class="btn btn-sm btn-warning pull-left btnPrevious"><<< Previous</a>
+                                            <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-right btnNext">Next >>></a>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdNumber)
-        </dd>
+                                <div class="tab-pane" id="tab_3">
+                                    <h4>NOMINEE ACHIEVEMENTS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <table id="CitationsAchievementTable" class="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Position Held</th>
+                                                        <th>Project</th>
+                                                        <th>Role</th>
+                                                        <th>Achievement</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                    </tr>
+                                                </thead>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
+                                                <tbody>
+                                                    <tr ng-repeat="rec in ctrl.CitationAchievements">
+                                                        <td>{{rec.PositionHeld}}</td>
+                                                        <td>{{rec.Project}}</td>
+                                                        <td>{{rec.Role}}</td>
+                                                        <td>{{rec.Achivement}}</td>
+                                                        <td>{{rec.StartDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                        <td>{{rec.EndDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <h4>NOMINEE AWARDS FROM OTHER INSTITUTIONS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div id="PreviousRecognitionTable">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Recognizing Institution</th>
+                                                            <th>Achievement Title</th>
+                                                            <th>Award</th>
+                                                            <th>Award Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="rec in ctrl.PreviousRecognitions">
+                                                            <td>{{rec.RecognizingInstitution}}</td>
+                                                            <td>{{rec.AchievementTitle}}</td>
+                                                            <td>{{rec.Award}}</td>
+                                                            <td>{{rec.AwardDate.slice(6,-2) | date: 'dd/MM/yyyy' : 'africa/nairobi'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
+                                    <h4>CITATION NARRATION</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="contenteditable">
+                                                {{ctrl.Nomination.CitationSummary}}
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OtherNames)
-        </dt>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <a data-toggle="tab" href="#menu3" class="btn btn-sm btn-warning pull-left btnPrevious"><<< Previous</a>
+                                            <a data-toggle="tab" href="#menu5" class="btn btn-sm btn-warning pull-right btnNext">Next >>></a>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OtherNames)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CountyOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CountyOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubLocation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubLocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Village)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Village)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Occupation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Occupation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublicServiceRecords)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublicServiceRecords)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-    </dl>
+                                <div class="tab-pane" id="tab_4">
+                                    <h4>ATTACHMENTS DETAILS</h4>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div id="table">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Attachment Type</th>
+                                                            <th>Attachment Name</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="item in ctrl.NominationAttachments">
+                                                            <td>{{item.AttachmentType.Name}}</td>
+                                                            <td><a href="#">{{item.AttachmentUrl}}</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <a data-toggle="tab" href="#menu4" class="btn btn-sm btn-warning pull-left btnPrevious"><<< Previous</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<script>
+    $(document).ready(function () {
+        $('.btnNext').click(function () {
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        });
+
+        $('.btnPrevious').click(function () {
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+        });
+    });
+</script>

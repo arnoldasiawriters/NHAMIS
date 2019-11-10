@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SchoolManagementSystem.Models
@@ -50,7 +51,7 @@ namespace SchoolManagementSystem.Models
     {
         [Required]
         [Display(Name = "User Name")]
-        [StringLength(50,ErrorMessage ="The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string UserName { get; set; }
 
         [Required]
@@ -68,7 +69,7 @@ namespace SchoolManagementSystem.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
-        
+
         public string Email { get; set; }
 
         [Display(Name = "Employment Number")]
@@ -84,6 +85,8 @@ namespace SchoolManagementSystem.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [DefaultValue(false)]
+        public bool ResetPassword { get; set; }
     }
 
     public class ResetPasswordViewModel

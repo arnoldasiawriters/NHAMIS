@@ -89,7 +89,6 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\System.Web.WebPages.Razor.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Vereyon.Web.FlashMessage.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\WebGrease.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.SqlServer.Types.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\SchoolManagementSystemModel.pdb
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\SchoolManagementSystemModel.dll.config
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Antlr3.Runtime.pdb
@@ -123,16 +122,6 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\de\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\es\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\fr\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\it\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ja\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ko\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\pt\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\ru\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\NHAMISAPP.csprojAssemblyReference.cache
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\SchoolManagementSystem.Migrations.Initial.resources
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\NHAMISAPP.csproj.GenerateResource.cache
@@ -140,5 +129,3 @@ C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagement
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\NHAMISAPP.csproj.CopyComplete
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\SchoolManagementSystem.dll
 C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\SchoolManagementSystem.pdb
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\SchoolManagementSystem.Migrations.Addedroletostages.resources
-C:\Users\ARNOLD\Documents\Visual Studio 2017\Projects\NHAMISAPP\SchoolManagementSystem\obj\Release\SchoolManagementSystem.Migrations.MadeDateOfBirthColumnnullableforNomination.resources

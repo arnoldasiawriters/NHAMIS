@@ -240,25 +240,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910071114113_Initial.cs" />
-    <Compile Include="Migrations\201910071114113_Initial.Designer.cs">
-      <DependentUpon>201910071114113_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.cs" />
-    <Compile Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.Designer.cs">
-      <DependentUpon>201910080648104_Added Forwarded to Table NominationApprovals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910160917421_Added PhysicalAddress to Nomination.cs" />
-    <Compile Include="Migrations\201910160917421_Added PhysicalAddress to Nomination.Designer.cs">
-      <DependentUpon>201910160917421_Added PhysicalAddress to Nomination.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910161154564_Standardized Nomination Status.cs" />
-    <Compile Include="Migrations\201910161154564_Standardized Nomination Status.Designer.cs">
-      <DependentUpon>201910161154564_Standardized Nomination Status.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910191804384_Updated HonourRole Table.cs" />
-    <Compile Include="Migrations\201910191804384_Updated HonourRole Table.Designer.cs">
-      <DependentUpon>201910191804384_Updated HonourRole Table.cs</DependentUpon>
+    <Compile Include="Migrations\201911100443533_Initial.cs" />
+    <Compile Include="Migrations\201911100443533_Initial.Designer.cs">
+      <DependentUpon>201911100443533_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -606,6 +590,8 @@
     <Content Include="Scripts\AngularJs\Directives.js" />
     <Content Include="Scripts\AngularJs\lodash.min.js" />
     <Content Include="Scripts\AngularJs\NominationApprovals.js" />
+    <Content Include="Scripts\AngularJs\pagination\dirPagination.js" />
+    <Content Include="Scripts\AngularJs\pagination\dirPagination.tpl.html" />
     <Content Include="Scripts\AngularJs\Services.js" />
     <Content Include="Scripts\AngularJs\ui-bootstrap-dialogs.js" />
     <Content Include="Scripts\AngularJs\ui-bootstrap-tpls.min.js" />
@@ -802,20 +788,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910071114113_Initial.resx">
-      <DependentUpon>201910071114113_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910080648104_Added Forwarded to Table NominationApprovals.resx">
-      <DependentUpon>201910080648104_Added Forwarded to Table NominationApprovals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910160917421_Added PhysicalAddress to Nomination.resx">
-      <DependentUpon>201910160917421_Added PhysicalAddress to Nomination.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910161154564_Standardized Nomination Status.resx">
-      <DependentUpon>201910161154564_Standardized Nomination Status.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910191804384_Updated HonourRole Table.resx">
-      <DependentUpon>201910191804384_Updated HonourRole Table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911100443533_Initial.resx">
+      <DependentUpon>201911100443533_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

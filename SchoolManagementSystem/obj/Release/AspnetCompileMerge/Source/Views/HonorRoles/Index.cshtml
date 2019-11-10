@@ -12,19 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Medal.Name)
+            @Html.DisplayNameFor(model => model.SerialNo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Salutation.Name)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SerialNo)
+            @Html.DisplayNameFor(model => model.IdNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdNumber)
+            @Html.DisplayNameFor(model => model.Medal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rank)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ConfirementDate)
@@ -38,19 +41,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Medal.Name)
+            @Html.DisplayFor(modelItem => item.SerialNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Salutation.Name)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SerialNo)
+            @Html.DisplayFor(modelItem => item.IdNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdNumber)
+            @Html.DisplayFor(modelItem => item.Medal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rank)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ConfirementDate)

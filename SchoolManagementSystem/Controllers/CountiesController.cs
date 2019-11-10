@@ -37,7 +37,7 @@ namespace SchoolManagementSystem.Controllers
             }
             return View(county);
         }
-
+        
         // GET: Counties/Create
         public ActionResult Create()
         {

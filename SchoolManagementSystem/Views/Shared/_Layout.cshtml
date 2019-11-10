@@ -87,15 +87,15 @@
 
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index", "Nominations")"><i class="fa fa-circle-o"></i> ADD NOMINATIONS</a></li>
-                            @if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("Super Admin") || User.IsInRole("Adjudicator"))
                             {
-                                <li><a href="@Url.Action("Adjudicate", "Nominations")"><i class="fa fa-circle-o"></i> ADJUDICATE NOMINATIONS</a></li>
+                                @*<li><a href="@Url.Action("Adjudicate", "Nominations")"><i class="fa fa-circle-o"></i> ADJUDICATE NOMINATIONS</a></li>*@
                                 <li><a href="@Url.Action("Approve", "Nominations")"><i class="fa fa-circle-o"></i> APPROVE NOMINATIONS</a></li>
                                 <li><a href="@Url.Action("UpdateROH", "Nominations")"><i class="fa fa-circle-o"></i> UPDATE ROLL OF HONOUR</a></li>
                             }
                         </ul>
                     </li>
-                    @if (User.IsInRole("Admin"))
+                    @if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
                     {
                         <li class="treeview">
                             <a href="#">
@@ -105,7 +105,10 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="http://41.204.161.195:86/rpt/WebForm1.aspx" target="_blank"><i class="fa fa-circle-o"></i> LIST OF NOMINEES</a></li>
+                                <li><a href="http://41.204.161.195:86/rpt/WebForm1.aspx" target="_blank"><i class="fa fa-circle-o"></i> NOMINEES-ORG</a></li>
+                                <li><a href="http://41.204.161.195:86/rpt/NominationsCitation.aspx" target="_blank"><i class="fa fa-circle-o"></i> NOMINEES-ORG-CITATION</a></li>
+                                <li><a href="http://41.204.161.195:86/rpt/NominationsCitationNoCitation.aspx" target="_blank"><i class="fa fa-circle-o"></i> NOMINEES-MEDAL</a></li>
+                                <li><a href="http://41.204.161.195:86/rpt/NominationsByMedal.aspx" target="_blank"><i class="fa fa-circle-o"></i> NOMINEES-MEDAL-CITATION</a></li>
                                 <li><a href="http://41.204.161.195:86/rpt/WebForm2.aspx" target="_blank"><i class="fa fa-circle-o"></i> NOMINEES BY STAGE</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> GAZETTE NOTICE</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> STATE INVESTITURE</a></li>

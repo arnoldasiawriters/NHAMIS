@@ -22,6 +22,6 @@ namespace NHAMIS.APP.Models
         public int MedalId { get; set; }
         public virtual Medal Medal { get; set; }
         public bool Status { get; set; }
-        public bool Forwarded { get; set; }
+        public bool? Forwarded { get; set; }
     }
 }

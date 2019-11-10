@@ -116,10 +116,23 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
-            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name");
-            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town");
-            return View(userDetails);
+
+            var user = db.Users.Where(u => u.Id == userDetails.UserId).FirstOrDefault();
+            
+            UserDetailsViewModel vm = new UserDetailsViewModel();
+            vm.RoleId = db.UserRoles.Where(u=>u.UserId == userDetails.UserId).FirstOrDefault().RoleId;
+            vm.PostalCodeId = userDetails.PostalCodeId;
+            vm.NominatingBodyId = userDetails.NominatingBodyId;
+            vm.UserDetails = userDetails;
+            vm.RegisterViewModel = new RegisterViewModel();
+            vm.RegisterViewModel.UserName = user.UserName;
+            vm.RegisterViewModel.Email = user.Email;
+            vm.RegisterViewModel.PFNumber = userDetails.PFNumber;
+
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", vm.RoleId);
+            ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name", userDetails.NominatingBodyId);
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town", userDetails.PostalCodeId);
+            return View(vm);
         }
 
         // POST: UserDetails/Edit/5
@@ -127,18 +140,62 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserDetails userDetails)
+        public ActionResult Edit(UserDetailsViewModel model)
         {
-            if (ModelState.IsValid)
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var user = UserManager.FindById(model.UserDetails.UserId);
+            if (ModelState.IsValid || user != null)
             {
-                db.Entry(userDetails).State = EntityState.Modified;
+                if(model.RegisterViewModel.ResetPassword )
+                {
+                    UserManager.RemovePassword(user.Id);
+                    UserManager.AddPassword(user.Id, "User@123");
+                }
+
+                var curRole = db.UserRoles.Where(n => n.UserId == user.Id).FirstOrDefault();
+                var rolename = roleManager.FindById(model.RoleId);
+                
+
+                if (curRole.RoleId != model.RoleId)
+                {
+                    UserManager.RemoveFromRole(user.Id, curRole.RoleId);
+                }
+
+                var userInRole = UserManager.IsInRole(user.Id, rolename.Name);
+                if (!userInRole)
+                {
+                    UserManager.AddToRole(user.Id, rolename.Name);
+                }
+                model.UserDetails.NominatingBodyId = model.NominatingBodyId;
+                model.UserDetails.PostalCodeId = model.PostalCodeId;
+                model.UserDetails.PFNumber = model.RegisterViewModel.PFNumber;
+                db.Entry(model.UserDetails).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
-            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town", userDetails.PostalCodeId);
+
+            UserDetails userDetails = db.UserDetails.Find(user.Id);
+            if (userDetails == null)
+            {
+                return HttpNotFound();
+            }
+
+            UserDetailsViewModel vm = new UserDetailsViewModel();
+            vm.RoleId = db.UserRoles.Where(u => u.UserId == userDetails.UserId).FirstOrDefault().RoleId;
+            vm.PostalCodeId = userDetails.PostalCodeId;
+            vm.NominatingBodyId = userDetails.NominatingBodyId;
+            vm.UserDetails = userDetails;
+            vm.RegisterViewModel = new RegisterViewModel();
+            vm.RegisterViewModel.UserName = user.UserName;
+            vm.RegisterViewModel.Email = user.Email;
+            vm.RegisterViewModel.PFNumber = userDetails.PFNumber;
+
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", vm.RoleId);
             ViewBag.NominatingBodyId = new SelectList(db.NominatingBodies, "Id", "Name", userDetails.NominatingBodyId);
-            return View(userDetails);
+            ViewBag.PostalCodeId = new SelectList(db.PostalCodes, "Id", "Town", userDetails.PostalCodeId);
+            return View(vm);
         }
 
         // GET: UserDetails/Delete/5

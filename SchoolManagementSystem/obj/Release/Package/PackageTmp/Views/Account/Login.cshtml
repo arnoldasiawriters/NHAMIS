@@ -19,16 +19,19 @@
     <div class="login-box">
         <div class="login-box">
             <div class="login-logo">
-                <a href="@Url.Action("Index", "Home")"><b>NHA</b>MIS</a>
+                @*<a href="@url.action("index", "home")"><b>nha</b>mis</a>*@
             </div>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body" style="position:absolute;">
             <img src="~/Images/CoatOfArms.png" width="100" height="100" />
             <div style="text-align: center;">
+                <h2 style="color:darkgoldenrod"><strong>The Presidency </strong></h2>
                 <h2 style="color:darkgoldenrod"><strong>Executive Office of the President </strong></h2>
-                <span style="color:steelblue; font-size:20px; font-weight:800;">(Cabinet Affairs Office)</span>
+                <span style="color:steelblue; font-size:24px; font-weight:800;">Cabinet Affairs Office</span>
+                <p class="login-box-msg" style="color:darkgoldenrod; font-size:20px; font-weight:800;">National Honors and Awards Management Information System</p>
                 <p class="login-box-msg" style="font-weight:700;">Enter Your Login Credentials Below</p>
+
             </div>
             <section id="loginForm" >
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-group", role = "form" }))
@@ -38,7 +41,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group has-feedback">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name" })
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     </div>
 

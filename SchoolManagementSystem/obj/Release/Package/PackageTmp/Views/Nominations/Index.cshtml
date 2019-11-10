@@ -1,108 +1,127 @@
-﻿@model IEnumerable<NHAMIS.APP.Models.Nomination>
-
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">VIEW NOMINATION DETAILS</h3>
-    </div>
-    <div class="box-body">
-        <div class="form-group">
-            <div class="col-md-12">
-                <br />
-                @Html.ActionLink("Add Nomination", "Create", null, htmlAttributes: new { @class = "btn btn-success pull-right" })
-            </div>
+﻿<div ng-controller="NominationsCtrl as ctrl">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">NOMINATION DETAILS VIEW</h3>
         </div>
-        <div class="form-group">
-            <div class="col-md-5">
-                <label class="control-label">Nominating Body</label>
-                @Html.DropDownList("NominatingBodyId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-            <div class="col-md-5">
-                <label class="control-label">Nomination Period</label>
-                @Html.DropDownList("NominationPeriodId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-            <div class="col-md-2">
-                <br />
-                <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-info" />
-                <br /><br />
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <table id="nominationAddIndex" class="table table-bordered table-hover dataTable">
-                <thead>
-                    <tr>
-                        <th>Salutation</th>
-                        <th>ID Number</th>
-                        <th>Surname</th>
-                        <th>Other Names</th>
-                        <th>Nationality</th>
-                        <th>County of Birth</th>
-                        <th>Ward</th>
-                        <th>Email Address</th>
-                        <th>Occupation</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Salutation.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Surname)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.OtherNames)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nationality)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CountyOfBirth)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Ward.WardName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EmailAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Occupation.Name)
-                            </td>
-                            <td>
-                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Salutation</th>
-                        <th>ID Number</th>
-                        <th>Surname</th>
-                        <th>Other Names</th>
-                        <th>Nationality</th>
-                        <th>County of Birth</th>
-                        <th>Ward</th>
-                        <th>Email Address</th>
-                        <th>Occupation</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
+        <div class="box-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a href="/Nominations/Create" class="btn btn-success pull-right">Add Nomination</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <label class="control-label">Nomination Period: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.NominationPeriod"
+                                ng-options="item.Name for item in ctrl.NominationPeriods" ng-change="ctrl.ClearNominations()">
+                            <option value="">Select Period</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Nomination Body: <span class="asteriskField"> *</span></label>
+                        <select class="select form-control" ng-model="ctrl.NominatingBody"
+                                ng-options="item.Name for item in ctrl.NominatingBodies" ng-change="ctrl.ClearNominations()">
+                            <option value="">Select Body</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <input type="button" name="searchapproval" value="Search Nominations" class="btn btn-info pull-right"
+                               ng-disabled="!ctrl.NominationPeriod || !ctrl.NominatingBody" ng-click="ctrl.GetNominations()" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="search">Search:</label>
+                                <input ng-model="ctrl.q" id="search" class="form-control" placeholder="Filter text">
+                            </div>
+                            @*<div class="col-md-5 hidden-xs">
+                                <label>Items per page:</label>
+                                <input type="number" min="1" max="100" class="form-control" ng-model="ctrl.itemsPerPage">
+                            </div>*@
+                        </div>                        
+                    </div>                    
+                    <div class='col-sm-12'>
+                        <hr />
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SNO.</th>
+                                    <th>Salutation</th>
+                                    <th>Surname</th>
+                                    <th>Other Names</th>
+                                    <th>Nominating Body</th>
+                                    <th>Medal</th>
+                                    <th>Nationality</th>
+                                    <th>County</th>
+                                    <th>Status</th>
+                                    <th width="80">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="item in ctrl.Nominations | orderBy:sortBy:ctrl.isASC | filter: ctrl.q | itemsPerPage:ctrl.itemsPerPage" current-page="ctrl.currentPage" ">
+                                    <td>{{ctrl.itemsPerPage *(ctrl.currentPage-1)+$index+1}}</td>
+                                    <td>{{item.Salutation.Name}}</td>
+                                    <td>{{item.Surname}}</td>
+                                    <td>{{item.OtherNames}}</td>
+                                    <td>{{item.NominatingBody.Name}}</td>
+                                    <td>{{item.Medal.Name}}</td>
+                                    <td>{{item.Nationality}}</td>
+                                    <td>{{item.CountyOfBirth}}</td>
+                                    <td>{{item.Status}}</td>
+                                    <td>
+                                        <a href="/Nominations/Details/{{item.Id}}">
+                                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                        </a>
+                                        @if (User.IsInRole("Adjudicator") || User.IsInRole("Super Admin"))
+                                        {
+                                            <text> | </text><a href="/Nominations/Edit/{{item.Id}}">
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                        @if (User.IsInRole("Super Admin"))
+                                        {
+                                            <text> | </text><a href="/Nomination/Delete/{{item.Id}}">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SNO.</th>
+                                    <th>Salutation</th>
+                                    <th>Surname</th>
+                                    <th>Other Names</th>
+                                    <th>Nominating Body</th>
+                                    <th>Medal</th>
+                                    <th>Nationality</th>
+                                    <th>County</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <dir-pagination-controls boundary-links="true"
+                                                 template-url="~/Scripts/AngularJs/pagination/dirPagination.tpl.html"
+                                                 max-size="15"></dir-pagination-controls>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('#nominationAddIndex').DataTable();
-    });
-</script>
+@*<script>
+        $(document).ready(function () {
+            $('#nominationAddIndex').DataTable();
+        });
+    </script>*@
